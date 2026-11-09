@@ -11,662 +11,649 @@
 <meta property="og:locale" content="it_IT">
 <meta property="og:url" content="https://davide-tech.work/">
 <meta property="og:title" content="Davide O. Zhu, sviluppatore backend freelance">
-<meta property="og:description" content="API, integrazioni, pipeline di dati e sistemi con IA. E quando in produzione qualcosa non torna, la causa.">
+<meta property="og:description" content="Backend, dati, IA. Fino alla radice.">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='6' fill='%23f9e04b' stroke='%23171a2b' stroke-width='3'/%3E%3Cpath d='M9 10h14v9H15l-5 4v-4H9z' fill='%23fff' stroke='%23171a2b' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&family=Shantell+Sans:wght,BNCE,INFM@500..800,-100..100,0..100&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='%232a3138'/%3E%3Crect x='8' y='8' width='16' height='16' rx='3' fill='%23121820' stroke='%237fd0dd' stroke-width='1.5'/%3E%3Crect x='10.5' y='10.5' width='5' height='5' rx='1' fill='%237fd0dd'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/funnel-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/funnel-sans.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face {
+  font-family: "Funnel Display";
+  src: url("fonts/funnel-display.woff2") format("woff2");
+  font-weight: 300 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Funnel Sans";
+  src: url("fonts/funnel-sans.woff2") format("woff2");
+  font-weight: 300 800;
+  font-display: swap;
+}
+
 :root {
-  /* inchiostro e colori piatti da fumetto in linea chiara */
-  --carta: oklch(1 0 0);
-  --inchiostro: oklch(0.2 0.03 265);
-  --grafite: oklch(0.4 0.03 265);
-  --cielo: oklch(0.86 0.075 228);
-  --cielo-chiaro: oklch(0.95 0.03 228);
-  --sole: oklch(0.92 0.16 98);
-  --sole-chiaro: oklch(0.97 0.07 98);
-  --corallo: oklch(0.7 0.17 32);
-  --menta: oklch(0.9 0.08 165);
+  --bianco: oklch(1 0 0);
+  --titanio: oklch(0.965 0.004 220);
+  --testo: oklch(0.21 0.012 235);
+  --secondario: oklch(0.46 0.014 235);
+  --filo: oklch(0.88 0.007 230);
+  --grafite: oklch(0.17 0.009 235);
+  --grafite-2: oklch(0.24 0.011 235);
+  --su-grafite: oklch(0.96 0.004 230);
+  --su-grafite-2: oklch(0.74 0.012 230);
+  --ottanio: oklch(0.47 0.085 215);
+  --ottanio-scuro: oklch(0.4 0.08 215);
+  --ottanio-chiaro: oklch(0.82 0.09 200);
 
-  --tratto: 3px;
-  --raggio: 10px;
-  --canalino: clamp(10px, 1.4vw, 16px);
-  --spazio-s: 0.75rem;
-  --spazio-m: 1.25rem;
-  --spazio-l: 2rem;
-  --spazio-xl: clamp(3.5rem, 8vw, 6rem);
-
-  --lettering: "Shantell Sans", "Comic Neue", system-ui, sans-serif;
-  --testo: "Archivo", system-ui, sans-serif;
+  --contenuto: min(100% - 40px, 70rem);
+  --sezione: clamp(5rem, 11vw, 8.5rem);
+  --display: "Funnel Display", system-ui, sans-serif;
+  --corpo: "Funnel Sans", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0;
-  background: var(--carta);
-  color: var(--inchiostro);
-  font-family: var(--testo);
+  background: var(--bianco);
+  color: var(--testo);
+  font-family: var(--corpo);
   font-size: 1.0625rem;
-  line-height: 1.55;
+  line-height: 1.5;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
 }
+::selection { background: var(--ottanio); color: var(--bianco); }
 img, svg { display: block; max-width: 100%; }
-code {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.86em;
-  overflow-wrap: anywhere;
-}
-a { color: inherit; text-decoration-color: var(--corallo); text-decoration-thickness: 3px; text-underline-offset: 0.2em; }
-a:hover { text-decoration-color: var(--inchiostro); }
-:focus-visible { outline: 3px solid var(--inchiostro); outline-offset: 4px; border-radius: 4px; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-
-.pagina { width: min(100% - 32px, 76rem); margin-inline: auto; }
-h1, h2, h3 { font-family: var(--lettering); text-wrap: balance; margin: 0; }
-h2 {
-  font-size: clamp(2rem, 4.6vw, 3.25rem);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  font-variation-settings: "BNCE" 40, "INFM" 60;
-}
-h3 {
-  font-size: 1.3rem;
-  font-weight: 800;
-  line-height: 1.2;
-  font-variation-settings: "BNCE" 20, "INFM" 40;
-}
 p { margin: 0; text-wrap: pretty; }
+h1, h2, h3 { margin: 0; text-wrap: balance; font-family: var(--display); }
+a { color: var(--ottanio); text-underline-offset: 0.2em; }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.88em; overflow-wrap: anywhere; }
+:focus-visible { outline: 2px solid var(--ottanio); outline-offset: 3px; border-radius: 6px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.contenuto { width: var(--contenuto); margin-inline: auto; }
+section[id] { scroll-margin-top: 3.5rem; }
 
-/* vignetta: il mattone della pagina */
-.vignetta {
-  position: relative;
-  background: var(--fondo, var(--carta));
-  border: var(--tratto) solid var(--inchiostro);
-  border-radius: var(--raggio);
-  padding: var(--spazio-m);
+/* scala tipografica */
+.display-1 {
+  font-size: clamp(3.25rem, 10vw, 6rem);
+  font-weight: 650;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
 }
-.didascalia {
-  display: inline-block;
-  background: var(--sole);
-  border: 2.5px solid var(--inchiostro);
-  border-radius: 4px;
-  padding: 0.2em 0.6em;
-  font-family: var(--lettering);
-  font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1.3;
-  font-variation-settings: "INFM" 30;
+.display-2 {
+  font-size: clamp(2.5rem, 6.4vw, 4.5rem);
+  font-weight: 650;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
 }
-.balloon {
-  --coda: 2.2rem;
-  position: relative;
-  background: var(--carta);
-  border: var(--tratto) solid var(--inchiostro);
-  border-radius: 1.5rem;
-  padding: 0.7rem 1.1rem;
-  font-family: var(--lettering);
-  font-weight: 700;
-  font-variation-settings: "BNCE" 30, "INFM" 70;
+.lead {
+  font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+  max-width: 40rem;
 }
-.balloon::before,
-.balloon::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  clip-path: polygon(0 0, 100% 0, 18% 100%);
-}
-.balloon::before { left: var(--coda); width: 30px; height: 26px; margin-top: 0; background: var(--inchiostro); }
-.balloon::after { left: calc(var(--coda) + 4px); width: 22px; height: 18px; margin-top: -4px; background: var(--carta); }
+h3 { font-size: 1.3rem; font-weight: 650; line-height: 1.25; letter-spacing: -0.012em; }
+sup { font-size: 0.55em; line-height: 0; vertical-align: super; font-weight: 600; }
+sup a { color: inherit; text-decoration: none; padding: 0 0.1em; }
 
 /* pulsanti */
-.bottone {
+.pillola {
   display: inline-flex;
   align-items: center;
-  min-height: 48px;
-  padding: 0.55rem 1.4rem;
-  background: var(--corallo);
-  color: var(--inchiostro);
-  border: var(--tratto) solid var(--inchiostro);
-  border-radius: 999px;
-  font-family: var(--lettering);
-  font-weight: 800;
-  font-size: 1.1rem;
-  font-variation-settings: "BNCE" 30, "INFM" 50;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 160ms cubic-bezier(0.25, 1, 0.5, 1);
-}
-.bottone:hover { transform: rotate(-2deg) scale(1.03); }
-.bottone:active { transform: scale(0.97); }
-.link-semplice {
-  background: none;
-  border: 0;
-  padding: 0.5rem 0.25rem;
-  font: inherit;
-  font-weight: 600;
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--corallo);
-  text-decoration-thickness: 3px;
-  text-underline-offset: 0.2em;
-  cursor: pointer;
+  justify-content: center;
   min-height: 44px;
+  padding: 0.6rem 1.35rem;
+  border-radius: 999px;
+  background: var(--ottanio);
+  color: var(--bianco);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  transition: background-color 200ms cubic-bezier(0.25, 1, 0.5, 1);
 }
+.pillola:hover { background: var(--ottanio-scuro); }
+.pillola:active { transform: scale(0.98); }
+.pillola.piccola { min-height: 32px; padding: 0.3rem 0.95rem; font-size: 0.875rem; }
+.pillola.grande { min-height: 56px; padding: 0.8rem 2rem; font-size: 1.2rem; }
+.collegamento {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.collegamento:hover span { text-decoration: underline; }
+.collegamento svg { width: 0.7em; height: 0.7em; }
+
+/* barra */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bianco);
+  border-bottom: 1px solid var(--filo);
+}
+.barra .contenuto { display: flex; align-items: center; gap: 1.5rem; min-height: 52px; }
+.barra .nome { font-family: var(--display); font-weight: 650; letter-spacing: -0.01em; color: var(--testo); text-decoration: none; margin-right: auto; }
+.barra ul { display: none; list-style: none; margin: 0; padding: 0; gap: 1.75rem; }
+.barra ul a { color: var(--secondario); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+.barra ul a:hover { color: var(--testo); }
+@media (min-width: 760px) { .barra ul { display: flex; } }
 
 /* copertina */
 .copertina {
+  text-align: center;
+  padding: clamp(3.5rem, 9vh, 6.5rem) 0 clamp(3rem, 7vh, 5rem);
   display: grid;
-  gap: var(--canalino);
-  padding-top: clamp(1rem, 3vw, 2rem);
+  justify-items: center;
+  gap: 1.25rem;
 }
-.v-titolo { display: grid; gap: var(--spazio-m); align-content: start; padding: clamp(1.25rem, 3vw, 2.25rem); }
-h1 {
-  font-size: clamp(2.75rem, 7.5vw, 5.75rem);
-  font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.03em;
-  font-variation-settings: "BNCE" 50, "INFM" 80;
+.copertina .sottotitolo {
+  font-family: var(--display);
+  font-size: clamp(1.45rem, 3vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
-.v-titolo .didascalia { justify-self: start; font-size: clamp(1rem, 1.6vw, 1.15rem); }
-.v-titolo p { max-width: 36rem; }
-.v-azioni {
-  --fondo: var(--sole);
+.copertina .presentazione { color: var(--secondario); max-width: 34rem; }
+.copertina .azioni { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem 1.75rem; margin-top: 0.75rem; }
+
+/* il chip */
+.chip {
+  background: var(--grafite);
+  color: var(--su-grafite);
+  padding: clamp(3rem, 7vw, 5rem) 0 var(--sezione);
+  overflow: hidden;
+}
+.palco { width: min(100% - 40px, 26rem); margin: 0 auto clamp(3rem, 7vw, 4.5rem); }
+.testo-chip { width: var(--contenuto); margin-inline: auto; }
+@media (min-width: 1000px) {
+  .disposizione {
+    width: var(--contenuto);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 5rem;
+    align-items: start;
+  }
+  .palco { width: 100%; max-width: 30rem; margin: 0; position: sticky; top: calc(52px + 3rem); }
+  .testo-chip { width: auto; padding-top: 2rem; }
+  .chip .disposizione .testa { text-align: left; justify-items: start; }
+  .chip .disposizione .selettore { margin-left: 0; }
+  .chip .disposizione h2 { font-size: clamp(2.5rem, 4vw, 3.6rem); }
+  .disposizione .pannello { margin-inline: 0; }
+}
+.palco svg { width: 100%; height: auto; filter: drop-shadow(0 30px 40px oklch(0 0 0 / 0.45)); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .palco {
+      transform-origin: 50% 100%;
+      animation: raddrizza linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 42%;
+    }
+    @keyframes raddrizza {
+      from { transform: perspective(1200px) rotateX(42deg) scale(0.9); }
+      to { transform: perspective(1200px) rotateX(0deg) scale(1); }
+    }
+  }
+}
+.core { cursor: pointer; }
+.core .base { fill: #1b232b; stroke: #37424d; stroke-width: 1.5; transition: fill 300ms ease-out, stroke 300ms ease-out; }
+.core .blocco, .core .cella { fill: #25303a; stroke: #43505c; stroke-width: 1; transition: fill 300ms ease-out, stroke 300ms ease-out; }
+.core .traccia { stroke: #475563; stroke-width: 2; fill: none; transition: stroke 300ms ease-out; }
+.core .etichetta { fill: #8d99a5; font: 600 9.5px var(--display); letter-spacing: 0.02em; transition: fill 300ms ease-out; }
+.core.attivo .base { fill: #18343a; stroke: var(--ottanio-chiaro); }
+.core.attivo .blocco, .core.attivo .cella { fill: #2b5d66; stroke: var(--ottanio-chiaro); }
+.core.attivo .traccia { stroke: var(--ottanio-chiaro); }
+.core.attivo .etichetta { fill: var(--su-grafite); }
+.chip .testa { text-align: center; display: grid; justify-items: center; gap: 1.25rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+.chip .lead { color: var(--su-grafite-2); }
+.selettore {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--spazio-s) var(--spazio-l);
+  justify-content: center;
+  gap: 0.25rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 2.5rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: var(--grafite-2);
 }
-.v-azioni p { flex: 1 1 16rem; font-weight: 500; }
-.v-azioni .gruppo { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; }
-@media (min-width: 900px) {
-  .copertina { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
-  .v-titolo { padding-top: clamp(2rem, 4vw, 3rem); }
-  .v-azioni { flex-direction: column; align-items: flex-start; justify-content: space-between; padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2.25rem); }
-  .v-azioni p { flex: none; font-family: var(--lettering); font-weight: 700; font-size: 1.3rem; line-height: 1.3; font-variation-settings: "BNCE" 20, "INFM" 50; }
+.selettore[hidden] { display: none; }
+.selettore button {
+  min-height: 44px;
+  padding: 0.5rem 1.15rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--su-grafite-2);
+  font: 600 0.95rem var(--corpo);
+  cursor: pointer;
+  transition: background-color 250ms ease-out, color 250ms ease-out;
 }
+.selettore button:hover { color: var(--su-grafite); }
+@media (max-width: 480px) {
+  .selettore { flex-wrap: nowrap; gap: 0.125rem; }
+  .selettore button { padding: 0.5rem 0.7rem; font-size: 0.875rem; }
+}
+.selettore button[aria-selected="true"] { background: var(--su-grafite); color: var(--grafite); }
+.selettore :focus-visible { outline-color: var(--ottanio-chiaro); }
+.pannelli { display: grid; gap: 3rem; }
+.pannello {
+  display: grid;
+  gap: 1rem 4rem;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+.pannello[hidden] { display: none; }
+.pannello h3 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; }
+.pannello p { color: var(--su-grafite-2); max-width: 36rem; }
+.pannello ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; align-content: start; }
+.pannello li { padding: 0.3rem 0.75rem; border: 1px solid #3a4651; border-radius: 999px; font-size: 0.875rem; color: var(--su-grafite); }
 
-/* sezioni */
-.sezione { padding-top: var(--spazio-xl); }
-.testa { display: grid; gap: var(--spazio-s); margin-bottom: var(--spazio-l); max-width: 44rem; }
-.testa p { color: var(--grafite); }
-
-/* la striscia del guasto */
-.striscia {
+/* diagnostica */
+.diagnostica { background: var(--titanio); padding: var(--sezione) 0; }
+.diagnostica .testa, .compatibilita .testa, .laboratorio .testa, .specifiche .testa { display: grid; gap: 1.25rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+.diagnostica .lead, .compatibilita .lead, .laboratorio .lead { color: var(--secondario); }
+.galleria {
+  --margine: max(20px, (100vw - 70rem) / 2);
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.25rem var(--margine) 1.5rem;
   display: grid;
-  gap: var(--canalino);
+  grid-auto-flow: column;
+  grid-auto-columns: min(84vw, 23rem);
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--margine);
+  scrollbar-width: thin;
+  scrollbar-color: var(--filo) transparent;
+  overscroll-behavior-x: contain;
 }
-@media (min-width: 640px) { .striscia { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1000px) { .striscia { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.striscia .vignetta {
+.galleria li {
+  scroll-snap-align: start;
+  background: var(--bianco);
+  border-radius: 28px;
+  padding: 2rem 1.75rem 2.25rem;
+  min-height: 21rem;
   display: grid;
   grid-template-rows: auto auto 1fr;
-  gap: var(--spazio-s);
-  padding: var(--spazio-s) var(--spazio-s) var(--spazio-m);
-  min-height: 22rem;
+  gap: 1rem;
+  align-content: start;
 }
-.striscia .didascalia { justify-self: start; }
-.didascalia .num {
-  display: inline-grid;
+.galleria .passo { font-family: var(--display); font-size: 2.75rem; font-weight: 300; line-height: 1; color: var(--secondario); font-variant-numeric: tabular-nums; }
+.galleria h3 { font-size: 1.5rem; letter-spacing: -0.02em; }
+.galleria p { color: var(--secondario); }
+.galleria li.risolto { background: var(--ottanio); color: var(--bianco); }
+.galleria li.risolto .passo, .galleria li.risolto p { color: oklch(0.93 0.03 210); }
+.frecce { display: flex; justify-content: flex-end; gap: 0.75rem; width: var(--contenuto); margin: 0.5rem auto 0; }
+.frecce[hidden] { display: none; }
+.frecce button {
+  width: 44px;
+  height: 44px;
+  display: grid;
   place-items: center;
-  width: 1.5em;
-  height: 1.5em;
-  margin-left: 0.35em;
-  background: var(--inchiostro);
-  color: var(--sole);
+  border: 0;
   border-radius: 50%;
-  font-size: 0.8em;
+  background: oklch(0.9 0.006 230);
+  color: var(--testo);
+  cursor: pointer;
+  transition: background-color 200ms ease-out, opacity 200ms ease-out;
 }
-.scena {
-  background: var(--cielo-chiaro);
-  border: 2px solid var(--inchiostro);
-  border-radius: 6px;
-  aspect-ratio: 5 / 3;
+.frecce button:hover { background: oklch(0.86 0.008 230); }
+.frecce button:disabled { opacity: 0.4; cursor: default; }
+.frecce svg { width: 16px; height: 16px; }
+
+/* compatibilità */
+.compatibilita { padding: var(--sezione) 0; }
+.elenco { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--filo); }
+.elenco li {
   display: grid;
-  place-items: center;
-  padding: 0.5rem;
+  gap: 0.5rem 3rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--filo);
 }
-.scena svg { width: 100%; height: 100%; }
-.striscia .racconto {
-  font-family: var(--lettering);
-  font-weight: 500;
-  font-size: 1.05rem;
-  line-height: 1.45;
-  font-variation-settings: "BNCE" 0, "INFM" 20;
-  padding-inline: 0.25rem;
-}
-.striscia .racconto code { font-size: 0.82em; }
-.v-sintomo { --fondo: var(--cielo); }
-.v-sintomo .scena { background: var(--carta); }
-.v-intervento { --fondo: var(--menta); }
-.v-intervento .scena { background: var(--carta); }
-.v-intervento .didascalia { background: var(--carta); }
-.vuota { display: none; }
-.coperta .contenuto { display: none; }
-.coperta { border-style: dashed; background: var(--carta); }
-.coperta .vuota {
+.elenco h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); letter-spacing: -0.02em; }
+.elenco .periodo { color: var(--secondario); font-size: 0.9375rem; font-variant-numeric: tabular-nums; margin-top: 0.25rem; }
+.elenco .dettagli { display: grid; gap: 0.5rem; max-width: 40rem; }
+.elenco .stack { color: var(--secondario); font-size: 0.9375rem; }
+@media (min-width: 820px) { .elenco li { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); } }
+
+/* laboratorio */
+.laboratorio { background: var(--titanio); padding: var(--sezione) 0; }
+.colonne { display: grid; gap: 2.5rem 3rem; }
+.colonne > div { display: grid; gap: 0.6rem; align-content: start; }
+.colonne p { color: var(--secondario); }
+@media (min-width: 820px) { .colonne { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* specifiche */
+.specifiche { padding: var(--sezione) 0; }
+.scheda { margin: 0; border-top: 1px solid var(--testo); }
+.scheda > div {
   display: grid;
-  place-items: center;
-  height: 100%;
-  font-family: var(--lettering);
-  font-weight: 800;
-  font-size: 5rem;
-  color: var(--cielo);
-  font-variation-settings: "BNCE" 80;
+  gap: 0.35rem 3rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--filo);
 }
-.contenuto { display: contents; }
-.comandi { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spazio-s) var(--spazio-m); margin-top: var(--spazio-m); }
-.comandi[hidden] { display: none; }
-.comandi .bottone { --coda: 1.4rem; position: relative; }
+.scheda dt { font-family: var(--display); font-weight: 650; }
+.scheda dd { margin: 0; color: var(--testo); max-width: 42rem; }
+@media (min-width: 820px) { .scheda > div { grid-template-columns: 15rem minmax(0, 1fr); } }
 
-/* disegni: linea chiara, spessore costante */
-.d { fill: none; stroke: var(--inchiostro); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
-.d-bianco { fill: var(--carta); }
-.d-cielo { fill: var(--cielo); }
-.d-sole { fill: var(--sole); }
-.d-corallo { fill: var(--corallo); }
-.d-menta { fill: var(--menta); }
-.d-inchiostro { fill: var(--inchiostro); }
-.d-testo { font-family: var(--lettering); font-weight: 800; fill: var(--inchiostro); stroke: none; }
-
-/* cosa faccio: una fila di vignette di larghezza diversa */
-.fila { display: grid; gap: var(--canalino); }
-@media (min-width: 900px) { .fila { grid-template-columns: 1.25fr 1fr 1.1fr; } }
-.fila .vignetta { display: grid; gap: var(--spazio-s); align-content: start; padding: var(--spazio-l) var(--spazio-m) var(--spazio-m); }
-.fila .vignetta:nth-child(1) { --fondo: var(--cielo); }
-.fila .vignetta:nth-child(2) { --fondo: var(--sole-chiaro); }
-.fila .vignetta:nth-child(3) { --fondo: var(--menta); }
-
-/* dove ho lavorato: una tavola con vignette di misure diverse */
-.tavola { display: grid; gap: var(--canalino); }
-.tavola .vignetta { display: grid; gap: var(--spazio-s); align-content: start; }
-.tavola .didascalia { justify-self: start; font-variant-numeric: tabular-nums; }
-.tavola .stack { color: var(--grafite); font-size: 0.95rem; }
-.v-ats { --fondo: var(--cielo-chiaro); }
-.clienti { display: grid; gap: var(--spazio-m); margin: var(--spazio-s) 0 0; padding: 0; list-style: none; }
-.clienti li { display: grid; gap: 0.25rem; align-content: start; }
-.clienti strong { font-family: var(--lettering); font-weight: 800; font-size: 1.15rem; }
-.v-studi { --fondo: var(--sole-chiaro); }
-@media (min-width: 900px) {
-  .tavola { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-  .v-ora { grid-column: span 7; }
-  .v-duemme { grid-column: span 5; }
-  .v-ats { grid-column: span 12; }
-  .clienti { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spazio-l); }
-  .clienti li + li { border-left: 2px solid var(--inchiostro); padding-left: var(--spazio-l); }
-  .v-expandi { grid-column: span 8; }
-  .v-studi { grid-column: span 4; }
+/* disponibile */
+.disponibile {
+  background: var(--titanio);
+  padding: var(--sezione) 0;
+  text-align: center;
 }
+.disponibile .contenuto { display: grid; justify-items: center; gap: 1.5rem; }
+.disponibile .lead { color: var(--secondario); }
+.disponibile .email { font-size: clamp(1.05rem, 2.6vw, 1.35rem); font-weight: 600; overflow-wrap: anywhere; }
+.disponibile .altri { display: flex; gap: 0.25rem 1.75rem; flex-wrap: wrap; justify-content: center; }
 
-/* fuori orario */
-.v-casa { --fondo: var(--cielo-chiaro); display: grid; gap: var(--spazio-l); padding: clamp(1.25rem, 3vw, 2.25rem); }
-.v-casa .testo { display: grid; gap: var(--spazio-m); max-width: 42rem; }
-.v-casa ul { margin: 0; padding-left: 1.2rem; display: grid; gap: var(--spazio-s); }
-.v-casa .scena { background: var(--carta); max-width: 22rem; }
-@media (min-width: 900px) { .v-casa { grid-template-columns: minmax(0, 1fr) 20rem; align-items: center; } }
-
-/* scrivimi */
-.v-contatti {
-  --fondo: var(--corallo);
-  display: grid;
-  gap: var(--spazio-l);
-  padding: clamp(1.5rem, 4vw, 3rem);
-  margin-bottom: var(--spazio-xl);
-}
-.v-contatti h2 { font-size: clamp(2.25rem, 6vw, 4rem); }
-.v-contatti .balloon {
-  --coda: 3rem;
-  justify-self: start;
-  max-width: 100%;
-  font-size: clamp(1.15rem, 3.6vw, 2.25rem);
-  padding: 0.8rem 1.4rem;
-  margin-bottom: 1.5rem;
-}
-.v-contatti .balloon a { text-decoration-color: var(--corallo); overflow-wrap: anywhere; }
-.v-contatti p { max-width: 38rem; font-weight: 500; }
-.v-contatti .gruppo { display: flex; gap: 0.25rem 1.5rem; flex-wrap: wrap; }
-.v-contatti .gruppo a { text-decoration-color: var(--inchiostro); font-weight: 600; }
-
-footer { border-top: var(--tratto) solid var(--inchiostro); padding: var(--spazio-m) 0 var(--spazio-l); font-size: 0.9rem; color: var(--grafite); }
+/* piè di pagina */
+footer { background: var(--titanio); color: var(--secondario); font-size: 0.8125rem; line-height: 1.55; padding-bottom: 2.5rem; }
+footer .contenuto { border-top: 1px solid var(--filo); padding-top: 1.5rem; display: grid; gap: 1rem; }
+footer ol { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.4rem; max-width: 46rem; }
+footer a { color: var(--secondario); }
 </style>
 </head>
 <body>
 
+<nav class="barra" aria-label="Sezioni">
+  <div class="contenuto">
+    <a class="nome" href="#">Davide O. Zhu</a>
+    <ul>
+      <li><a href="#chip">Chip</a></li>
+      <li><a href="#diagnostica">Diagnostica</a></li>
+      <li><a href="#compatibilita">Compatibilità</a></li>
+      <li><a href="#specifiche">Specifiche</a></li>
+    </ul>
+    <a class="pillola piccola" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
+  </div>
+</nav>
+
 <main>
-<div class="pagina">
 
-  <header class="copertina">
-    <div class="vignetta v-titolo">
-      <h1>Davide O. Zhu</h1>
-      <span class="didascalia">Sviluppatore backend freelance</span>
-      <p>API, integrazioni, pipeline di dati e sistemi con IA. Dal 2021 lavoro su software che deve stare in piedi in produzione: microservizi per la grande distribuzione, applicazioni di un'utility energetica, piattaforme costruite da zero.</p>
-      <p>Quando qualcosa non torna, continuo a chiedermi perché finché non trovo la causa.</p>
-    </div>
-    <div class="vignetta v-azioni">
-      <p>Valuto nuovi progetti da freelance e posizioni da remoto, in italiano e in inglese.</p>
-      <div class="gruppo">
-        <a class="bottone" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
-        <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
-        <a href="https://github.com/Nazah-ops">GitHub</a>
-      </div>
-    </div>
-  </header>
+<header class="contenuto copertina">
+  <h1 class="display-1">Davide O. Zhu</h1>
+  <p class="sottotitolo">Backend, dati, IA. Fino alla radice.</p>
+  <p class="presentazione">Sviluppatore backend freelance, in produzione dal 2021. Valuto nuovi progetti e posizioni da remoto.<sup><a href="#nota-1" id="rif-1" aria-label="Nota 1">1</a></sup></p>
+  <div class="azioni">
+    <a class="pillola" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
+    <a class="collegamento" href="#specifiche"><span>Guarda le specifiche</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</header>
 
-  <section class="sezione" aria-labelledby="t-causa">
+<section class="chip" id="chip" aria-labelledby="t-chip">
+  <div class="disposizione">
+  <div class="palco">
+<svg viewBox="0 0 400 400" role="img" aria-labelledby="chip-titolo">
+<title id="chip-titolo">Il chip Z1, con quattro core: backend, dati, IA e infrastruttura.</title>
+<defs>
+<linearGradient id="g-pacchetto" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4b5661"/><stop offset=".48" stop-color="#262d34"/><stop offset="1" stop-color="#3a434c"/></linearGradient>
+<linearGradient id="g-bordo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b9c4ce"/><stop offset=".5" stop-color="#55606b"/><stop offset="1" stop-color="#8e99a4"/></linearGradient>
+<linearGradient id="g-die" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151c22"/><stop offset="1" stop-color="#0d1216"/></linearGradient>
+</defs>
+<rect x="14" y="14" width="372" height="372" rx="42" fill="url(#g-pacchetto)" stroke="url(#g-bordo)" stroke-width="2"/>
+<g fill="#aeb9c4" opacity=".55"><rect x="66.0" y="29" width="7" height="3" rx="1"/><rect x="66.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="66.0" width="3" height="7" rx="1"/><rect x="368" y="66.0" width="3" height="7" rx="1"/><rect x="81.5" y="29" width="7" height="3" rx="1"/><rect x="81.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="81.5" width="3" height="7" rx="1"/><rect x="368" y="81.5" width="3" height="7" rx="1"/><rect x="97.0" y="29" width="7" height="3" rx="1"/><rect x="97.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="97.0" width="3" height="7" rx="1"/><rect x="368" y="97.0" width="3" height="7" rx="1"/><rect x="112.5" y="29" width="7" height="3" rx="1"/><rect x="112.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="112.5" width="3" height="7" rx="1"/><rect x="368" y="112.5" width="3" height="7" rx="1"/><rect x="128.0" y="29" width="7" height="3" rx="1"/><rect x="128.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="128.0" width="3" height="7" rx="1"/><rect x="368" y="128.0" width="3" height="7" rx="1"/><rect x="143.5" y="29" width="7" height="3" rx="1"/><rect x="143.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="143.5" width="3" height="7" rx="1"/><rect x="368" y="143.5" width="3" height="7" rx="1"/><rect x="159.0" y="29" width="7" height="3" rx="1"/><rect x="159.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="159.0" width="3" height="7" rx="1"/><rect x="368" y="159.0" width="3" height="7" rx="1"/><rect x="174.5" y="29" width="7" height="3" rx="1"/><rect x="174.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="174.5" width="3" height="7" rx="1"/><rect x="368" y="174.5" width="3" height="7" rx="1"/><rect x="190.0" y="29" width="7" height="3" rx="1"/><rect x="190.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="190.0" width="3" height="7" rx="1"/><rect x="368" y="190.0" width="3" height="7" rx="1"/><rect x="205.5" y="29" width="7" height="3" rx="1"/><rect x="205.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="205.5" width="3" height="7" rx="1"/><rect x="368" y="205.5" width="3" height="7" rx="1"/><rect x="221.0" y="29" width="7" height="3" rx="1"/><rect x="221.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="221.0" width="3" height="7" rx="1"/><rect x="368" y="221.0" width="3" height="7" rx="1"/><rect x="236.5" y="29" width="7" height="3" rx="1"/><rect x="236.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="236.5" width="3" height="7" rx="1"/><rect x="368" y="236.5" width="3" height="7" rx="1"/><rect x="252.0" y="29" width="7" height="3" rx="1"/><rect x="252.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="252.0" width="3" height="7" rx="1"/><rect x="368" y="252.0" width="3" height="7" rx="1"/><rect x="267.5" y="29" width="7" height="3" rx="1"/><rect x="267.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="267.5" width="3" height="7" rx="1"/><rect x="368" y="267.5" width="3" height="7" rx="1"/><rect x="283.0" y="29" width="7" height="3" rx="1"/><rect x="283.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="283.0" width="3" height="7" rx="1"/><rect x="368" y="283.0" width="3" height="7" rx="1"/><rect x="298.5" y="29" width="7" height="3" rx="1"/><rect x="298.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="298.5" width="3" height="7" rx="1"/><rect x="368" y="298.5" width="3" height="7" rx="1"/><rect x="314.0" y="29" width="7" height="3" rx="1"/><rect x="314.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="314.0" width="3" height="7" rx="1"/><rect x="368" y="314.0" width="3" height="7" rx="1"/><rect x="329.5" y="29" width="7" height="3" rx="1"/><rect x="329.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="329.5" width="3" height="7" rx="1"/><rect x="368" y="329.5" width="3" height="7" rx="1"/></g>
+<text x="352" y="358" text-anchor="end" fill="#b5c0ca" opacity=".75" style="font: 700 15px var(--display); letter-spacing: .04em">Z1</text>
+<rect x="62" y="62" width="276" height="276" rx="16" fill="url(#g-die)" stroke="#5f6b77" stroke-width="1.5"/>
+<path d="M200 74V326M74 200H326" stroke="#232c35" stroke-width="3"/>
+<g class="core" data-core="backend">
+<rect class="base" x="76" y="76" width="120" height="120" rx="8"/>
+<rect class="blocco" x="86" y="86" width="48" height="38" rx="4"/><rect class="blocco" x="138" y="86" width="48" height="38" rx="4"/><rect class="blocco" x="86" y="130" width="48" height="38" rx="4"/><rect class="blocco" x="138" y="130" width="48" height="38" rx="4"/>
+<text class="etichetta" x="86" y="188" aria-hidden="true">Backend</text>
+</g>
+<g class="core" data-core="dati">
+<rect class="base" x="204" y="76" width="120" height="120" rx="8"/>
+<path class="traccia" d="M214 92H314"/><path class="traccia" d="M214 106H314" stroke-dasharray="10 5"/><path class="traccia" d="M214 120H314"/><path class="traccia" d="M214 134H314" stroke-dasharray="10 5"/><path class="traccia" d="M214 148H314"/><path class="traccia" d="M214 162H314" stroke-dasharray="10 5"/>
+<text class="etichetta" x="214" y="188" aria-hidden="true">Dati</text>
+</g>
+<g class="core" data-core="ia">
+<rect class="base" x="76" y="204" width="120" height="120" rx="8"/>
+<rect class="cella" x="86" y="214" width="13" height="13" rx="2"/><rect class="cella" x="103" y="214" width="13" height="13" rx="2"/><rect class="cella" x="120" y="214" width="13" height="13" rx="2"/><rect class="cella" x="137" y="214" width="13" height="13" rx="2"/><rect class="cella" x="154" y="214" width="13" height="13" rx="2"/><rect class="cella" x="171" y="214" width="13" height="13" rx="2"/><rect class="cella" x="86" y="231" width="13" height="13" rx="2"/><rect class="cella" x="103" y="231" width="13" height="13" rx="2"/><rect class="cella" x="120" y="231" width="13" height="13" rx="2"/><rect class="cella" x="137" y="231" width="13" height="13" rx="2"/><rect class="cella" x="154" y="231" width="13" height="13" rx="2"/><rect class="cella" x="171" y="231" width="13" height="13" rx="2"/><rect class="cella" x="86" y="248" width="13" height="13" rx="2"/><rect class="cella" x="103" y="248" width="13" height="13" rx="2"/><rect class="cella" x="120" y="248" width="13" height="13" rx="2"/><rect class="cella" x="137" y="248" width="13" height="13" rx="2"/><rect class="cella" x="154" y="248" width="13" height="13" rx="2"/><rect class="cella" x="171" y="248" width="13" height="13" rx="2"/><rect class="cella" x="86" y="265" width="13" height="13" rx="2"/><rect class="cella" x="103" y="265" width="13" height="13" rx="2"/><rect class="cella" x="120" y="265" width="13" height="13" rx="2"/><rect class="cella" x="137" y="265" width="13" height="13" rx="2"/><rect class="cella" x="154" y="265" width="13" height="13" rx="2"/><rect class="cella" x="171" y="265" width="13" height="13" rx="2"/><rect class="cella" x="86" y="282" width="13" height="13" rx="2"/><rect class="cella" x="103" y="282" width="13" height="13" rx="2"/><rect class="cella" x="120" y="282" width="13" height="13" rx="2"/><rect class="cella" x="137" y="282" width="13" height="13" rx="2"/><rect class="cella" x="154" y="282" width="13" height="13" rx="2"/><rect class="cella" x="171" y="282" width="13" height="13" rx="2"/>
+<text class="etichetta" x="86" y="316" aria-hidden="true">IA</text>
+</g>
+<g class="core" data-core="infra">
+<rect class="base" x="204" y="204" width="120" height="120" rx="8"/>
+<rect class="blocco" x="214" y="216" width="100" height="22" rx="4"/><rect class="cella" x="296" y="224" width="10" height="6" rx="1.5"/><rect class="blocco" x="214" y="244" width="100" height="22" rx="4"/><rect class="cella" x="296" y="252" width="10" height="6" rx="1.5"/><rect class="blocco" x="214" y="272" width="100" height="22" rx="4"/><rect class="cella" x="296" y="280" width="10" height="6" rx="1.5"/>
+<text class="etichetta" x="214" y="316" aria-hidden="true">Infrastruttura</text>
+</g>
+</svg>
+  </div>
+  <div class="testo-chip">
     <div class="testa">
-      <h2 id="t-causa">Fino alla causa</h2>
-      <p>Un guasto vero, sul server che tengo in casa con le stesse regole di un ambiente di produzione. Il metodo è quello che uso sul lavoro: il primo errore è solo il punto da cui si comincia a scendere.</p>
+      <h2 class="display-2" id="t-chip">Quattro core. Un solo sviluppatore.</h2>
+      <p class="lead">Backend, dati, IA e infrastruttura nello stesso progetto, senza passaggi di mano tra chi scrive il codice, chi muove i dati e chi lo tiene in piedi.</p>
     </div>
-
-    <ol class="striscia" id="striscia">
-      <li class="vignetta v-sintomo">
-        <span class="didascalia">Il sintomo</span>
-        <div class="scena">
-          <svg viewBox="0 0 200 120" aria-hidden="true">
-            <rect class="d d-bianco" x="64" y="8" width="72" height="104" rx="6"/>
-            <rect class="d d-cielo" x="74" y="18" width="52" height="17" rx="3"/>
-            <rect class="d d-cielo" x="74" y="41" width="52" height="17" rx="3"/>
-            <rect class="d d-cielo" x="74" y="64" width="52" height="17" rx="3"/>
-            <rect class="d d-cielo" x="74" y="87" width="52" height="15" rx="3"/>
-            <path class="d" d="M82 26.5h18M82 49.5h18M82 72.5h18M82 94.5h18"/>
-            <circle class="d d-menta" cx="116" cy="26.5" r="4"/>
-            <circle class="d d-corallo" cx="116" cy="49.5" r="4"/>
-            <circle class="d d-corallo" cx="116" cy="72.5" r="4"/>
-            <circle class="d d-menta" cx="116" cy="94.5" r="4"/>
-            <rect class="d d-bianco" x="12" y="34" width="40" height="32" rx="3"/>
-            <path class="d" d="M16 60l10-12 8 8 5-5 9 9"/>
-            <circle class="d d-sole" cx="42" cy="43" r="3.5"/>
-            <path class="d" stroke-dasharray="3 6" d="M54 50h8"/>
-            <circle class="d d-corallo" cx="50" cy="34" r="8"/>
-            <path class="d" d="M46.5 30.5l7 7M53.5 30.5l-7 7"/>
-            <path class="d d-sole" d="M163 61l4 0 1 4 4 2 3-3 3 3-3 3 2 4 4 1v4l-4 1-2 4 3 3-3 3-3-3-4 2-1 4h-4l-1-4-4-2-3 3-3-3 3-3-2-4-4-1v-4l4-1 2-4-3-3 3-3 3 3 4-2z"/>
-            <circle class="d d-bianco" cx="165" cy="76" r="4.5"/>
-            <path class="d" stroke-dasharray="3 6" d="M138 76h8"/>
-            <circle class="d d-corallo" cx="180" cy="60" r="8"/>
-            <path class="d" d="M176.5 56.5l7 7M183.5 56.5l-7 7"/>
-          </svg>
-        </div>
-        <p class="racconto">Dopo un riavvio del server, due servizi non ripartono: l'archivio delle foto e le automazioni. Tutto il resto funziona, compresi altri servizi che usano la stessa GPU.</p>
-      </li>
-
-      <li class="vignetta">
-        <div class="contenuto">
-          <span class="didascalia">Perché?<span class="num">1</span></span>
-          <div class="scena">
-            <svg viewBox="0 0 200 120" aria-hidden="true">
-              <rect class="d d-cielo" x="34" y="36" width="116" height="62" rx="4"/>
-              <path class="d" d="M50 44v46M64 44v46M78 44v46M92 44v46M106 44v46M120 44v46M134 44v46"/>
-              <path class="d" d="M30 98h140"/>
-              <circle class="d d-corallo" cx="152" cy="34" r="17"/>
-              <path class="d" d="M145 27l14 14M159 27l-14 14"/>
-            </svg>
-          </div>
-          <p class="racconto">I due container si fermano con <code>NVML: Driver Not Loaded</code>. Ma il driver era caricato: sull'host <code>nvidia-smi</code> rispondeva.</p>
-        </div>
-        <span class="vuota" aria-hidden="true">?</span>
-      </li>
-
-      <li class="vignetta">
-        <div class="contenuto">
-          <span class="didascalia">Perché?<span class="num">2</span></span>
-          <div class="scena">
-            <svg viewBox="0 0 200 120" aria-hidden="true">
-              <path class="d d-bianco" d="M48 22h34l14 14v64H48z"/>
-              <path class="d" d="M82 22v14h14"/>
-              <path class="d" stroke-dasharray="2 7" d="M58 56h28M58 68h28M58 80h20"/>
-              <path class="d" stroke-dasharray="6 7" d="M114 22h34l14 14v64h-48z"/>
-              <text class="d-testo" x="138" y="78" font-size="34" text-anchor="middle">?</text>
-              <text class="d-testo" x="72" y="111" font-size="11" text-anchor="middle">vuoto</text>
-              <text class="d-testo" x="138" y="111" font-size="11" text-anchor="middle">mancante</text>
-            </svg>
-          </div>
-          <p class="racconto">Dentro i container, <code>/dev/nvidia*</code> non erano dispositivi ma file vuoti. <code>/dev/nvidiactl</code> mancava del tutto.</p>
-        </div>
-        <span class="vuota" aria-hidden="true">?</span>
-      </li>
-
-      <li class="vignetta">
-        <div class="contenuto">
-          <span class="didascalia">Perché?<span class="num">3</span></span>
-          <div class="scena">
-            <svg viewBox="0 0 200 120" aria-hidden="true">
-              <path class="d" d="M14 98h172"/>
-              <rect class="d d-cielo" x="112" y="56" width="58" height="34" rx="3"/>
-              <path class="d" d="M124 62v22M136 62v22M148 62v22M160 62v22"/>
-              <path class="d" d="M84 64h18M78 74h24M86 84h16"/>
-              <rect class="d d-sole" x="26" y="62" width="30" height="30" rx="3"/>
-              <rect class="d d-bianco" x="33" y="69" width="16" height="16" rx="2"/>
-              <path class="d" d="M31 58v4M41 58v4M51 58v4M31 92v4M41 92v4M51 92v4"/>
-              <circle class="d d-bianco" cx="100" cy="30" r="15"/>
-              <path class="d" d="M100 21v9l6 4M96 12h8"/>
-            </svg>
-          </div>
-          <p class="racconto">I container erano partiti prima che l'host creasse i dispositivi della GPU. Il mount opzionale, non trovandoli, aveva creato dei segnaposto.</p>
-        </div>
-        <span class="vuota" aria-hidden="true">?</span>
-      </li>
-
-      <li class="vignetta">
-        <div class="contenuto">
-          <span class="didascalia">Perché?<span class="num">4</span></span>
-          <div class="scena">
-            <svg viewBox="0 0 200 120" aria-hidden="true">
-              <g transform="rotate(-12 72 62)">
-                <rect class="d d-bianco" x="46" y="36" width="52" height="52" rx="9"/>
-                <circle class="d-inchiostro" cx="60" cy="50" r="5"/>
-                <circle class="d-inchiostro" cx="72" cy="62" r="5"/>
-                <circle class="d-inchiostro" cx="84" cy="74" r="5"/>
-              </g>
-              <g transform="rotate(10 132 64)">
-                <rect class="d d-sole" x="106" y="38" width="52" height="52" rx="9"/>
-                <circle class="d-inchiostro" cx="120" cy="52" r="5"/>
-                <circle class="d-inchiostro" cx="144" cy="52" r="5"/>
-                <circle class="d-inchiostro" cx="120" cy="76" r="5"/>
-                <circle class="d-inchiostro" cx="144" cy="76" r="5"/>
-              </g>
-              <path class="d" d="M60 104c20 6 60 6 80 0"/>
-            </svg>
-          </div>
-          <p class="racconto">Niente stabiliva un ordine tra la GPU e l'avvio automatico dei container. A ogni boot vinceva chi arrivava prima, per questo alcuni servizi si salvavano.</p>
-        </div>
-        <span class="vuota" aria-hidden="true">?</span>
-      </li>
-
-      <li class="vignetta v-intervento">
-        <div class="contenuto">
-          <span class="didascalia">L'intervento</span>
-          <div class="scena">
-            <svg viewBox="0 0 200 120" aria-hidden="true">
-              <rect class="d d-sole" x="22" y="44" width="36" height="36" rx="3"/>
-              <rect class="d d-bianco" x="30" y="52" width="20" height="20" rx="2"/>
-              <path class="d" d="M28 40v4M40 40v4M52 40v4M28 80v4M40 80v4M52 80v4"/>
-              <path class="d" d="M70 62h34M94 52l10 10-10 10"/>
-              <rect class="d d-cielo" x="116" y="44" width="62" height="36" rx="3"/>
-              <path class="d" d="M128 50v24M140 50v24M152 50v24M164 50v24"/>
-              <circle class="d d-inchiostro" cx="40" cy="26" r="10"/>
-              <text x="40" y="30.5" font-size="13" text-anchor="middle" font-family="Shantell Sans, sans-serif" font-weight="800" fill="#fff">1</text>
-              <circle class="d d-inchiostro" cx="147" cy="26" r="10"/>
-              <text x="147" y="30.5" font-size="13" text-anchor="middle" font-family="Shantell Sans, sans-serif" font-weight="800" fill="#fff">2</text>
-              <circle class="d d-menta" cx="172" cy="90" r="14"/>
-              <path class="d" d="M165 90l5 5 9-10"/>
-            </svg>
-          </div>
-          <p class="racconto">Un servizio di sistema che inizializza la GPU prima di qualsiasi container: <code>nvidia-persistenced</code> con <code>Before=pve-guests.service</code>. Ho usato il binario fornito con il driver installato (580), non il pacchetto della distribuzione fermo alla 550. E ho scritto come riconoscere il problema in un minuto, se tornasse.</p>
-        </div>
-        <span class="vuota" aria-hidden="true">?</span>
-      </li>
-    </ol>
-    <p class="sr" aria-live="polite" id="annuncio"></p>
-    <div class="comandi" id="comandi" hidden>
-      <button class="bottone" id="avanti" type="button">Perché?</button>
-      <button class="link-semplice" id="tutto" type="button">Mostra tutta la striscia</button>
+    <div class="selettore" role="tablist" aria-label="Core del chip" hidden>
+      <button type="button" role="tab" id="t-backend" aria-controls="p-backend" aria-selected="true" data-core="backend">Backend</button>
+      <button type="button" role="tab" id="t-dati" aria-controls="p-dati" aria-selected="false" tabindex="-1" data-core="dati">Dati</button>
+      <button type="button" role="tab" id="t-ia" aria-controls="p-ia" aria-selected="false" tabindex="-1" data-core="ia">IA</button>
+      <button type="button" role="tab" id="t-infra" aria-controls="p-infra" aria-selected="false" tabindex="-1" data-core="infra">Infrastruttura</button>
     </div>
-  </section>
+    <div class="pannelli">
+      <div class="pannello" role="tabpanel" id="p-backend" aria-labelledby="t-backend">
+        <h3>Backend e integrazioni.</h3>
+        <p>API REST e microservizi in Node.js con Fastify e in Java con Spring Boot. Collego i sistemi nuovi a quelli che ci sono già, anche a eventi con Kafka, senza fermare chi li usa.</p>
+        <ul><li>Node.js</li><li>TypeScript</li><li>Fastify</li><li>Java</li><li>Spring Boot</li><li>Kafka</li></ul>
+      </div>
+      <div class="pannello" role="tabpanel" id="p-dati" aria-labelledby="t-dati">
+        <h3>Pipeline di dati.</h3>
+        <p>Procedure in Python e SQL che raccolgono, ripuliscono e analizzano dati, anche non strutturati. Sincronizzazione in tempo reale tra Oracle e MongoDB durante una migrazione.</p>
+        <ul><li>Python</li><li>Pandas</li><li>SQL</li><li>Oracle</li><li>MongoDB</li><li>PostgreSQL</li></ul>
+      </div>
+      <div class="pannello" role="tabpanel" id="p-ia" aria-labelledby="t-ia">
+        <h3>Sistemi con IA.</h3>
+        <p>Assistenti basati su modelli linguistici, con retrieval su database vettoriali e a grafo. Quando le risposte non tornano, cerco la causa nei dati prima che nel modello.</p>
+        <ul><li>Qdrant</li><li>Neo4j</li><li>API dei modelli</li><li>Modelli in locale</li></ul>
+      </div>
+      <div class="pannello" role="tabpanel" id="p-infra" aria-labelledby="t-infra">
+        <h3>Applicazioni in produzione.</h3>
+        <p>Presa in carico di software esistente: ticket, analisi della causa, fix, refactoring del codice legacy guidato dai test. Container, pipeline di rilascio, server Linux.</p>
+        <ul><li>Docker</li><li>Kubernetes</li><li>Jenkins</li><li>AWS</li><li>Linux</li><li>JUnit</li></ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
 
-  <section class="sezione" aria-labelledby="t-cosa">
+<section class="diagnostica" id="diagnostica" aria-labelledby="t-diagnostica">
+  <div class="contenuto testa">
+    <h2 class="display-2" id="t-diagnostica">Diagnostica avanzata.</h2>
+    <p class="lead">Il primo errore è solo il punto da cui si comincia a scendere. Un guasto vero, sul server di casa, dal sintomo alla soluzione.<sup><a href="#nota-2" id="rif-2" aria-label="Nota 2">2</a></sup></p>
+  </div>
+  <ol class="galleria" id="galleria" aria-label="Il guasto, passo per passo">
+    <li>
+      <span class="passo" aria-hidden="true">1</span>
+      <h3>Il sintomo.</h3>
+      <p>Dopo un riavvio del server, due servizi non ripartono: l'archivio delle foto e le automazioni. Tutto il resto funziona, compresi altri servizi che usano la stessa GPU.</p>
+    </li>
+    <li>
+      <span class="passo" aria-hidden="true">2</span>
+      <h3>Perché non partono?</h3>
+      <p>I container si fermano con <code>NVML: Driver Not Loaded</code>. Ma il driver era caricato: sull'host <code>nvidia-smi</code> rispondeva.</p>
+    </li>
+    <li>
+      <span class="passo" aria-hidden="true">3</span>
+      <h3>Perché il driver non si vede?</h3>
+      <p>Dentro i container, <code>/dev/nvidia*</code> non erano dispositivi ma file vuoti. <code>/dev/nvidiactl</code> mancava del tutto.</p>
+    </li>
+    <li>
+      <span class="passo" aria-hidden="true">4</span>
+      <h3>Perché quei file sono vuoti?</h3>
+      <p>I container erano partiti prima che l'host creasse i dispositivi della GPU. Il mount opzionale, non trovandoli, aveva creato dei segnaposto.</p>
+    </li>
+    <li>
+      <span class="passo" aria-hidden="true">5</span>
+      <h3>Perché partivano prima?</h3>
+      <p>Niente stabiliva un ordine tra la GPU e l'avvio automatico dei container. A ogni boot vinceva chi arrivava prima: per questo alcuni servizi si salvavano.</p>
+    </li>
+    <li class="risolto">
+      <span class="passo" aria-hidden="true">6</span>
+      <h3>Prima la GPU, poi i container.</h3>
+      <p>Un servizio di sistema che inizializza la GPU prima di tutto: <code>nvidia-persistenced</code> con <code>Before=pve-guests.service</code>, usando il binario del driver installato (580) e non il pacchetto della distribuzione, fermo alla 550. E una nota per riconoscere il problema in un minuto, se tornasse.</p>
+    </li>
+  </ol>
+  <div class="frecce" hidden>
+    <button type="button" id="indietro" aria-controls="galleria" aria-label="Passo precedente"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" id="avanti" aria-controls="galleria" aria-label="Passo successivo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</section>
+
+<section class="compatibilita" id="compatibilita" aria-labelledby="t-compatibilita">
+  <div class="contenuto">
     <div class="testa">
-      <h2 id="t-cosa">Cosa faccio</h2>
+      <h2 class="display-2" id="t-compatibilita">Compatibilità.</h2>
+      <p class="lead">In produzione dal 2021, per aziende di settori diversi: grande distribuzione, energia, software, sanità privata.</p>
     </div>
-    <div class="fila">
-      <div class="vignetta">
-        <h3>Backend e integrazioni</h3>
-        <p>API REST e microservizi in Node.js (Fastify) e Java (Spring Boot). Collego sistemi nuovi a quelli che ci sono già, anche a eventi con Kafka, senza fermare chi li usa.</p>
-      </div>
-      <div class="vignetta">
-        <h3>Dati e IA</h3>
-        <p>Pipeline in Python che raccolgono e ripuliscono dati non strutturati. Assistenti basati su modelli linguistici, con retrieval su database vettoriali e a grafo (Qdrant, Neo4j).</p>
-      </div>
-      <div class="vignetta">
-        <h3>Applicazioni in produzione</h3>
-        <p>Presa in carico di software esistente: ticket, analisi della causa, fix, refactoring del codice legacy con test. Docker, Kubernetes, CI/CD con Jenkins, server Linux.</p>
-      </div>
-    </div>
-  </section>
+    <ul class="elenco">
+      <li>
+        <div><h3>SaaS B2B per la conformità normativa</h3><p class="periodo">Dal 2026</p></div>
+        <div class="dettagli"><p>Nel team che sviluppa un assistente IA per verificare ingredienti cosmetici e alimentari rispetto alle normative: retrieval su database vettoriali e a grafo, pulizia del corpus documentale, modello dei dati.</p><p class="stack">Python, Qdrant, Neo4j</p></div>
+      </li>
+      <li>
+        <div><h3>Duemme Dental</h3><p class="periodo">Dal 2026, Nerviano</p></div>
+        <div class="dettagli"><p>Il CRM dello studio dentistico, sviluppato con un collega: pazienti, questionario anamnestico e odontogramma ricalcati sui moduli cartacei dello studio, preventivi e agenda.</p><p class="stack">React, Spring Boot, Java 21, PostgreSQL</p></div>
+      </li>
+      <li>
+        <div><h3>Unicoop</h3><p class="periodo">2024–2025, per ATS S.p.A.</p></div>
+        <div class="dettagli"><p>Grande distribuzione. Microservizi in Node.js e Fastify; sincronizzazione in tempo reale da Oracle a MongoDB con Kafka durante la migrazione.</p><p class="stack">Node.js, Fastify, Kafka, Oracle, MongoDB</p></div>
+      </li>
+      <li>
+        <div><h3>A2A</h3><p class="periodo">2024–2025, per ATS S.p.A.</p></div>
+        <div class="dettagli"><p>Energia. Gestione autonoma dei ticket di produzione su Jira, analisi della causa e hotfix.</p><p class="stack">TypeScript, Fastify, Jira</p></div>
+      </li>
+      <li>
+        <div><h3>BitQ</h3><p class="periodo">2024–2025, per ATS S.p.A.</p></div>
+        <div class="dettagli"><p>Refactoring di una codebase con molto debito tecnico, guidato dai test; containerizzazione e ambiente di sviluppo standard per tutto il team.</p><p class="stack">Java, Spring Boot, JUnit, Mockito, Docker, Kubernetes</p></div>
+      </li>
+      <li>
+        <div><h3>Expandi Group e Account Insight</h3><p class="periodo">2021–2023</p></div>
+        <div class="dettagli"><p>Full stack e poi lead developer. Una piattaforma proprietaria dai requisiti alla produzione, pipeline di rilascio su AWS, procedure per l'analisi dei dati.</p><p class="stack">Java, Spring Boot, TypeScript, Jenkins, Docker, AWS, Python, SQL</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-  <section class="sezione" aria-labelledby="t-dove">
+<section class="laboratorio" aria-labelledby="t-laboratorio">
+  <div class="contenuto">
     <div class="testa">
-      <h2 id="t-dove">Dove ho lavorato</h2>
+      <h2 class="display-2" id="t-laboratorio">Collaudato in laboratorio.</h2>
+      <p class="lead">A casa gestisco un piccolo datacenter: Proxmox con una decina tra container e macchine virtuali, una GPU condivisa per i modelli linguistici in locale, monitoraggio con avvisi su Telegram, controllo dei dischi e backup notturni. Lo tratto come produzione, quindi ogni tanto si rompe davvero.</p>
     </div>
-    <div class="tavola">
-      <article class="vignetta v-ora">
-        <span class="didascalia">Dal 2026</span>
-        <h3>SaaS B2B per la conformità normativa</h3>
-        <p>Nel team che sviluppa un assistente IA per verificare ingredienti cosmetici e alimentari rispetto alle normative: retrieval su database vettoriali e a grafo, pulizia del corpus documentale, modello dei dati.</p>
-        <p class="stack">Python, Qdrant, Neo4j</p>
-      </article>
-      <article class="vignetta v-duemme">
-        <span class="didascalia">Dal 2026</span>
-        <h3>Duemme Dental, Nerviano</h3>
-        <p>Il CRM dello studio dentistico, sviluppato con un collega: pazienti, questionario anamnestico e odontogramma ricalcati sui moduli cartacei dello studio, preventivi e agenda.</p>
-        <p class="stack">React, Spring Boot, Java 21, PostgreSQL</p>
-      </article>
-      <article class="vignetta v-ats">
-        <span class="didascalia">2024–2025</span>
-        <h3>Consulente freelance per ATS S.p.A.</h3>
-        <ul class="clienti">
-          <li><strong>Unicoop</strong><span>Grande distribuzione. Microservizi in Node.js e Fastify; sincronizzazione in tempo reale da Oracle a MongoDB con Kafka durante la migrazione.</span></li>
-          <li><strong>A2A</strong><span>Energia. Gestione autonoma dei ticket di produzione su Jira, analisi della causa e hotfix in TypeScript.</span></li>
-          <li><strong>BitQ</strong><span>Refactoring di una codebase Java/Spring Boot con molto debito tecnico, guidato dai test (JUnit, Mockito); containerizzazione con Docker e Kubernetes.</span></li>
-        </ul>
-      </article>
-      <article class="vignetta v-expandi">
-        <span class="didascalia">2021–2023</span>
-        <h3>Expandi Group e Account Insight</h3>
-        <p>Full stack e poi lead developer. Una piattaforma proprietaria in Java/Spring Boot, dai requisiti alla produzione; pipeline CI/CD con Jenkins e Docker su AWS; procedure Python e SQL per l'analisi dei dati.</p>
-      </article>
-      <article class="vignetta v-studi">
-        <span class="didascalia">In corso</span>
-        <h3>Laurea in Informatica</h3>
-        <p>Università degli Studi di Milano.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="sezione" aria-labelledby="t-casa">
-    <div class="vignetta v-casa">
-      <div class="testo">
-        <h2 id="t-casa">Fuori orario</h2>
-        <p>A casa gestisco un piccolo datacenter: Proxmox con una decina tra container e macchine virtuali, una GPU condivisa per i modelli linguistici in locale, monitoraggio con avvisi su Telegram, controllo dei dischi e backup notturni. Lo tratto come un ambiente di produzione, quindi ogni tanto si rompe davvero. Altri due guasti risolti:</p>
-        <ul>
-          <li>Load a 30 e sembrava RAM esaurita. Era una conversione di container da unprivileged a privileged che aveva lasciato tutti i file con gli UID spostati di 100000: nove container Docker in crash continuo. Backup, proprietari riallineati su tutto il filesystem, quattordici container di nuovo su.</li>
-          <li>Thin pool quasi pieno: decine di GB recuperati abilitando discard e <code>fstrim</code>.</li>
-        </ul>
-        <p>E qualche strumento per conto mio: un wrapper Python per API multimodali con gestione di token e rate limit, e una pipeline che trasforma thread di Reddit in video verticali senza intervento manuale.</p>
+    <div class="colonne">
+      <div>
+        <h3>UID spostati di 100000.</h3>
+        <p>Load a 30, sembrava RAM esaurita. Era una conversione di container da unprivileged a privileged: nove container Docker in crash continuo. Backup, proprietari riallineati su tutto il filesystem, quattordici container di nuovo su.</p>
       </div>
-      <div class="scena">
-        <svg viewBox="0 0 200 120" aria-hidden="true">
-          <path class="d" d="M20 100h160"/>
-          <rect class="d d-sole" x="30" y="58" width="74" height="42" rx="4"/>
-          <path class="d" d="M38 100v8M96 100v8"/>
-          <rect class="d d-bianco" x="118" y="22" width="46" height="78" rx="5"/>
-          <rect class="d d-cielo" x="126" y="32" width="30" height="12" rx="2"/>
-          <rect class="d d-cielo" x="126" y="50" width="30" height="12" rx="2"/>
-          <rect class="d d-cielo" x="126" y="68" width="30" height="12" rx="2"/>
-          <circle class="d d-menta" cx="150" cy="38" r="2.5"/>
-          <circle class="d d-menta" cx="150" cy="56" r="2.5"/>
-          <circle class="d d-menta" cx="150" cy="74" r="2.5"/>
-          <rect class="d d-bianco" x="44" y="30" width="44" height="28" rx="3"/>
-          <path class="d" d="M52 48l7-7 6 5 9-10 8 6"/>
-          <path class="d" d="M164 90c10 0 12-10 18-10"/>
-        </svg>
+      <div>
+        <h3>Thin pool quasi pieno.</h3>
+        <p>Decine di GB recuperati abilitando discard e <code>fstrim</code>, senza toccare i dati.</p>
+      </div>
+      <div>
+        <h3>Strumenti per conto mio.</h3>
+        <p>Un wrapper Python per API multimodali con gestione di token e rate limit, e una pipeline che trasforma thread di Reddit in video verticali senza intervento manuale.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="sezione" aria-labelledby="t-contatti">
-    <div class="vignetta v-contatti">
-      <h2 id="t-contatti">Scrivimi</h2>
-      <p class="balloon"><a href="mailto:davide.ouxiang.zhu@gmail.com">davide.ouxiang.zhu@gmail.com</a></p>
-      <p>Raccontami cosa c'è da costruire o cosa non torna. Lavoro da remoto, in italiano e in inglese. Il CV completo te lo mando su richiesta.</p>
-      <div class="gruppo">
-        <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
-        <a href="https://github.com/Nazah-ops">GitHub</a>
-      </div>
+<section class="specifiche" id="specifiche" aria-labelledby="t-specifiche">
+  <div class="contenuto">
+    <div class="testa">
+      <h2 class="display-2" id="t-specifiche">Specifiche tecniche.</h2>
     </div>
-  </section>
+    <dl class="scheda">
+      <div><dt>Linguaggi</dt><dd>Java, TypeScript e JavaScript (Node.js), Python, SQL</dd></div>
+      <div><dt>Backend</dt><dd>Spring Boot, Fastify, API REST, microservizi, architetture a eventi</dd></div>
+      <div><dt>Dati e messaggistica</dt><dd>Apache Kafka, Oracle, MongoDB, PostgreSQL, Pandas</dd></div>
+      <div><dt>IA</dt><dd>Retrieval su Qdrant e Neo4j, modelli linguistici via API e in locale</dd></div>
+      <div><dt>Infrastruttura</dt><dd>Docker, Kubernetes, Jenkins, AWS, Linux, Proxmox</dd></div>
+      <div><dt>Qualità</dt><dd>Test con JUnit e Mockito, refactoring di codice legacy guidato dai test</dd></div>
+      <div><dt>Metodo</dt><dd>Analisi della causa, ticket su Jira, note scritte per chi viene dopo</dd></div>
+      <div><dt>Lingue</dt><dd>Italiano, inglese</dd></div>
+      <div><dt>Modalità</dt><dd>Da remoto. Freelance con partita IVA o posizione da dipendente</dd></div>
+      <div><dt>Formazione</dt><dd>Laurea in Informatica in corso, Università degli Studi di Milano</dd></div>
+    </dl>
+  </div>
+</section>
 
-</div>
+<section class="disponibile" aria-labelledby="t-disponibile">
+  <div class="contenuto">
+    <h2 class="display-2" id="t-disponibile">Disponibile ora.<sup><a href="#nota-1" aria-label="Nota 1">1</a></sup></h2>
+    <p class="lead">Raccontami cosa c'è da costruire o cosa non torna.</p>
+    <a class="pillola grande" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
+    <a class="email" href="mailto:davide.ouxiang.zhu@gmail.com">davide.ouxiang.zhu@gmail.com</a>
+    <div class="altri">
+      <a class="collegamento" href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/"><span>LinkedIn</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="collegamento" href="https://github.com/Nazah-ops"><span>GitHub</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
-  <div class="pagina"><p>Zhu Ouxiang Davide, P.IVA 13433450965</p></div>
+  <div class="contenuto">
+    <ol>
+      <li id="nota-1">Per progetti da freelance e posizioni da remoto, in italiano e in inglese. <a href="#rif-1">Torna al testo</a></li>
+      <li id="nota-2">Guasto avvenuto il 10 giugno 2026 sul server di casa, raccontato com'è andato. <a href="#rif-2">Torna al testo</a></li>
+    </ol>
+    <p>Zhu Ouxiang Davide, P.IVA 13433450965. Copyright © 2026. Il codice di questa pagina è su <a href="https://github.com/Nazah-ops/davide-tech.work">GitHub</a>.</p>
+  </div>
 </footer>
 
 <script>
 (() => {
-  const muovi = !matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const pop = (el, ritardo = 0) => muovi && el.animate(
-    [{ transform: 'scale(.94) rotate(-1deg)', opacity: 0 }, { transform: 'none', opacity: 1 }],
-    { duration: 380, delay: ritardo, easing: 'cubic-bezier(.22, 1, .36, 1)' }
-  );
+  // il chip: un core alla volta, da pulsanti, tastiera o tocco sul disegno
+  const schede = [...document.querySelectorAll('[role="tab"]')];
+  const pannelli = schede.map(s => document.getElementById(s.getAttribute('aria-controls')));
+  const core = [...document.querySelectorAll('.core')];
+  const scegli = (i, fuoco) => {
+    schede.forEach((s, k) => {
+      const on = k === i;
+      s.setAttribute('aria-selected', on);
+      s.tabIndex = on ? 0 : -1;
+      pannelli[k].hidden = !on;
+    });
+    core.forEach(c => c.classList.toggle('attivo', c.dataset.core === schede[i].dataset.core));
+    if (fuoco) schede[i].focus();
+  };
+  document.querySelector('.selettore').hidden = false;
+  scegli(0, false);
+  schede.forEach((s, i) => {
+    s.addEventListener('click', () => scegli(i, false));
+    s.addEventListener('keydown', e => {
+      const passo = { ArrowRight: 1, ArrowLeft: -1, Home: -i, End: schede.length - 1 - i }[e.key];
+      if (passo === undefined) return;
+      e.preventDefault();
+      scegli((i + passo + schede.length) % schede.length, true);
+    });
+  });
+  core.forEach(c => c.addEventListener('click', () => scegli(schede.findIndex(s => s.dataset.core === c.dataset.core), false)));
 
-  // apertura: le vignette della copertina si inchiostrano in sequenza
-  if (muovi && document.visibilityState === 'visible') {
-    document.querySelectorAll('.copertina > .vignetta').forEach((v, i) => v.animate(
-      [{ clipPath: 'inset(0 100% 0 0 round 10px)' }, { clipPath: 'inset(0 0 0 0 round 10px)' }],
-      { duration: 560, delay: i * 110, easing: 'cubic-bezier(.22, 1, .36, 1)' }
-    ));
-  }
-
-  // la striscia: si scopre una vignetta alla volta
-  const v = [...document.querySelectorAll('#striscia > li')];
-  const comandi = document.getElementById('comandi');
+  // la galleria della diagnostica
+  const g = document.getElementById('galleria');
+  const indietro = document.getElementById('indietro');
   const avanti = document.getElementById('avanti');
-  const annuncio = document.getElementById('annuncio');
-  let n = 1;
-  v.slice(1).forEach(x => x.classList.add('coperta'));
-  comandi.hidden = false;
-
-  const scopri = (i, ritardo) => {
-    v[i].classList.remove('coperta');
-    pop(v[i], ritardo);
-  };
+  const passo = () => g.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(g).columnGap);
   const aggiorna = () => {
-    if (n >= v.length) {
-      comandi.hidden = true;
-      v[v.length - 1].tabIndex = -1;
-      v[v.length - 1].focus({ preventScroll: false });
-      return;
-    }
-    avanti.textContent = n === v.length - 1 ? 'E quindi?' : 'Perché?';
+    indietro.disabled = g.scrollLeft < 8;
+    avanti.disabled = g.scrollLeft > g.scrollWidth - g.clientWidth - 8;
   };
-  avanti.addEventListener('click', () => {
-    scopri(n, 0);
-    annuncio.textContent = v[n].querySelector('.racconto').textContent;
-    n++;
-    aggiorna();
-  });
-  document.getElementById('tutto').addEventListener('click', () => {
-    let k = 0;
-    while (n < v.length) scopri(n++, k++ * 90);
-    annuncio.textContent = 'Striscia completa.';
-    aggiorna();
-  });
+  indietro.addEventListener('click', () => g.scrollBy({ left: -passo() }));
+  avanti.addEventListener('click', () => g.scrollBy({ left: passo() }));
+  g.addEventListener('scroll', aggiorna, { passive: true });
+  addEventListener('resize', aggiorna);
+  document.querySelector('.frecce').hidden = false;
+  aggiorna();
 })();
 </script>
 </body>
