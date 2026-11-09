@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Davide O. Zhu, sviluppatore backend freelance</title>
+<meta name="description" content="Sviluppatore backend freelance: API, integrazioni, pipeline di dati e sistemi con IA. Node.js, Java/Spring Boot, Python, Kafka. Lavoro da remoto in italiano e in inglese.">
+<link rel="canonical" href="https://davide-tech.work/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:url" content="https://davide-tech.work/">
+<meta property="og:title" content="Davide O. Zhu, sviluppatore backend freelance">
+<meta property="og:description" content="API, integrazioni, pipeline di dati e sistemi con IA. E quando in produzione qualcosa non torna, la causa.">
+<meta name="theme-color" content="#eef0f1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a2433'/%3E%3Crect x='6' y='7' width='20' height='4' fill='%23dce1e5'/%3E%3Crect x='10' y='14' width='16' height='4' fill='%238996a3'/%3E%3Crect x='14' y='21' width='12' height='4' fill='%23f2b33d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<style>
+:root {
+  --carta: #eef0f1;
+  --inchiostro: #1a2433;
+  --grafite: #535e6b;
+  --filo: #c9d0d6;
+  --cobalto: #2747d6;
+  --zafferano: #f2b33d;
+  /* strati della discesa, dal sintomo alla causa */
+  --s0: #dce1e5;
+  --s1: #c3cbd2;
+  --s2: #93a0ac;
+  --s3: #5b6977;
+  --s4: #34414f;
+  --s5: #1a2433;
+  --chiaro: #eef0f1;
+  --step: clamp(.9rem, 3.2vw, 2.75rem);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --carta: #12181f;
+    --inchiostro: #e3e7ea;
+    --grafite: #9aa5b1;
+    --filo: #2c3743;
+    --cobalto: #8fa3ff;
+    --s0: #2a3540;
+    --s1: #232d37;
+    --s2: #1c252e;
+    --s3: #161e26;
+    --s4: #10171d;
+    --s5: #0a0f14;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-stretch: 100%;
+}
+code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .86em;
+  font-stretch: normal;
+  overflow-wrap: anywhere;
+}
+a { color: var(--cobalto); text-underline-offset: .18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--cobalto); outline-offset: 3px; }
+
+.wrap { width: min(100% - 32px, 70rem); margin-inline: auto; }
+.testo { max-width: 38rem; }
+
+/* intestazione */
+.intro { padding: clamp(2.5rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+h1 {
+  margin: 0 0 .35em;
+  font-size: clamp(3rem, 12.5vw, 9.5rem);
+  font-weight: 800;
+  font-stretch: 125%;
+  line-height: .86;
+  letter-spacing: -.025em;
+}
+h1 span { display: block; }
+.ruolo {
+  margin: 0 0 1rem;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  line-height: 1.3;
+  font-weight: 600;
+  font-stretch: 112%;
+  max-width: 34rem;
+}
+.intro p { max-width: 38rem; }
+@media (min-width: 1100px) {
+  .intro { display: grid; grid-template-columns: auto minmax(0, 30rem); column-gap: 4rem; align-items: end; padding-bottom: 3.5rem; }
+  .intro h1 { font-size: 7rem; margin: 0; }
+  .intro .ruolo { margin-top: 0; }
+}
+.azioni { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin-top: 1.75rem; }
+.bottone {
+  display: inline-block;
+  padding: .7rem 1.3rem;
+  border: 2px solid var(--cobalto);
+  border-radius: 3px;
+  background: var(--cobalto);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark) { .bottone { color: #0a0f14; } }
+.bottone:hover { filter: brightness(1.12); }
+
+/* la discesa: il pezzo forte */
+.discesa { margin: 0; padding: 0; list-style: none; }
+.discesa-testa { padding-bottom: 1.5rem; }
+.discesa-testa h2 { margin-bottom: .4rem; }
+.discesa-testa p { margin: 0; color: var(--grafite); max-width: 38rem; }
+.strato {
+  --d: 0;
+  background: var(--s0);
+  padding: clamp(1.25rem, 3vw, 2rem) 0;
+}
+.strato > div {
+  width: min(100% - 32px, 70rem);
+  margin-inline: auto;
+  padding-left: calc(var(--d) * var(--step));
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: .25rem 1.5rem;
+  align-items: baseline;
+}
+.strato .quale {
+  font-weight: 800;
+  font-size: 1rem;
+  font-stretch: 100%;
+}
+.strato .quale small { display: block; font-weight: 500; font-size: .875rem; }
+.strato p {
+  margin: 0;
+  max-width: 40rem;
+  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+  line-height: 1.38;
+  font-weight: 500;
+}
+.strato:nth-child(1) { background: var(--s0); }
+.strato:nth-child(1) p { font-stretch: 112%; }
+.strato:nth-child(2) { --d: 1; background: var(--s1); }
+.strato:nth-child(2) p { font-stretch: 104%; }
+.strato:nth-child(3) { --d: 2; background: var(--s2); }
+.strato:nth-child(3) p { font-stretch: 96%; }
+.strato:nth-child(4) { --d: 3; background: var(--s3); color: var(--chiaro); }
+.strato:nth-child(4) p { font-stretch: 88%; }
+.strato:nth-child(5) { --d: 4; background: var(--s4); color: var(--chiaro); }
+.strato:nth-child(5) p { font-stretch: 80%; }
+.strato.fondo { --d: 4; background: var(--s5); color: var(--chiaro); padding-bottom: clamp(2rem, 5vw, 3.5rem); }
+.strato.fondo .quale { color: var(--zafferano); }
+.strato.fondo p { font-stretch: 100%; }
+.strato.fondo p + p { margin-top: .9rem; font-size: 1.0625rem; line-height: 1.6; font-weight: 400; }
+.strato code { color: inherit; }
+@media (min-width: 640px) { .strato code { white-space: nowrap; } }
+.strato[hidden] { display: none; }
+.comandi {
+  background: var(--s5);
+  color: var(--chiaro);
+  padding: clamp(.9rem, 2vw, 1.25rem) 0;
+}
+.comandi[hidden] { display: none; }
+.comandi .wrap { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; }
+.comandi .bottone { background: var(--zafferano); border-color: var(--zafferano); color: #1a2433; }
+.link-chiaro {
+  background: none; border: 0; padding: .25rem 0; font: inherit; cursor: pointer;
+  color: inherit; text-decoration: underline; text-underline-offset: .18em;
+}
+.comandi :focus-visible { outline-color: currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+  .strato.nuovo { animation: scende .45s cubic-bezier(.2, .7, .2, 1); }
+  @keyframes scende { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+}
+@media (max-width: 639px) {
+  .strato > div { grid-template-columns: 1fr; }
+}
+
+/* sezioni sobrie */
+section { padding: clamp(3rem, 8vw, 5.5rem) 0 0; }
+h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  font-weight: 800;
+  font-stretch: 118%;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+}
+h3 { margin: 0 0 .4rem; font-size: 1.125rem; font-weight: 700; font-stretch: 108%; line-height: 1.3; }
+
+.tre { display: grid; gap: 2rem 2.5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.tre p { margin: 0; }
+
+.lavori { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--inchiostro); }
+.lavori > li {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: .25rem 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--filo);
+}
+.quando { font-weight: 700; font-stretch: 112%; font-variant-numeric: tabular-nums; }
+.lavori p { margin: 0; max-width: 40rem; }
+.lavori ul { margin: .6rem 0 0; padding-left: 1.1rem; max-width: 40rem; }
+.lavori ul li + li { margin-top: .4rem; }
+.stack { color: var(--grafite); font-size: .95rem; margin-top: .4rem !important; }
+@media (max-width: 639px) { .lavori > li { grid-template-columns: 1fr; } }
+
+.casa p { margin: 0 0 1rem; max-width: 38rem; }
+.casa ul { margin: 0; padding-left: 1.1rem; max-width: 38rem; }
+.casa ul li + li { margin-top: .6rem; }
+
+.contatti { padding-bottom: clamp(3rem, 8vw, 5rem); }
+.mail {
+  display: inline-block;
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.2rem, 4.6vw, 2.6rem);
+  font-weight: 700;
+  font-stretch: 90%;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+footer { border-top: 1px solid var(--filo); padding: 1.25rem 0 2rem; color: var(--grafite); font-size: .9rem; }
+footer p { margin: 0; }
+</style>
+</head>
+<body>
+
+<main>
+<header class="wrap intro">
+  <h1><span>Davide</span> <span>O. Zhu</span></h1>
+  <div>
+  <p class="ruolo">Sviluppatore backend freelance. API, integrazioni, pipeline di dati e sistemi con IA.</p>
+  <p>Dal 2021 lavoro su software che deve stare in piedi in produzione: microservizi per la grande distribuzione, applicazioni di un'utility energetica, piattaforme costruite da zero. Quando qualcosa non torna, continuo a chiedermi perché finché non trovo la causa.</p>
+  <p>Valuto nuovi progetti da freelance e posizioni da remoto. Lavoro in italiano e in inglese.</p>
+  <div class="azioni">
+    <a class="bottone" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
+    <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
+    <a href="https://github.com/Nazah-ops">GitHub</a>
+  </div>
+  </div>
+</header>
+
+<section aria-labelledby="t-causa" style="padding-top:0">
+  <div class="wrap discesa-testa">
+    <h2 id="t-causa">Fino alla causa</h2>
+    <p>Un guasto vero, sul server che tengo in casa con le stesse regole di un ambiente di produzione. Il metodo è quello che uso sul lavoro: il primo errore è solo il punto da cui si comincia a scendere.</p>
+  </div>
+  <ol class="discesa" id="discesa" aria-live="polite">
+    <li class="strato"><div>
+      <span class="quale">Il sintomo</span>
+      <p>Dopo un riavvio del server, due servizi non ripartono: l'archivio delle foto e le automazioni. Tutto il resto funziona, compresi altri servizi che usano la stessa GPU.</p>
+    </div></li>
+    <li class="strato"><div>
+      <span class="quale">Perché? <small>primo</small></span>
+      <p>I due container si fermano con <code>NVML: Driver Not Loaded</code>. Ma il driver era caricato: sull'host <code>nvidia-smi</code> rispondeva.</p>
+    </div></li>
+    <li class="strato"><div>
+      <span class="quale">Perché? <small>secondo</small></span>
+      <p>Dentro i container, <code>/dev/nvidia*</code> non erano dispositivi ma file vuoti. <code>/dev/nvidiactl</code> mancava del tutto.</p>
+    </div></li>
+    <li class="strato"><div>
+      <span class="quale">Perché? <small>terzo</small></span>
+      <p>I container erano partiti prima che l'host creasse i dispositivi della GPU. Il mount opzionale, non trovandoli, aveva creato dei segnaposto.</p>
+    </div></li>
+    <li class="strato"><div>
+      <span class="quale">Perché? <small>quarto</small></span>
+      <p>Niente stabiliva un ordine tra la GPU e l'avvio automatico dei container. A ogni boot vinceva chi arrivava prima, per questo alcuni servizi si salvavano.</p>
+    </div></li>
+    <li class="strato fondo"><div>
+      <span class="quale">L'intervento</span>
+      <div>
+        <p>Un servizio di sistema che inizializza la GPU prima di qualsiasi container: <code>nvidia-persistenced</code> con <code>Before=pve-guests.service</code>.</p>
+        <p>Ho usato il binario fornito con il driver installato (580) e non il pacchetto della distribuzione, fermo alla 550, che sarebbe andato in conflitto. Poi ho scritto come riconoscere il problema in un minuto, se dovesse tornare.</p>
+      </div>
+    </div></li>
+  </ol>
+  <div class="comandi" id="comandi" hidden>
+    <div class="wrap">
+      <button class="bottone" id="avanti" type="button">Perché?</button>
+      <button class="link-chiaro" id="tutto" type="button">Mostra tutto</button>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-cosa">
+  <div class="wrap">
+    <h2 id="t-cosa">Cosa faccio</h2>
+    <div class="tre">
+      <div>
+        <h3>Backend e integrazioni</h3>
+        <p>API REST e microservizi in Node.js (Fastify) e Java (Spring Boot). Collego sistemi nuovi a quelli che ci sono già, anche a eventi con Kafka, senza fermare chi li usa.</p>
+      </div>
+      <div>
+        <h3>Dati e IA</h3>
+        <p>Pipeline in Python che raccolgono e ripuliscono dati non strutturati. Assistenti basati su modelli linguistici, con retrieval su database vettoriali e a grafo (Qdrant, Neo4j).</p>
+      </div>
+      <div>
+        <h3>Applicazioni in produzione</h3>
+        <p>Presa in carico di software esistente: ticket, analisi della causa, fix, refactoring del codice legacy con test. Docker, Kubernetes, CI/CD con Jenkins, server Linux.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-dove">
+  <div class="wrap">
+    <h2 id="t-dove">Dove ho lavorato</h2>
+    <ol class="lavori" reversed>
+      <li>
+        <span class="quando">Dal 2026</span>
+        <div>
+          <h3>SaaS B2B per la conformità normativa</h3>
+          <p>Nel team che sviluppa un assistente IA per verificare ingredienti cosmetici e alimentari rispetto alle normative: retrieval su database vettoriali e a grafo, pulizia del corpus documentale, modello dei dati.</p>
+          <p class="stack">Python, Qdrant, Neo4j</p>
+        </div>
+      </li>
+      <li>
+        <span class="quando">Dal 2026</span>
+        <div>
+          <h3>Duemme Dental, Nerviano</h3>
+          <p>Il CRM dello studio dentistico, sviluppato con un collega: pazienti, questionario anamnestico e odontogramma ricalcati sui moduli cartacei dello studio, preventivi e agenda.</p>
+          <p class="stack">React, Spring Boot, Java 21, PostgreSQL</p>
+        </div>
+      </li>
+      <li>
+        <span class="quando">2024–2025</span>
+        <div>
+          <h3>Consulente freelance per ATS S.p.A.</h3>
+          <ul>
+            <li><strong>Unicoop</strong>, grande distribuzione. Microservizi in Node.js e Fastify; sincronizzazione in tempo reale da Oracle a MongoDB con Kafka durante la migrazione.</li>
+            <li><strong>A2A</strong>, energia. Gestione autonoma dei ticket di produzione su Jira, analisi della causa e hotfix in TypeScript.</li>
+            <li><strong>BitQ</strong>. Refactoring di una codebase Java/Spring Boot con molto debito tecnico, guidato dai test (JUnit, Mockito); containerizzazione con Docker e Kubernetes.</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <span class="quando">2021–2023</span>
+        <div>
+          <h3>Expandi Group e Account Insight</h3>
+          <p>Full stack e poi lead developer. Una piattaforma proprietaria in Java/Spring Boot, dai requisiti alla produzione; pipeline CI/CD con Jenkins e Docker su AWS; procedure Python e SQL per l'analisi dei dati.</p>
+        </div>
+      </li>
+    </ol>
+    <p class="stack">Laurea in Informatica in corso all'Università degli Studi di Milano.</p>
+  </div>
+</section>
+
+<section aria-labelledby="t-casa" class="casa">
+  <div class="wrap">
+    <h2 id="t-casa">Fuori orario</h2>
+    <p>A casa gestisco un piccolo datacenter: Proxmox con una decina tra container e macchine virtuali, una GPU condivisa per i modelli linguistici in locale, monitoraggio con avvisi su Telegram, controllo dei dischi e backup notturni. Lo tratto come un ambiente di produzione, quindi ogni tanto si rompe davvero. Altri due guasti risolti:</p>
+    <ul>
+      <li>Load a 30 e sembrava RAM esaurita. Era una conversione di container da unprivileged a privileged che aveva lasciato tutti i file con gli UID spostati di 100000: nove container Docker in crash continuo. Backup, proprietari riallineati su tutto il filesystem, quattordici container di nuovo su.</li>
+      <li>Thin pool quasi pieno: decine di GB recuperati abilitando discard e <code>fstrim</code>.</li>
+    </ul>
+    <p style="margin-top:1rem">E qualche strumento per conto mio: un wrapper Python per API multimodali con gestione di token e rate limit, e una pipeline che trasforma thread di Reddit in video verticali senza intervento manuale.</p>
+  </div>
+</section>
+
+<section aria-labelledby="t-contatti" class="contatti">
+  <div class="wrap">
+    <h2 id="t-contatti">Scrivimi</h2>
+    <a class="mail" href="mailto:davide.ouxiang.zhu@gmail.com">davide.ouxiang.zhu@gmail.com</a>
+    <p class="testo">Raccontami cosa c'è da costruire o cosa non torna. Lavoro da remoto, in italiano e in inglese. Il CV completo te lo mando su richiesta.</p>
+    <div class="azioni">
+      <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
+      <a href="https://github.com/Nazah-ops">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><p>Davide O. Zhu, 2026</p></div>
+</footer>
+
+<script>
+(() => {
+  const strati = [...document.querySelectorAll('#discesa .strato')];
+  const comandi = document.getElementById('comandi');
+  const avanti = document.getElementById('avanti');
+  let n = 1;
+  // la barra prende il colore dello strato successivo: si vede cosa c'è sotto
+  const etichetta = () => {
+    if (n >= strati.length) { comandi.hidden = true; return; }
+    avanti.textContent = n === strati.length - 1 ? 'E quindi?' : 'Perché?';
+    const s = getComputedStyle(strati[n]);
+    comandi.style.background = s.backgroundColor;
+    comandi.style.color = s.color;
+  };
+  const mostra = (i) => { strati[i].hidden = false; strati[i].classList.add('nuovo'); };
+  strati.slice(1).forEach(s => s.hidden = true);
+  comandi.hidden = false;
+  etichetta();
+  avanti.addEventListener('click', () => {
+    mostra(n++);
+    etichetta();
+    if (comandi.hidden) strati[strati.length - 1].setAttribute('tabindex', '-1'), strati[strati.length - 1].focus();
+  });
+  document.getElementById('tutto').addEventListener('click', () => {
+    while (n < strati.length) mostra(n++);
+    etichetta();
+    strati[strati.length - 1].setAttribute('tabindex', '-1');
+    strati[strati.length - 1].focus();
+  });
+})();
+</script>
+</body>
+</html>
