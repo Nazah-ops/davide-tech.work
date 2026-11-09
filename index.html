@@ -162,20 +162,6 @@ p { margin: 0; text-wrap: pretty; }
   gap: var(--canalino);
   padding-top: clamp(1rem, 3vw, 2rem);
 }
-.v-ritratto {
-  --fondo: var(--cielo);
-  padding: 0;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-}
-.v-ritratto img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; }
-.v-ritratto .balloon {
-  --coda: 58%;
-  position: absolute;
-  top: clamp(0.75rem, 2.5vw, 1.5rem);
-  left: clamp(0.75rem, 2.5vw, 1.5rem);
-  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
-}
 .v-titolo { display: grid; gap: var(--spazio-m); align-content: start; padding: clamp(1.25rem, 3vw, 2.25rem); }
 h1 {
   font-size: clamp(2.75rem, 7.5vw, 5.75rem);
@@ -196,9 +182,10 @@ h1 {
 .v-azioni p { flex: 1 1 16rem; font-weight: 500; }
 .v-azioni .gruppo { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; }
 @media (min-width: 900px) {
-  .copertina { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: 1fr auto; }
-  .v-ritratto { grid-row: 1 / span 2; aspect-ratio: auto; min-height: 34rem; }
+  .copertina { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
   .v-titolo { padding-top: clamp(2rem, 4vw, 3rem); }
+  .v-azioni { flex-direction: column; align-items: flex-start; justify-content: space-between; padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2.25rem); }
+  .v-azioni p { flex: none; font-family: var(--lettering); font-weight: 700; font-size: 1.3rem; line-height: 1.3; font-variation-settings: "BNCE" 20, "INFM" 50; }
 }
 
 /* sezioni */
@@ -354,10 +341,6 @@ footer { border-top: var(--tratto) solid var(--inchiostro); padding: var(--spazi
 <div class="pagina">
 
   <header class="copertina">
-    <div class="vignetta v-ritratto">
-      <img src="ritratto.svg" width="700" height="910" alt="Davide disegnato a fumetto: occhiali tondi, capelli corti, un orecchino, giacca scura.">
-      <p class="balloon" id="saluto">Ciao, sono Davide!</p>
-    </div>
     <div class="vignetta v-titolo">
       <h1>Davide O. Zhu</h1>
       <span class="didascalia">Sviluppatore backend freelance</span>
@@ -642,18 +625,12 @@ footer { border-top: var(--tratto) solid var(--inchiostro); padding: var(--spazi
     { duration: 380, delay: ritardo, easing: 'cubic-bezier(.22, 1, .36, 1)' }
   );
 
-  // apertura: le vignette della copertina si inchiostrano in sequenza, poi parla il balloon
+  // apertura: le vignette della copertina si inchiostrano in sequenza
   if (muovi && document.visibilityState === 'visible') {
     document.querySelectorAll('.copertina > .vignetta').forEach((v, i) => v.animate(
       [{ clipPath: 'inset(0 100% 0 0 round 10px)' }, { clipPath: 'inset(0 0 0 0 round 10px)' }],
       { duration: 560, delay: i * 110, easing: 'cubic-bezier(.22, 1, .36, 1)' }
     ));
-    const b = document.getElementById('saluto');
-    b.style.transformOrigin = '58% 120%';
-    b.animate(
-      [{ transform: 'scale(.3)', opacity: 0 }, { transform: 'none', opacity: 1 }],
-      { duration: 420, delay: 520, easing: 'cubic-bezier(.16, 1, .3, 1)', fill: 'backwards' }
-    );
   }
 
   // la striscia: si scopre una vignetta alla volta
