@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Davide O. Zhu, sviluppatore backend freelance</title>
 <meta name="description" content="Sviluppatore backend freelance: API, integrazioni, pipeline di dati e sistemi con IA. Node.js, Java/Spring Boot, Python, Kafka. Lavoro da remoto in italiano e in inglese.">
 <link rel="canonical" href="https://davide-tech.work/">
@@ -11,45 +12,34 @@
 <meta property="og:url" content="https://davide-tech.work/">
 <meta property="og:title" content="Davide O. Zhu, sviluppatore backend freelance">
 <meta property="og:description" content="API, integrazioni, pipeline di dati e sistemi con IA. E quando in produzione qualcosa non torna, la causa.">
-<meta name="theme-color" content="#eef0f1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a2433'/%3E%3Crect x='6' y='7' width='20' height='4' fill='%23dce1e5'/%3E%3Crect x='10' y='14' width='16' height='4' fill='%238996a3'/%3E%3Crect x='14' y='21' width='12' height='4' fill='%23f2b33d'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='6' fill='%23f9e04b' stroke='%23171a2b' stroke-width='3'/%3E%3Cpath d='M9 10h14v9H15l-5 4v-4H9z' fill='%23fff' stroke='%23171a2b' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&family=Shantell+Sans:wght,BNCE,INFM@500..800,-100..100,0..100&display=swap">
 <style>
 :root {
-  --carta: #eef0f1;
-  --inchiostro: #1a2433;
-  --grafite: #535e6b;
-  --filo: #c9d0d6;
-  --cobalto: #2747d6;
-  --zafferano: #f2b33d;
-  /* strati della discesa, dal sintomo alla causa */
-  --s0: #dce1e5;
-  --s1: #c3cbd2;
-  --s2: #93a0ac;
-  --s3: #5b6977;
-  --s4: #34414f;
-  --s5: #1a2433;
-  --chiaro: #eef0f1;
-  --step: clamp(.9rem, 3.2vw, 2.75rem);
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --carta: #12181f;
-    --inchiostro: #e3e7ea;
-    --grafite: #9aa5b1;
-    --filo: #2c3743;
-    --cobalto: #8fa3ff;
-    --s0: #2a3540;
-    --s1: #232d37;
-    --s2: #1c252e;
-    --s3: #161e26;
-    --s4: #10171d;
-    --s5: #0a0f14;
-    color-scheme: dark;
-  }
+  /* inchiostro e colori piatti da fumetto in linea chiara */
+  --carta: oklch(1 0 0);
+  --inchiostro: oklch(0.2 0.03 265);
+  --grafite: oklch(0.4 0.03 265);
+  --cielo: oklch(0.86 0.075 228);
+  --cielo-chiaro: oklch(0.95 0.03 228);
+  --sole: oklch(0.92 0.16 98);
+  --sole-chiaro: oklch(0.97 0.07 98);
+  --corallo: oklch(0.7 0.17 32);
+  --menta: oklch(0.9 0.08 165);
+
+  --tratto: 3px;
+  --raggio: 10px;
+  --canalino: clamp(10px, 1.4vw, 16px);
+  --spazio-s: 0.75rem;
+  --spazio-m: 1.25rem;
+  --spazio-l: 2rem;
+  --spazio-xl: clamp(3.5rem, 8vw, 6rem);
+
+  --lettering: "Shantell Sans", "Comic Neue", system-ui, sans-serif;
+  --testo: "Archivo", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -58,362 +48,646 @@ body {
   margin: 0;
   background: var(--carta);
   color: var(--inchiostro);
-  font-family: "Archivo", system-ui, sans-serif;
+  font-family: var(--testo);
   font-size: 1.0625rem;
-  line-height: 1.6;
-  font-stretch: 100%;
+  line-height: 1.55;
 }
+img, svg { display: block; max-width: 100%; }
 code {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: .86em;
-  font-stretch: normal;
+  font-size: 0.86em;
   overflow-wrap: anywhere;
 }
-a { color: var(--cobalto); text-underline-offset: .18em; }
-a:hover { text-decoration-thickness: 2px; }
-:focus-visible { outline: 3px solid var(--cobalto); outline-offset: 3px; }
+a { color: inherit; text-decoration-color: var(--corallo); text-decoration-thickness: 3px; text-underline-offset: 0.2em; }
+a:hover { text-decoration-color: var(--inchiostro); }
+:focus-visible { outline: 3px solid var(--inchiostro); outline-offset: 4px; border-radius: 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-.wrap { width: min(100% - 32px, 70rem); margin-inline: auto; }
-.testo { max-width: 38rem; }
-
-/* intestazione */
-.intro { padding: clamp(2.5rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
-h1 {
-  margin: 0 0 .35em;
-  font-size: clamp(3rem, 12.5vw, 9.5rem);
+.pagina { width: min(100% - 32px, 76rem); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--lettering); text-wrap: balance; margin: 0; }
+h2 {
+  font-size: clamp(2rem, 4.6vw, 3.25rem);
   font-weight: 800;
-  font-stretch: 125%;
-  line-height: .86;
-  letter-spacing: -.025em;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-variation-settings: "BNCE" 40, "INFM" 60;
 }
-h1 span { display: block; }
-.ruolo {
-  margin: 0 0 1rem;
-  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
-  line-height: 1.3;
-  font-weight: 600;
-  font-stretch: 112%;
-  max-width: 34rem;
+h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  font-variation-settings: "BNCE" 20, "INFM" 40;
 }
-.intro p { max-width: 38rem; }
-@media (min-width: 1100px) {
-  .intro { display: grid; grid-template-columns: auto minmax(0, 30rem); column-gap: 4rem; align-items: end; padding-bottom: 3.5rem; }
-  .intro h1 { font-size: 7rem; margin: 0; }
-  .intro .ruolo { margin-top: 0; }
+p { margin: 0; text-wrap: pretty; }
+
+/* vignetta: il mattone della pagina */
+.vignetta {
+  position: relative;
+  background: var(--fondo, var(--carta));
+  border: var(--tratto) solid var(--inchiostro);
+  border-radius: var(--raggio);
+  padding: var(--spazio-m);
 }
-.azioni { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin-top: 1.75rem; }
-.bottone {
+.didascalia {
   display: inline-block;
-  padding: .7rem 1.3rem;
-  border: 2px solid var(--cobalto);
-  border-radius: 3px;
-  background: var(--cobalto);
-  color: #fff;
-  font: inherit;
+  background: var(--sole);
+  border: 2.5px solid var(--inchiostro);
+  border-radius: 4px;
+  padding: 0.2em 0.6em;
+  font-family: var(--lettering);
   font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  font-variation-settings: "INFM" 30;
+}
+.balloon {
+  --coda: 2.2rem;
+  position: relative;
+  background: var(--carta);
+  border: var(--tratto) solid var(--inchiostro);
+  border-radius: 1.5rem;
+  padding: 0.7rem 1.1rem;
+  font-family: var(--lettering);
+  font-weight: 700;
+  font-variation-settings: "BNCE" 30, "INFM" 70;
+}
+.balloon::before,
+.balloon::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  clip-path: polygon(0 0, 100% 0, 18% 100%);
+}
+.balloon::before { left: var(--coda); width: 30px; height: 26px; margin-top: 0; background: var(--inchiostro); }
+.balloon::after { left: calc(var(--coda) + 4px); width: 22px; height: 18px; margin-top: -4px; background: var(--carta); }
+
+/* pulsanti */
+.bottone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0.55rem 1.4rem;
+  background: var(--corallo);
+  color: var(--inchiostro);
+  border: var(--tratto) solid var(--inchiostro);
+  border-radius: 999px;
+  font-family: var(--lettering);
+  font-weight: 800;
+  font-size: 1.1rem;
+  font-variation-settings: "BNCE" 30, "INFM" 50;
   text-decoration: none;
   cursor: pointer;
+  transition: transform 160ms cubic-bezier(0.25, 1, 0.5, 1);
 }
-@media (prefers-color-scheme: dark) { .bottone { color: #0a0f14; } }
-.bottone:hover { filter: brightness(1.12); }
+.bottone:hover { transform: rotate(-2deg) scale(1.03); }
+.bottone:active { transform: scale(0.97); }
+.link-semplice {
+  background: none;
+  border: 0;
+  padding: 0.5rem 0.25rem;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--corallo);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  min-height: 44px;
+}
 
-/* la discesa: il pezzo forte */
-.discesa { margin: 0; padding: 0; list-style: none; }
-.discesa-testa { padding-bottom: 1.5rem; }
-.discesa-testa h2 { margin-bottom: .4rem; }
-.discesa-testa p { margin: 0; color: var(--grafite); max-width: 38rem; }
-.strato {
-  --d: 0;
-  background: var(--s0);
-  padding: clamp(1.25rem, 3vw, 2rem) 0;
-}
-.strato > div {
-  width: min(100% - 32px, 70rem);
-  margin-inline: auto;
-  padding-left: calc(var(--d) * var(--step));
+/* copertina */
+.copertina {
   display: grid;
-  grid-template-columns: 7.5rem 1fr;
-  gap: .25rem 1.5rem;
-  align-items: baseline;
+  gap: var(--canalino);
+  padding-top: clamp(1rem, 3vw, 2rem);
 }
-.strato .quale {
+.v-ritratto {
+  --fondo: var(--cielo);
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+.v-ritratto img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; }
+.v-ritratto .balloon {
+  --coda: 58%;
+  position: absolute;
+  top: clamp(0.75rem, 2.5vw, 1.5rem);
+  left: clamp(0.75rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+}
+.v-titolo { display: grid; gap: var(--spazio-m); align-content: start; padding: clamp(1.25rem, 3vw, 2.25rem); }
+h1 {
+  font-size: clamp(2.75rem, 7.5vw, 5.75rem);
   font-weight: 800;
-  font-size: 1rem;
-  font-stretch: 100%;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-variation-settings: "BNCE" 50, "INFM" 80;
 }
-.strato .quale small { display: block; font-weight: 500; font-size: .875rem; }
-.strato p {
+.v-titolo .didascalia { justify-self: start; font-size: clamp(1rem, 1.6vw, 1.15rem); }
+.v-titolo p { max-width: 36rem; }
+.v-azioni {
+  --fondo: var(--sole);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spazio-s) var(--spazio-l);
+}
+.v-azioni p { flex: 1 1 16rem; font-weight: 500; }
+.v-azioni .gruppo { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; }
+@media (min-width: 900px) {
+  .copertina { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: 1fr auto; }
+  .v-ritratto { grid-row: 1 / span 2; aspect-ratio: auto; min-height: 34rem; }
+  .v-titolo { padding-top: clamp(2rem, 4vw, 3rem); }
+}
+
+/* sezioni */
+.sezione { padding-top: var(--spazio-xl); }
+.testa { display: grid; gap: var(--spazio-s); margin-bottom: var(--spazio-l); max-width: 44rem; }
+.testa p { color: var(--grafite); }
+
+/* la striscia del guasto */
+.striscia {
+  list-style: none;
   margin: 0;
-  max-width: 40rem;
-  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
-  line-height: 1.38;
-  font-weight: 500;
-}
-.strato:nth-child(1) { background: var(--s0); }
-.strato:nth-child(1) p { font-stretch: 112%; }
-.strato:nth-child(2) { --d: 1; background: var(--s1); }
-.strato:nth-child(2) p { font-stretch: 104%; }
-.strato:nth-child(3) { --d: 2; background: var(--s2); }
-.strato:nth-child(3) p { font-stretch: 96%; }
-.strato:nth-child(4) { --d: 3; background: var(--s3); color: var(--chiaro); }
-.strato:nth-child(4) p { font-stretch: 88%; }
-.strato:nth-child(5) { --d: 4; background: var(--s4); color: var(--chiaro); }
-.strato:nth-child(5) p { font-stretch: 80%; }
-.strato.fondo { --d: 4; background: var(--s5); color: var(--chiaro); padding-bottom: clamp(2rem, 5vw, 3.5rem); }
-.strato.fondo .quale { color: var(--zafferano); }
-.strato.fondo p { font-stretch: 100%; }
-.strato.fondo p + p { margin-top: .9rem; font-size: 1.0625rem; line-height: 1.6; font-weight: 400; }
-.strato code { color: inherit; }
-@media (min-width: 640px) { .strato code { white-space: nowrap; } }
-.strato[hidden] { display: none; }
-.comandi {
-  background: var(--s5);
-  color: var(--chiaro);
-  padding: clamp(.9rem, 2vw, 1.25rem) 0;
-}
-.comandi[hidden] { display: none; }
-.comandi .wrap { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; }
-.comandi .bottone { background: var(--zafferano); border-color: var(--zafferano); color: #1a2433; }
-.link-chiaro {
-  background: none; border: 0; padding: .25rem 0; font: inherit; cursor: pointer;
-  color: inherit; text-decoration: underline; text-underline-offset: .18em;
-}
-.comandi :focus-visible { outline-color: currentColor; }
-@media (prefers-reduced-motion: no-preference) {
-  .strato.nuovo { animation: scende .45s cubic-bezier(.2, .7, .2, 1); }
-  @keyframes scende { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
-}
-@media (max-width: 639px) {
-  .strato > div { grid-template-columns: 1fr; }
-}
-
-/* sezioni sobrie */
-section { padding: clamp(3rem, 8vw, 5.5rem) 0 0; }
-h2 {
-  margin: 0 0 1.5rem;
-  font-size: clamp(1.75rem, 4vw, 2.6rem);
-  font-weight: 800;
-  font-stretch: 118%;
-  line-height: 1.05;
-  letter-spacing: -.01em;
-}
-h3 { margin: 0 0 .4rem; font-size: 1.125rem; font-weight: 700; font-stretch: 108%; line-height: 1.3; }
-
-.tre { display: grid; gap: 2rem 2.5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
-.tre p { margin: 0; }
-
-.lavori { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--inchiostro); }
-.lavori > li {
+  padding: 0;
   display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: .25rem 2rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--filo);
+  gap: var(--canalino);
 }
-.quando { font-weight: 700; font-stretch: 112%; font-variant-numeric: tabular-nums; }
-.lavori p { margin: 0; max-width: 40rem; }
-.lavori ul { margin: .6rem 0 0; padding-left: 1.1rem; max-width: 40rem; }
-.lavori ul li + li { margin-top: .4rem; }
-.stack { color: var(--grafite); font-size: .95rem; margin-top: .4rem !important; }
-@media (max-width: 639px) { .lavori > li { grid-template-columns: 1fr; } }
-
-.casa p { margin: 0 0 1rem; max-width: 38rem; }
-.casa ul { margin: 0; padding-left: 1.1rem; max-width: 38rem; }
-.casa ul li + li { margin-top: .6rem; }
-
-.contatti { padding-bottom: clamp(3rem, 8vw, 5rem); }
-.mail {
-  display: inline-block;
-  margin: 0 0 1.25rem;
-  font-size: clamp(1.2rem, 4.6vw, 2.6rem);
-  font-weight: 700;
-  font-stretch: 90%;
-  line-height: 1.15;
-  overflow-wrap: anywhere;
+@media (min-width: 640px) { .striscia { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .striscia { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.striscia .vignetta {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: var(--spazio-s);
+  padding: var(--spazio-s) var(--spazio-s) var(--spazio-m);
+  min-height: 22rem;
 }
-footer { border-top: 1px solid var(--filo); padding: 1.25rem 0 2rem; color: var(--grafite); font-size: .9rem; }
-footer p { margin: 0; }
+.striscia .didascalia { justify-self: start; }
+.didascalia .num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 0.35em;
+  background: var(--inchiostro);
+  color: var(--sole);
+  border-radius: 50%;
+  font-size: 0.8em;
+}
+.scena {
+  background: var(--cielo-chiaro);
+  border: 2px solid var(--inchiostro);
+  border-radius: 6px;
+  aspect-ratio: 5 / 3;
+  display: grid;
+  place-items: center;
+}
+.scena svg { width: 100%; height: 100%; }
+.striscia .racconto {
+  font-family: var(--lettering);
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-variation-settings: "BNCE" 0, "INFM" 20;
+  padding-inline: 0.25rem;
+}
+.striscia .racconto code { font-size: 0.82em; }
+.v-sintomo { --fondo: var(--cielo); }
+.v-sintomo .scena { background: var(--carta); }
+.v-intervento { --fondo: var(--menta); }
+.v-intervento .scena { background: var(--carta); }
+.v-intervento .didascalia { background: var(--carta); }
+.vuota { display: none; }
+.coperta .contenuto { display: none; }
+.coperta { border-style: dashed; background: var(--carta); }
+.coperta .vuota {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-family: var(--lettering);
+  font-weight: 800;
+  font-size: 5rem;
+  color: var(--cielo);
+  font-variation-settings: "BNCE" 80;
+}
+.contenuto { display: contents; }
+.comandi { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spazio-s) var(--spazio-m); margin-top: var(--spazio-m); }
+.comandi[hidden] { display: none; }
+.comandi .bottone { --coda: 1.4rem; position: relative; }
+
+/* disegni: linea chiara, spessore costante */
+.d { fill: none; stroke: var(--inchiostro); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.d-bianco { fill: var(--carta); }
+.d-cielo { fill: var(--cielo); }
+.d-sole { fill: var(--sole); }
+.d-corallo { fill: var(--corallo); }
+.d-menta { fill: var(--menta); }
+.d-inchiostro { fill: var(--inchiostro); }
+.d-testo { font-family: var(--lettering); font-weight: 800; fill: var(--inchiostro); stroke: none; }
+
+/* cosa faccio: una fila di vignette di larghezza diversa */
+.fila { display: grid; gap: var(--canalino); }
+@media (min-width: 900px) { .fila { grid-template-columns: 1.25fr 1fr 1.1fr; } }
+.fila .vignetta { display: grid; gap: var(--spazio-s); align-content: start; padding: var(--spazio-l) var(--spazio-m) var(--spazio-m); }
+.fila .vignetta:nth-child(1) { --fondo: var(--cielo); }
+.fila .vignetta:nth-child(2) { --fondo: var(--sole-chiaro); }
+.fila .vignetta:nth-child(3) { --fondo: var(--menta); }
+
+/* dove ho lavorato: una tavola con vignette di misure diverse */
+.tavola { display: grid; gap: var(--canalino); }
+.tavola .vignetta { display: grid; gap: var(--spazio-s); align-content: start; }
+.tavola .didascalia { justify-self: start; font-variant-numeric: tabular-nums; }
+.tavola .stack { color: var(--grafite); font-size: 0.95rem; }
+.v-ats { --fondo: var(--cielo-chiaro); }
+.clienti { display: grid; gap: var(--spazio-m); margin: var(--spazio-s) 0 0; padding: 0; list-style: none; }
+.clienti li { display: grid; gap: 0.25rem; align-content: start; }
+.clienti strong { font-family: var(--lettering); font-weight: 800; font-size: 1.15rem; }
+.v-studi { --fondo: var(--sole-chiaro); }
+@media (min-width: 900px) {
+  .tavola { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .v-ora { grid-column: span 7; }
+  .v-duemme { grid-column: span 5; }
+  .v-ats { grid-column: span 12; }
+  .clienti { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spazio-l); }
+  .clienti li + li { border-left: 2px solid var(--inchiostro); padding-left: var(--spazio-l); }
+  .v-expandi { grid-column: span 8; }
+  .v-studi { grid-column: span 4; }
+}
+
+/* fuori orario */
+.v-casa { --fondo: var(--cielo-chiaro); display: grid; gap: var(--spazio-l); padding: clamp(1.25rem, 3vw, 2.25rem); }
+.v-casa .testo { display: grid; gap: var(--spazio-m); max-width: 42rem; }
+.v-casa ul { margin: 0; padding-left: 1.2rem; display: grid; gap: var(--spazio-s); }
+.v-casa .scena { background: var(--carta); max-width: 22rem; }
+@media (min-width: 900px) { .v-casa { grid-template-columns: minmax(0, 1fr) 20rem; align-items: center; } }
+
+/* scrivimi */
+.v-contatti {
+  --fondo: var(--corallo);
+  display: grid;
+  gap: var(--spazio-l);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: var(--spazio-xl);
+}
+.v-contatti h2 { font-size: clamp(2.25rem, 6vw, 4rem); }
+.v-contatti .balloon {
+  --coda: 3rem;
+  justify-self: start;
+  max-width: 100%;
+  font-size: clamp(1.15rem, 3.6vw, 2.25rem);
+  padding: 0.8rem 1.4rem;
+  margin-bottom: 1.5rem;
+}
+.v-contatti .balloon a { text-decoration-color: var(--corallo); overflow-wrap: anywhere; }
+.v-contatti p { max-width: 38rem; font-weight: 500; }
+.v-contatti .gruppo { display: flex; gap: 0.25rem 1.5rem; flex-wrap: wrap; }
+.v-contatti .gruppo a { text-decoration-color: var(--inchiostro); font-weight: 600; }
+
+footer { border-top: var(--tratto) solid var(--inchiostro); padding: var(--spazio-m) 0 var(--spazio-l); font-size: 0.9rem; color: var(--grafite); }
 </style>
 </head>
 <body>
 
 <main>
-<header class="wrap intro">
-  <h1><span>Davide</span> <span>O. Zhu</span></h1>
-  <div>
-  <p class="ruolo">Sviluppatore backend freelance. API, integrazioni, pipeline di dati e sistemi con IA.</p>
-  <p>Dal 2021 lavoro su software che deve stare in piedi in produzione: microservizi per la grande distribuzione, applicazioni di un'utility energetica, piattaforme costruite da zero. Quando qualcosa non torna, continuo a chiedermi perché finché non trovo la causa.</p>
-  <p>Valuto nuovi progetti da freelance e posizioni da remoto. Lavoro in italiano e in inglese.</p>
-  <div class="azioni">
-    <a class="bottone" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
-    <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
-    <a href="https://github.com/Nazah-ops">GitHub</a>
-  </div>
-  </div>
-</header>
+<div class="pagina">
 
-<section aria-labelledby="t-causa" style="padding-top:0">
-  <div class="wrap discesa-testa">
-    <h2 id="t-causa">Fino alla causa</h2>
-    <p>Un guasto vero, sul server che tengo in casa con le stesse regole di un ambiente di produzione. Il metodo è quello che uso sul lavoro: il primo errore è solo il punto da cui si comincia a scendere.</p>
-  </div>
-  <ol class="discesa" id="discesa" aria-live="polite">
-    <li class="strato"><div>
-      <span class="quale">Il sintomo</span>
-      <p>Dopo un riavvio del server, due servizi non ripartono: l'archivio delle foto e le automazioni. Tutto il resto funziona, compresi altri servizi che usano la stessa GPU.</p>
-    </div></li>
-    <li class="strato"><div>
-      <span class="quale">Perché? <small>primo</small></span>
-      <p>I due container si fermano con <code>NVML: Driver Not Loaded</code>. Ma il driver era caricato: sull'host <code>nvidia-smi</code> rispondeva.</p>
-    </div></li>
-    <li class="strato"><div>
-      <span class="quale">Perché? <small>secondo</small></span>
-      <p>Dentro i container, <code>/dev/nvidia*</code> non erano dispositivi ma file vuoti. <code>/dev/nvidiactl</code> mancava del tutto.</p>
-    </div></li>
-    <li class="strato"><div>
-      <span class="quale">Perché? <small>terzo</small></span>
-      <p>I container erano partiti prima che l'host creasse i dispositivi della GPU. Il mount opzionale, non trovandoli, aveva creato dei segnaposto.</p>
-    </div></li>
-    <li class="strato"><div>
-      <span class="quale">Perché? <small>quarto</small></span>
-      <p>Niente stabiliva un ordine tra la GPU e l'avvio automatico dei container. A ogni boot vinceva chi arrivava prima, per questo alcuni servizi si salvavano.</p>
-    </div></li>
-    <li class="strato fondo"><div>
-      <span class="quale">L'intervento</span>
-      <div>
-        <p>Un servizio di sistema che inizializza la GPU prima di qualsiasi container: <code>nvidia-persistenced</code> con <code>Before=pve-guests.service</code>.</p>
-        <p>Ho usato il binario fornito con il driver installato (580) e non il pacchetto della distribuzione, fermo alla 550, che sarebbe andato in conflitto. Poi ho scritto come riconoscere il problema in un minuto, se dovesse tornare.</p>
-      </div>
-    </div></li>
-  </ol>
-  <div class="comandi" id="comandi" hidden>
-    <div class="wrap">
-      <button class="bottone" id="avanti" type="button">Perché?</button>
-      <button class="link-chiaro" id="tutto" type="button">Mostra tutto</button>
+  <header class="copertina">
+    <div class="vignetta v-ritratto">
+      <img src="ritratto.svg" width="700" height="910" alt="Davide disegnato a fumetto: occhiali tondi, capelli corti, un orecchino, giacca scura.">
+      <p class="balloon" id="saluto">Ciao, sono Davide!</p>
     </div>
-  </div>
-</section>
+    <div class="vignetta v-titolo">
+      <h1>Davide O. Zhu</h1>
+      <span class="didascalia">Sviluppatore backend freelance</span>
+      <p>API, integrazioni, pipeline di dati e sistemi con IA. Dal 2021 lavoro su software che deve stare in piedi in produzione: microservizi per la grande distribuzione, applicazioni di un'utility energetica, piattaforme costruite da zero.</p>
+      <p>Quando qualcosa non torna, continuo a chiedermi perché finché non trovo la causa.</p>
+    </div>
+    <div class="vignetta v-azioni">
+      <p>Valuto nuovi progetti da freelance e posizioni da remoto, in italiano e in inglese.</p>
+      <div class="gruppo">
+        <a class="bottone" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
+        <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
+        <a href="https://github.com/Nazah-ops">GitHub</a>
+      </div>
+    </div>
+  </header>
 
-<section aria-labelledby="t-cosa">
-  <div class="wrap">
-    <h2 id="t-cosa">Cosa faccio</h2>
-    <div class="tre">
-      <div>
+  <section class="sezione" aria-labelledby="t-causa">
+    <div class="testa">
+      <h2 id="t-causa">Fino alla causa</h2>
+      <p>Un guasto vero, sul server che tengo in casa con le stesse regole di un ambiente di produzione. Il metodo è quello che uso sul lavoro: il primo errore è solo il punto da cui si comincia a scendere.</p>
+    </div>
+
+    <ol class="striscia" id="striscia">
+      <li class="vignetta v-sintomo">
+        <span class="didascalia">Il sintomo</span>
+        <div class="scena">
+          <svg viewBox="0 0 200 120" aria-hidden="true">
+            <rect class="d d-bianco" x="64" y="8" width="72" height="104" rx="6"/>
+            <rect class="d d-cielo" x="74" y="18" width="52" height="17" rx="3"/>
+            <rect class="d d-cielo" x="74" y="41" width="52" height="17" rx="3"/>
+            <rect class="d d-cielo" x="74" y="64" width="52" height="17" rx="3"/>
+            <rect class="d d-cielo" x="74" y="87" width="52" height="15" rx="3"/>
+            <path class="d" d="M82 26.5h18M82 49.5h18M82 72.5h18M82 94.5h18"/>
+            <circle class="d d-menta" cx="116" cy="26.5" r="4"/>
+            <circle class="d d-corallo" cx="116" cy="49.5" r="4"/>
+            <circle class="d d-corallo" cx="116" cy="72.5" r="4"/>
+            <circle class="d d-menta" cx="116" cy="94.5" r="4"/>
+            <rect class="d d-bianco" x="12" y="34" width="40" height="32" rx="3"/>
+            <path class="d" d="M16 60l10-12 8 8 5-5 9 9"/>
+            <circle class="d d-sole" cx="42" cy="43" r="3.5"/>
+            <path class="d" stroke-dasharray="3 6" d="M54 50h8"/>
+            <circle class="d d-corallo" cx="50" cy="34" r="8"/>
+            <path class="d" d="M46.5 30.5l7 7M53.5 30.5l-7 7"/>
+            <path class="d d-sole" d="M163 61l4 0 1 4 4 2 3-3 3 3-3 3 2 4 4 1v4l-4 1-2 4 3 3-3 3-3-3-4 2-1 4h-4l-1-4-4-2-3 3-3-3 3-3-2-4-4-1v-4l4-1 2-4-3-3 3-3 3 3 4-2z"/>
+            <circle class="d d-bianco" cx="165" cy="76" r="4.5"/>
+            <path class="d" stroke-dasharray="3 6" d="M138 76h8"/>
+            <circle class="d d-corallo" cx="180" cy="60" r="8"/>
+            <path class="d" d="M176.5 56.5l7 7M183.5 56.5l-7 7"/>
+          </svg>
+        </div>
+        <p class="racconto">Dopo un riavvio del server, due servizi non ripartono: l'archivio delle foto e le automazioni. Tutto il resto funziona, compresi altri servizi che usano la stessa GPU.</p>
+      </li>
+
+      <li class="vignetta">
+        <div class="contenuto">
+          <span class="didascalia">Perché?<span class="num">1</span></span>
+          <div class="scena">
+            <svg viewBox="0 0 200 120" aria-hidden="true">
+              <rect class="d d-cielo" x="34" y="36" width="116" height="62" rx="4"/>
+              <path class="d" d="M50 44v46M64 44v46M78 44v46M92 44v46M106 44v46M120 44v46M134 44v46"/>
+              <path class="d" d="M30 98h140"/>
+              <circle class="d d-corallo" cx="152" cy="34" r="17"/>
+              <path class="d" d="M145 27l14 14M159 27l-14 14"/>
+            </svg>
+          </div>
+          <p class="racconto">I due container si fermano con <code>NVML: Driver Not Loaded</code>. Ma il driver era caricato: sull'host <code>nvidia-smi</code> rispondeva.</p>
+        </div>
+        <span class="vuota" aria-hidden="true">?</span>
+      </li>
+
+      <li class="vignetta">
+        <div class="contenuto">
+          <span class="didascalia">Perché?<span class="num">2</span></span>
+          <div class="scena">
+            <svg viewBox="0 0 200 120" aria-hidden="true">
+              <path class="d d-bianco" d="M48 22h34l14 14v64H48z"/>
+              <path class="d" d="M82 22v14h14"/>
+              <path class="d" stroke-dasharray="2 7" d="M58 56h28M58 68h28M58 80h20"/>
+              <path class="d" stroke-dasharray="6 7" d="M114 22h34l14 14v64h-48z"/>
+              <text class="d-testo" x="138" y="78" font-size="34" text-anchor="middle">?</text>
+              <text class="d-testo" x="72" y="114" font-size="11" text-anchor="middle">vuoto</text>
+              <text class="d-testo" x="138" y="114" font-size="11" text-anchor="middle">mancante</text>
+            </svg>
+          </div>
+          <p class="racconto">Dentro i container, <code>/dev/nvidia*</code> non erano dispositivi ma file vuoti. <code>/dev/nvidiactl</code> mancava del tutto.</p>
+        </div>
+        <span class="vuota" aria-hidden="true">?</span>
+      </li>
+
+      <li class="vignetta">
+        <div class="contenuto">
+          <span class="didascalia">Perché?<span class="num">3</span></span>
+          <div class="scena">
+            <svg viewBox="0 0 200 120" aria-hidden="true">
+              <path class="d" d="M14 98h172"/>
+              <rect class="d d-cielo" x="112" y="56" width="58" height="34" rx="3"/>
+              <path class="d" d="M124 62v22M136 62v22M148 62v22M160 62v22"/>
+              <path class="d" d="M84 64h18M78 74h24M86 84h16"/>
+              <rect class="d d-sole" x="26" y="62" width="30" height="30" rx="3"/>
+              <rect class="d d-bianco" x="33" y="69" width="16" height="16" rx="2"/>
+              <path class="d" d="M31 58v4M41 58v4M51 58v4M31 92v4M41 92v4M51 92v4"/>
+              <circle class="d d-bianco" cx="100" cy="30" r="15"/>
+              <path class="d" d="M100 21v9l6 4M96 12h8"/>
+            </svg>
+          </div>
+          <p class="racconto">I container erano partiti prima che l'host creasse i dispositivi della GPU. Il mount opzionale, non trovandoli, aveva creato dei segnaposto.</p>
+        </div>
+        <span class="vuota" aria-hidden="true">?</span>
+      </li>
+
+      <li class="vignetta">
+        <div class="contenuto">
+          <span class="didascalia">Perché?<span class="num">4</span></span>
+          <div class="scena">
+            <svg viewBox="0 0 200 120" aria-hidden="true">
+              <g transform="rotate(-12 72 62)">
+                <rect class="d d-bianco" x="46" y="36" width="52" height="52" rx="9"/>
+                <circle class="d-inchiostro" cx="60" cy="50" r="5"/>
+                <circle class="d-inchiostro" cx="72" cy="62" r="5"/>
+                <circle class="d-inchiostro" cx="84" cy="74" r="5"/>
+              </g>
+              <g transform="rotate(10 132 64)">
+                <rect class="d d-sole" x="106" y="38" width="52" height="52" rx="9"/>
+                <circle class="d-inchiostro" cx="120" cy="52" r="5"/>
+                <circle class="d-inchiostro" cx="144" cy="52" r="5"/>
+                <circle class="d-inchiostro" cx="120" cy="76" r="5"/>
+                <circle class="d-inchiostro" cx="144" cy="76" r="5"/>
+              </g>
+              <path class="d" d="M60 104c20 6 60 6 80 0"/>
+            </svg>
+          </div>
+          <p class="racconto">Niente stabiliva un ordine tra la GPU e l'avvio automatico dei container. A ogni boot vinceva chi arrivava prima, per questo alcuni servizi si salvavano.</p>
+        </div>
+        <span class="vuota" aria-hidden="true">?</span>
+      </li>
+
+      <li class="vignetta v-intervento">
+        <div class="contenuto">
+          <span class="didascalia">L'intervento</span>
+          <div class="scena">
+            <svg viewBox="0 0 200 120" aria-hidden="true">
+              <rect class="d d-sole" x="22" y="44" width="36" height="36" rx="3"/>
+              <rect class="d d-bianco" x="30" y="52" width="20" height="20" rx="2"/>
+              <path class="d" d="M28 40v4M40 40v4M52 40v4M28 80v4M40 80v4M52 80v4"/>
+              <path class="d" d="M70 62h34M94 52l10 10-10 10"/>
+              <rect class="d d-cielo" x="116" y="44" width="62" height="36" rx="3"/>
+              <path class="d" d="M128 50v24M140 50v24M152 50v24M164 50v24"/>
+              <circle class="d d-inchiostro" cx="40" cy="26" r="10"/>
+              <text x="40" y="30.5" font-size="13" text-anchor="middle" font-family="Shantell Sans, sans-serif" font-weight="800" fill="#fff">1</text>
+              <circle class="d d-inchiostro" cx="147" cy="26" r="10"/>
+              <text x="147" y="30.5" font-size="13" text-anchor="middle" font-family="Shantell Sans, sans-serif" font-weight="800" fill="#fff">2</text>
+              <circle class="d d-menta" cx="172" cy="90" r="14"/>
+              <path class="d" d="M165 90l5 5 9-10"/>
+            </svg>
+          </div>
+          <p class="racconto">Un servizio di sistema che inizializza la GPU prima di qualsiasi container: <code>nvidia-persistenced</code> con <code>Before=pve-guests.service</code>. Ho usato il binario fornito con il driver installato (580), non il pacchetto della distribuzione fermo alla 550. E ho scritto come riconoscere il problema in un minuto, se tornasse.</p>
+        </div>
+        <span class="vuota" aria-hidden="true">?</span>
+      </li>
+    </ol>
+    <p class="sr" aria-live="polite" id="annuncio"></p>
+    <div class="comandi" id="comandi" hidden>
+      <button class="bottone" id="avanti" type="button">Perché?</button>
+      <button class="link-semplice" id="tutto" type="button">Mostra tutta la striscia</button>
+    </div>
+  </section>
+
+  <section class="sezione" aria-labelledby="t-cosa">
+    <div class="testa">
+      <h2 id="t-cosa">Cosa faccio</h2>
+    </div>
+    <div class="fila">
+      <div class="vignetta">
         <h3>Backend e integrazioni</h3>
         <p>API REST e microservizi in Node.js (Fastify) e Java (Spring Boot). Collego sistemi nuovi a quelli che ci sono già, anche a eventi con Kafka, senza fermare chi li usa.</p>
       </div>
-      <div>
+      <div class="vignetta">
         <h3>Dati e IA</h3>
         <p>Pipeline in Python che raccolgono e ripuliscono dati non strutturati. Assistenti basati su modelli linguistici, con retrieval su database vettoriali e a grafo (Qdrant, Neo4j).</p>
       </div>
-      <div>
+      <div class="vignetta">
         <h3>Applicazioni in produzione</h3>
         <p>Presa in carico di software esistente: ticket, analisi della causa, fix, refactoring del codice legacy con test. Docker, Kubernetes, CI/CD con Jenkins, server Linux.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section aria-labelledby="t-dove">
-  <div class="wrap">
-    <h2 id="t-dove">Dove ho lavorato</h2>
-    <ol class="lavori" reversed>
-      <li>
-        <span class="quando">Dal 2026</span>
-        <div>
-          <h3>SaaS B2B per la conformità normativa</h3>
-          <p>Nel team che sviluppa un assistente IA per verificare ingredienti cosmetici e alimentari rispetto alle normative: retrieval su database vettoriali e a grafo, pulizia del corpus documentale, modello dei dati.</p>
-          <p class="stack">Python, Qdrant, Neo4j</p>
-        </div>
-      </li>
-      <li>
-        <span class="quando">Dal 2026</span>
-        <div>
-          <h3>Duemme Dental, Nerviano</h3>
-          <p>Il CRM dello studio dentistico, sviluppato con un collega: pazienti, questionario anamnestico e odontogramma ricalcati sui moduli cartacei dello studio, preventivi e agenda.</p>
-          <p class="stack">React, Spring Boot, Java 21, PostgreSQL</p>
-        </div>
-      </li>
-      <li>
-        <span class="quando">2024–2025</span>
-        <div>
-          <h3>Consulente freelance per ATS S.p.A.</h3>
-          <ul>
-            <li><strong>Unicoop</strong>, grande distribuzione. Microservizi in Node.js e Fastify; sincronizzazione in tempo reale da Oracle a MongoDB con Kafka durante la migrazione.</li>
-            <li><strong>A2A</strong>, energia. Gestione autonoma dei ticket di produzione su Jira, analisi della causa e hotfix in TypeScript.</li>
-            <li><strong>BitQ</strong>. Refactoring di una codebase Java/Spring Boot con molto debito tecnico, guidato dai test (JUnit, Mockito); containerizzazione con Docker e Kubernetes.</li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <span class="quando">2021–2023</span>
-        <div>
-          <h3>Expandi Group e Account Insight</h3>
-          <p>Full stack e poi lead developer. Una piattaforma proprietaria in Java/Spring Boot, dai requisiti alla produzione; pipeline CI/CD con Jenkins e Docker su AWS; procedure Python e SQL per l'analisi dei dati.</p>
-        </div>
-      </li>
-    </ol>
-    <p class="stack">Laurea in Informatica in corso all'Università degli Studi di Milano.</p>
-  </div>
-</section>
-
-<section aria-labelledby="t-casa" class="casa">
-  <div class="wrap">
-    <h2 id="t-casa">Fuori orario</h2>
-    <p>A casa gestisco un piccolo datacenter: Proxmox con una decina tra container e macchine virtuali, una GPU condivisa per i modelli linguistici in locale, monitoraggio con avvisi su Telegram, controllo dei dischi e backup notturni. Lo tratto come un ambiente di produzione, quindi ogni tanto si rompe davvero. Altri due guasti risolti:</p>
-    <ul>
-      <li>Load a 30 e sembrava RAM esaurita. Era una conversione di container da unprivileged a privileged che aveva lasciato tutti i file con gli UID spostati di 100000: nove container Docker in crash continuo. Backup, proprietari riallineati su tutto il filesystem, quattordici container di nuovo su.</li>
-      <li>Thin pool quasi pieno: decine di GB recuperati abilitando discard e <code>fstrim</code>.</li>
-    </ul>
-    <p style="margin-top:1rem">E qualche strumento per conto mio: un wrapper Python per API multimodali con gestione di token e rate limit, e una pipeline che trasforma thread di Reddit in video verticali senza intervento manuale.</p>
-  </div>
-</section>
-
-<section aria-labelledby="t-contatti" class="contatti">
-  <div class="wrap">
-    <h2 id="t-contatti">Scrivimi</h2>
-    <a class="mail" href="mailto:davide.ouxiang.zhu@gmail.com">davide.ouxiang.zhu@gmail.com</a>
-    <p class="testo">Raccontami cosa c'è da costruire o cosa non torna. Lavoro da remoto, in italiano e in inglese. Il CV completo te lo mando su richiesta.</p>
-    <div class="azioni">
-      <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
-      <a href="https://github.com/Nazah-ops">GitHub</a>
+  <section class="sezione" aria-labelledby="t-dove">
+    <div class="testa">
+      <h2 id="t-dove">Dove ho lavorato</h2>
     </div>
-  </div>
-</section>
+    <div class="tavola">
+      <article class="vignetta v-ora">
+        <span class="didascalia">Dal 2026</span>
+        <h3>SaaS B2B per la conformità normativa</h3>
+        <p>Nel team che sviluppa un assistente IA per verificare ingredienti cosmetici e alimentari rispetto alle normative: retrieval su database vettoriali e a grafo, pulizia del corpus documentale, modello dei dati.</p>
+        <p class="stack">Python, Qdrant, Neo4j</p>
+      </article>
+      <article class="vignetta v-duemme">
+        <span class="didascalia">Dal 2026</span>
+        <h3>Duemme Dental, Nerviano</h3>
+        <p>Il CRM dello studio dentistico, sviluppato con un collega: pazienti, questionario anamnestico e odontogramma ricalcati sui moduli cartacei dello studio, preventivi e agenda.</p>
+        <p class="stack">React, Spring Boot, Java 21, PostgreSQL</p>
+      </article>
+      <article class="vignetta v-ats">
+        <span class="didascalia">2024–2025</span>
+        <h3>Consulente freelance per ATS S.p.A.</h3>
+        <ul class="clienti">
+          <li><strong>Unicoop</strong><span>Grande distribuzione. Microservizi in Node.js e Fastify; sincronizzazione in tempo reale da Oracle a MongoDB con Kafka durante la migrazione.</span></li>
+          <li><strong>A2A</strong><span>Energia. Gestione autonoma dei ticket di produzione su Jira, analisi della causa e hotfix in TypeScript.</span></li>
+          <li><strong>BitQ</strong><span>Refactoring di una codebase Java/Spring Boot con molto debito tecnico, guidato dai test (JUnit, Mockito); containerizzazione con Docker e Kubernetes.</span></li>
+        </ul>
+      </article>
+      <article class="vignetta v-expandi">
+        <span class="didascalia">2021–2023</span>
+        <h3>Expandi Group e Account Insight</h3>
+        <p>Full stack e poi lead developer. Una piattaforma proprietaria in Java/Spring Boot, dai requisiti alla produzione; pipeline CI/CD con Jenkins e Docker su AWS; procedure Python e SQL per l'analisi dei dati.</p>
+      </article>
+      <article class="vignetta v-studi">
+        <span class="didascalia">In corso</span>
+        <h3>Laurea in Informatica</h3>
+        <p>Università degli Studi di Milano.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sezione" aria-labelledby="t-casa">
+    <div class="vignetta v-casa">
+      <div class="testo">
+        <h2 id="t-casa">Fuori orario</h2>
+        <p>A casa gestisco un piccolo datacenter: Proxmox con una decina tra container e macchine virtuali, una GPU condivisa per i modelli linguistici in locale, monitoraggio con avvisi su Telegram, controllo dei dischi e backup notturni. Lo tratto come un ambiente di produzione, quindi ogni tanto si rompe davvero. Altri due guasti risolti:</p>
+        <ul>
+          <li>Load a 30 e sembrava RAM esaurita. Era una conversione di container da unprivileged a privileged che aveva lasciato tutti i file con gli UID spostati di 100000: nove container Docker in crash continuo. Backup, proprietari riallineati su tutto il filesystem, quattordici container di nuovo su.</li>
+          <li>Thin pool quasi pieno: decine di GB recuperati abilitando discard e <code>fstrim</code>.</li>
+        </ul>
+        <p>E qualche strumento per conto mio: un wrapper Python per API multimodali con gestione di token e rate limit, e una pipeline che trasforma thread di Reddit in video verticali senza intervento manuale.</p>
+      </div>
+      <div class="scena">
+        <svg viewBox="0 0 200 120" aria-hidden="true">
+          <path class="d" d="M20 100h160"/>
+          <rect class="d d-sole" x="30" y="58" width="74" height="42" rx="4"/>
+          <path class="d" d="M38 100v8M96 100v8"/>
+          <rect class="d d-bianco" x="118" y="22" width="46" height="78" rx="5"/>
+          <rect class="d d-cielo" x="126" y="32" width="30" height="12" rx="2"/>
+          <rect class="d d-cielo" x="126" y="50" width="30" height="12" rx="2"/>
+          <rect class="d d-cielo" x="126" y="68" width="30" height="12" rx="2"/>
+          <circle class="d d-menta" cx="150" cy="38" r="2.5"/>
+          <circle class="d d-menta" cx="150" cy="56" r="2.5"/>
+          <circle class="d d-menta" cx="150" cy="74" r="2.5"/>
+          <rect class="d d-bianco" x="44" y="30" width="44" height="28" rx="3"/>
+          <path class="d" d="M52 48l7-7 6 5 9-10 8 6"/>
+          <path class="d" d="M164 90c10 0 12-10 18-10"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione" aria-labelledby="t-contatti">
+    <div class="vignetta v-contatti">
+      <h2 id="t-contatti">Scrivimi</h2>
+      <p class="balloon"><a href="mailto:davide.ouxiang.zhu@gmail.com">davide.ouxiang.zhu@gmail.com</a></p>
+      <p>Raccontami cosa c'è da costruire o cosa non torna. Lavoro da remoto, in italiano e in inglese. Il CV completo te lo mando su richiesta.</p>
+      <div class="gruppo">
+        <a href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/">LinkedIn</a>
+        <a href="https://github.com/Nazah-ops">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</div>
 </main>
 
 <footer>
-  <div class="wrap"><p>Zhu Ouxiang Davide, P.IVA 13433450965</p></div>
+  <div class="pagina"><p>Zhu Ouxiang Davide, P.IVA 13433450965</p></div>
 </footer>
 
 <script>
 (() => {
-  const strati = [...document.querySelectorAll('#discesa .strato')];
+  const muovi = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pop = (el, ritardo = 0) => muovi && el.animate(
+    [{ transform: 'scale(.94) rotate(-1deg)', opacity: 0 }, { transform: 'none', opacity: 1 }],
+    { duration: 380, delay: ritardo, easing: 'cubic-bezier(.22, 1, .36, 1)' }
+  );
+
+  // apertura: le vignette della copertina si inchiostrano in sequenza, poi parla il balloon
+  if (muovi && document.visibilityState === 'visible') {
+    document.querySelectorAll('.copertina > .vignetta').forEach((v, i) => v.animate(
+      [{ clipPath: 'inset(0 100% 0 0 round 10px)' }, { clipPath: 'inset(0 0 0 0 round 10px)' }],
+      { duration: 560, delay: i * 110, easing: 'cubic-bezier(.22, 1, .36, 1)' }
+    ));
+    const b = document.getElementById('saluto');
+    b.style.transformOrigin = '58% 120%';
+    b.animate(
+      [{ transform: 'scale(.3)', opacity: 0 }, { transform: 'none', opacity: 1 }],
+      { duration: 420, delay: 520, easing: 'cubic-bezier(.16, 1, .3, 1)', fill: 'backwards' }
+    );
+  }
+
+  // la striscia: si scopre una vignetta alla volta
+  const v = [...document.querySelectorAll('#striscia > li')];
   const comandi = document.getElementById('comandi');
   const avanti = document.getElementById('avanti');
+  const annuncio = document.getElementById('annuncio');
   let n = 1;
-  // la barra prende il colore dello strato successivo: si vede cosa c'è sotto
-  const etichetta = () => {
-    if (n >= strati.length) { comandi.hidden = true; return; }
-    avanti.textContent = n === strati.length - 1 ? 'E quindi?' : 'Perché?';
-    const s = getComputedStyle(strati[n]);
-    comandi.style.background = s.backgroundColor;
-    comandi.style.color = s.color;
-  };
-  const mostra = (i) => { strati[i].hidden = false; strati[i].classList.add('nuovo'); };
-  strati.slice(1).forEach(s => s.hidden = true);
+  v.slice(1).forEach(x => x.classList.add('coperta'));
   comandi.hidden = false;
-  etichetta();
+
+  const scopri = (i, ritardo) => {
+    v[i].classList.remove('coperta');
+    pop(v[i], ritardo);
+  };
+  const aggiorna = () => {
+    if (n >= v.length) {
+      comandi.hidden = true;
+      v[v.length - 1].tabIndex = -1;
+      v[v.length - 1].focus({ preventScroll: false });
+      return;
+    }
+    avanti.textContent = n === v.length - 1 ? 'E quindi?' : 'Perché?';
+  };
   avanti.addEventListener('click', () => {
-    mostra(n++);
-    etichetta();
-    if (comandi.hidden) strati[strati.length - 1].setAttribute('tabindex', '-1'), strati[strati.length - 1].focus();
+    scopri(n, 0);
+    annuncio.textContent = v[n].querySelector('.racconto').textContent;
+    n++;
+    aggiorna();
   });
   document.getElementById('tutto').addEventListener('click', () => {
-    while (n < strati.length) mostra(n++);
-    etichetta();
-    strati[strati.length - 1].setAttribute('tabindex', '-1');
-    strati[strati.length - 1].focus();
+    let k = 0;
+    while (n < v.length) scopri(n++, k++ * 90);
+    annuncio.textContent = 'Striscia completa.';
+    aggiorna();
   });
 })();
 </script>
