@@ -1,0 +1,70 @@
+Davide O. Zhu
+Sviluppatore backend freelance
+Backend, dati, IA
+
+Lavoro da remoto, in italiano e in inglese. Valuto progetti da freelance
+(partita IVA) e posizioni da dipendente.
+
+CONTATTI
+========
+
+- Email: davide.ouxiang.zhu@gmail.com
+- LinkedIn: https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/
+- GitHub: https://github.com/Nazah-ops
+- Sito: https://davide-tech.work
+
+ESPERIENZE
+==========
+
+- Dal 2026 - SaaS B2B per la conformità normativa (cliente non nominato)
+  Nel team che sviluppa un assistente IA per verificare ingredienti
+  cosmetici e alimentari rispetto alle normative; retrieval su database
+  vettoriali e a grafo, pulizia del corpus documentale e modello dei
+  dati.
+  Tecnologie: Python, Qdrant, Neo4j.
+
+- Dal 2026 - Duemme Dental (Nerviano)
+  CRM dello studio dentistico sviluppato con un collega: pazienti,
+  questionario anamnestico, odontogramma, preventivi e agenda.
+  Tecnologie: React, Spring Boot, Java 21, PostgreSQL.
+
+- 2024-2025 - Consulente freelance per ATS S.p.A.
+  Unicoop (grande distribuzione): microservizi Node.js e Fastify;
+  sincronizzazione in tempo reale da Oracle a MongoDB con Kafka durante
+  la migrazione.
+  A2A (energia): gestione autonoma dei ticket di produzione su Jira,
+  analisi della causa e hotfix; TypeScript.
+  BitQ: refactoring di una codebase Java/Spring Boot con molto debito
+  tecnico, guidato dai test con JUnit e Mockito; containerizzazione con
+  Docker e Kubernetes.
+
+- 2021-2023 - Expandi Group e Account Insight
+  Full stack e poi lead developer; piattaforma proprietaria in
+  Java/Spring Boot dai requisiti alla produzione; CI/CD con Jenkins e
+  Docker su AWS; procedure Python e SQL per l'analisi dei dati.
+
+COMPETENZE
+==========
+
+- Java, TypeScript/JavaScript (Node.js), Python, SQL
+- Spring Boot, Fastify, API REST, microservizi, architetture a eventi
+- Apache Kafka, Oracle, MongoDB, PostgreSQL, Pandas
+- Retrieval su Qdrant e Neo4j, modelli linguistici via API e in locale
+- Docker, Kubernetes, Jenkins, AWS, Linux, Proxmox
+- Test con JUnit e Mockito
+
+METODO
+======
+
+Analisi della causa. Caso reale: dopo un riavvio del server di casa, due
+container non ripartivano con "NVML: Driver Not Loaded". La causa era
+che i container partivano prima che l'host creasse i dispositivi della
+GPU. Soluzione: nvidia-persistenced con Before=pve-guests.service.
+
+FORMAZIONE
+==========
+
+- Laurea in Informatica in corso, Università degli Studi di Milano.
+
+Zhu Ouxiang Davide
+P.IVA 13433450965

@@ -1,4 +1,12 @@
 <!doctype html>
+<!--
+  Ciao. Se stai leggendo il sorgente, siamo dello stesso mestiere.
+  Niente framework e niente build: un solo file HTML, due font serviti
+  dal sito, CSS con animazioni legate allo scorrimento e poche righe di
+  JavaScript. Il codice è su https://github.com/Nazah-ops/davide-tech.work
+  La versione per terminale: curl https://davide-tech.work/cv.txt
+  Se c'è qualcosa da costruire o da sistemare: davide.ouxiang.zhu@gmail.com
+-->
 <html lang="it">
 <head>
 <meta charset="utf-8">
@@ -7,13 +15,14 @@
 <title>Davide O. Zhu, sviluppatore backend freelance</title>
 <meta name="description" content="Sviluppatore backend freelance: API, integrazioni, pipeline di dati e sistemi con IA. Node.js, Java/Spring Boot, Python, Kafka. Lavoro da remoto in italiano e in inglese.">
 <link rel="canonical" href="https://davide-tech.work/">
+<link rel="author" href="/humans.txt">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:url" content="https://davide-tech.work/">
 <meta property="og:title" content="Davide O. Zhu, sviluppatore backend freelance">
 <meta property="og:description" content="Backend, dati, IA. Fino alla radice.">
 <meta name="theme-color" content="#07090d">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='%232a3138'/%3E%3Crect x='8' y='8' width='16' height='16' rx='3' fill='%23121820' stroke='%237fd0dd' stroke-width='1.5'/%3E%3Crect x='10.5' y='10.5' width='5' height='5' rx='1' fill='%237fd0dd'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307090d'/%3E%3Cpath d='M9 22V10h5.5a6 6 0 010 12z' fill='none' stroke='%23f4f6f8' stroke-width='2.6' stroke-linejoin='round'/%3E%3Ccircle cx='23.5' cy='21' r='2' fill='%237fd0dd'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/funnel-display.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/funnel-sans.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -21,7 +30,6 @@
 @font-face { font-family: "Funnel Sans"; src: url("fonts/funnel-sans.woff2") format("woff2"); font-weight: 300 800; font-display: swap; }
 
 :root {
-  /* il palco: notte blu, argento, una sola luce ottanio */
   --notte: oklch(0.11 0.012 252);
   --notte-2: oklch(0.155 0.015 246);
   --notte-3: oklch(0.21 0.018 240);
@@ -29,9 +37,7 @@
   --luce: oklch(0.97 0.004 240);
   --argento: oklch(0.78 0.012 240);
   --argento-2: oklch(0.64 0.014 240);
-  --ottanio: oklch(0.55 0.09 210);
   --ottanio-luce: oklch(0.82 0.095 200);
-  --alone: oklch(0.36 0.07 215);
 
   --contenuto: min(100% - 40px, 70rem);
   --sezione: clamp(6rem, 14vw, 11rem);
@@ -55,13 +61,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 ::selection { background: var(--ottanio-luce); color: var(--notte); }
-img, svg { display: block; max-width: 100%; }
+svg { display: block; }
 p { margin: 0; text-wrap: pretty; }
 h1, h2, h3 { margin: 0; text-wrap: balance; font-family: var(--display); }
 a { color: var(--ottanio-luce); text-underline-offset: 0.2em; }
 code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.88em; overflow-wrap: anywhere; color: var(--luce); }
 :focus-visible { outline: 2px solid var(--ottanio-luce); outline-offset: 3px; border-radius: 6px; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .contenuto { width: var(--contenuto); margin-inline: auto; }
 section[id] { scroll-margin-top: 3.5rem; }
 
@@ -69,8 +74,6 @@ section[id] { scroll-margin-top: 3.5rem; }
 .display-2 { font-size: clamp(2.5rem, 6.4vw, 4.5rem); font-weight: 550; line-height: 1.04; letter-spacing: -0.032em; }
 .lead { font-size: clamp(1.2rem, 2.1vw, 1.5rem); font-weight: 400; line-height: 1.45; color: var(--argento); max-width: 40rem; }
 h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.012em; }
-sup { font-size: 0.55em; line-height: 0; vertical-align: super; font-weight: 500; }
-sup a { color: inherit; text-decoration: none; padding: 0 0.1em; }
 
 /* pulsanti */
 .pillola {
@@ -98,49 +101,23 @@ sup a { color: inherit; text-decoration: none; padding: 0 0.1em; }
 .barra ul a:hover { color: var(--luce); }
 @media (min-width: 760px) { .barra ul { display: flex; } }
 
-/* copertina: un faro dall'alto */
+/* copertina: un faro dall'alto, solo tipografia */
 .copertina {
   position: relative;
   overflow-x: clip;
+  min-height: calc(100svh - 52px);
+  display: grid;
+  place-items: center;
   text-align: center;
-  padding: clamp(5rem, 14vh, 9rem) 0 clamp(2rem, 5vh, 3.5rem);
+  padding: clamp(4rem, 10vh, 7rem) 0;
   background:
     radial-gradient(55% 60% at 50% 0%, oklch(0.34 0.06 220 / 0.55), transparent 72%),
     radial-gradient(90% 70% at 50% 110%, oklch(0.2 0.03 225 / 0.6), transparent 70%);
 }
 .copertina .contenuto { display: grid; justify-items: center; gap: 1.4rem; }
-.copertina .sottotitolo { font-family: var(--display); font-size: clamp(1.45rem, 3vw, 2.25rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; color: var(--luce); }
-.copertina .presentazione { color: var(--argento); max-width: 34rem; }
+.copertina .sottotitolo { font-family: var(--display); font-size: clamp(1.45rem, 3vw, 2.25rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.copertina .presentazione { color: var(--argento); max-width: 36rem; }
 .copertina .azioni { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem 1.75rem; margin-top: 0.75rem; }
-
-/* il chip nella copertina */
-.palco { position: relative; width: min(100% - 40px, 30rem); margin: clamp(3rem, 8vh, 5rem) auto 0; view-timeline-name: --chip; }
-.palco::before {
-  content: "";
-  position: absolute;
-  inset: -30% -40% -10%;
-  background: radial-gradient(closest-side, oklch(0.42 0.08 212 / 0.45), transparent);
-  z-index: -1;
-}
-.palco svg { width: 100%; height: auto; filter: drop-shadow(0 40px 60px oklch(0 0 0 / 0.6)); }
-.lama { opacity: 0; }
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .palco svg { transform-origin: 50% 100%; animation: raddrizza linear both; animation-timeline: --chip; animation-range: entry 0% cover 45%; }
-    .lama { animation: lama linear both; animation-timeline: --chip; animation-range: entry 10% cover 60%; }
-    @keyframes raddrizza { from { transform: perspective(1200px) rotateX(46deg) scale(0.88); } to { transform: perspective(1200px) rotateX(0deg) scale(1); } }
-    @keyframes lama { 0% { transform: translateX(-160px); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateX(560px); opacity: 0; } }
-  }
-}
-.core { cursor: pointer; }
-.core .base { fill: #161d24; stroke: #333e49; stroke-width: 1.5; transition: fill 400ms ease-out, stroke 400ms ease-out; }
-.core .blocco, .core .cella { fill: #212b34; stroke: #3f4b57; stroke-width: 1; transition: fill 400ms ease-out, stroke 400ms ease-out; }
-.core .traccia { stroke: #43515e; stroke-width: 2; fill: none; transition: stroke 400ms ease-out; }
-.core .etichetta { fill: #8693a0; font: 600 9.5px var(--display); letter-spacing: 0.02em; transition: fill 400ms ease-out; }
-.core.attivo .base { fill: url(#g-acceso); stroke: var(--ottanio-luce); }
-.core.attivo .blocco, .core.attivo .cella { fill: oklch(0.5 0.08 205 / 0.55); stroke: var(--ottanio-luce); }
-.core.attivo .traccia { stroke: var(--ottanio-luce); }
-.core.attivo .etichetta { fill: var(--luce); }
 
 /* la sequenza: una battuta alla volta; la luce cambia tinta a ogni battuta */
 @property --tinta { syntax: "<number>"; inherits: false; initial-value: 215; }
@@ -182,54 +159,37 @@ sup a { color: inherit; text-decoration: none; padding: 0 0.1em; }
   }
 }
 
-/* il chip spiegato */
-.chip {
-  padding: var(--sezione) 0;
-  background: linear-gradient(to bottom, var(--notte), var(--notte-2) 45%, var(--notte));
-}
-.chip .testa { display: grid; gap: 1.25rem; margin-bottom: clamp(2.5rem, 6vw, 3.5rem); }
-.chip .disposizione { width: var(--contenuto); margin-inline: auto; display: grid; gap: 3rem; }
-.mini-chip { display: none; }
-@media (min-width: 1000px) {
-  .chip .disposizione { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 5rem; align-items: center; }
-  .mini-chip { display: block; position: relative; }
-  .mini-chip::before { content: ""; position: absolute; inset: -20%; background: radial-gradient(closest-side, oklch(0.38 0.07 212 / 0.4), transparent); z-index: -1; }
-  .mini-chip svg { width: 100%; height: auto; }
-}
-.selettore {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem;
-  width: fit-content; max-width: 100%;
-  margin: 0 0 2.5rem; padding: 0.25rem;
-  border-radius: 999px;
-  background: var(--notte-3);
-  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06);
-}
-.selettore[hidden] { display: none; }
-.selettore button {
-  min-height: 44px; padding: 0.5rem 1.15rem;
-  border: 0; border-radius: 999px;
-  background: transparent; color: var(--argento);
-  font: 500 0.95rem var(--corpo);
-  cursor: pointer;
-  transition: background-color 300ms ease-out, color 300ms ease-out;
-}
-.selettore button:hover { color: var(--luce); }
-.selettore button[aria-selected="true"] { background: var(--luce); color: var(--notte); }
-@media (max-width: 480px) {
-  .selettore { flex-wrap: nowrap; gap: 0.125rem; }
-  .selettore button { padding: 0.5rem 0.7rem; font-size: 0.875rem; }
-}
-.pannelli { display: grid; gap: 3rem; }
-.pannello { display: grid; gap: 1rem; max-width: 38rem; }
-.pannello[hidden] { display: none; }
-.pannello h3 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 550; letter-spacing: -0.02em; }
-.pannello p { color: var(--argento); }
-.pannello ul { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.pannello li { padding: 0.3rem 0.8rem; border: 1px solid var(--filo); border-radius: 999px; font-size: 0.875rem; color: var(--luce); background: oklch(1 0 0 / 0.03); }
-
-/* diagnostica */
-.diagnostica { padding: var(--sezione) 0; }
+/* sezioni */
 .testa { display: grid; gap: 1.25rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+.sfumata { background: linear-gradient(to bottom, var(--notte), var(--notte-2) 50%, var(--notte)); }
+
+/* competenze: una frase per tutti, i dettagli per chi è del mestiere */
+.competenze { padding: var(--sezione) 0; }
+.griglia { display: grid; gap: 3rem 4.5rem; }
+@media (min-width: 820px) { .griglia { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.competenza { display: grid; gap: 0.85rem; align-content: start; padding-top: 1.5rem; border-top: 1px solid oklch(1 0 0 / 0.16); }
+.competenza h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 550; letter-spacing: -0.02em; }
+.competenza > p { color: var(--argento); max-width: 34rem; }
+.tecnici summary {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  min-height: 44px;
+  color: var(--ottanio-luce);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+.tecnici summary::-webkit-details-marker { display: none; }
+.tecnici summary svg { width: 0.7em; height: 0.7em; transition: transform 300ms var(--uscita); }
+.tecnici[open] summary svg { transform: rotate(90deg); }
+.tecnici summary:hover span { text-decoration: underline; }
+.tecnici p { color: var(--luce); font-size: 0.9375rem; line-height: 1.6; max-width: 34rem; padding: 0.25rem 0 0.5rem 1rem; border-left: 1px solid oklch(1 0 0 / 0.16); }
+@media (prefers-reduced-motion: no-preference) {
+  .tecnici[open] p { animation: compare 450ms var(--uscita); }
+  @keyframes compare { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
+
+/* il caso reale */
+.caso { padding: var(--sezione) 0; }
 .galleria {
   --margine: max(20px, (100vw - 70rem) / 2);
   list-style: none; margin: 0;
@@ -265,8 +225,8 @@ sup a { color: inherit; text-decoration: none; padding: 0 0.1em; }
 .frecce button:disabled { opacity: 0.35; cursor: default; }
 .frecce svg { width: 16px; height: 16px; }
 
-/* compatibilità */
-.compatibilita { padding: var(--sezione) 0; background: linear-gradient(to bottom, var(--notte), var(--notte-2) 50%, var(--notte)); }
+/* esperienze */
+.esperienze { padding: var(--sezione) 0; }
 .elenco { list-style: none; margin: 0; padding: 0; border-top: 1px solid oklch(1 0 0 / 0.16); }
 .elenco li { display: grid; gap: 0.5rem 3rem; padding: 1.75rem 0; border-bottom: 1px solid var(--filo); }
 .elenco h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); font-weight: 550; letter-spacing: -0.02em; }
@@ -276,56 +236,38 @@ sup a { color: inherit; text-decoration: none; padding: 0 0.1em; }
 .elenco .stack { color: var(--argento-2); font-size: 0.9375rem; }
 @media (min-width: 820px) { .elenco li { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); } }
 
-/* laboratorio */
-.laboratorio { padding: var(--sezione) 0; }
-.colonne { display: grid; gap: 2.5rem 3rem; }
-.colonne > div { display: grid; gap: 0.6rem; align-content: start; padding-top: 1.25rem; border-top: 1px solid var(--filo); }
-.colonne p { color: var(--argento); }
-@media (min-width: 820px) { .colonne { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* il server di casa */
+.casa { padding: var(--sezione) 0; }
+.casa .corpo { display: grid; gap: 2rem 4.5rem; }
+.casa ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.75rem; }
+.casa li { display: grid; gap: 0.4rem; padding-top: 1.25rem; border-top: 1px solid var(--filo); }
+.casa li > p { color: var(--argento); }
+@media (min-width: 820px) { .casa .corpo { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 
-/* specifiche */
-.specifiche { padding: var(--sezione) 0; background: linear-gradient(to bottom, var(--notte), var(--notte-2) 50%, var(--notte)); }
+/* in sintesi */
+.sintesi { padding: var(--sezione) 0; }
 .scheda { margin: 0; border-top: 1px solid oklch(1 0 0 / 0.16); }
 .scheda > div { display: grid; gap: 0.35rem 3rem; padding: 1.35rem 0; border-bottom: 1px solid var(--filo); }
 .scheda dt { font-family: var(--display); font-weight: 600; }
 .scheda dd { margin: 0; color: var(--argento); max-width: 42rem; }
 @media (min-width: 820px) { .scheda > div { grid-template-columns: 15rem minmax(0, 1fr); } }
 
-/* un'ultima cosa */
-.ultima { text-align: center; }
-.annuncio {
-  display: grid; place-items: center;
-  min-height: 70svh;
-  font-family: var(--display);
-  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--argento);
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .annuncio p { animation: annuncio linear both; animation-timeline: view(); animation-range: cover 15% cover 85%; }
-    @keyframes annuncio {
-      0% { opacity: 0; filter: blur(10px); }
-      35%, 65% { opacity: 1; filter: blur(0); }
-      100% { opacity: 0; filter: blur(10px); }
-    }
-  }
-}
-.chiusura {
-  padding: clamp(4rem, 10vw, 7rem) 0 var(--sezione);
+/* contatti */
+.contatti {
+  text-align: center;
+  padding: var(--sezione) 0;
   background: radial-gradient(60% 70% at 50% 100%, oklch(0.36 0.07 212 / 0.55), transparent 75%);
 }
-.chiusura .contenuto { display: grid; justify-items: center; gap: 1.5rem; }
-.chiusura .lead { color: oklch(0.86 0.03 210); }
-.chiusura .email { font-size: clamp(1.05rem, 2.6vw, 1.35rem); font-weight: 500; overflow-wrap: anywhere; color: var(--luce); }
-.chiusura .altri { display: flex; gap: 0.25rem 1.75rem; flex-wrap: wrap; justify-content: center; }
+.contatti .contenuto { display: grid; justify-items: center; gap: 1.5rem; }
+.contatti .lead { color: oklch(0.86 0.03 210); }
+.contatti .email { font-size: clamp(1.05rem, 2.6vw, 1.35rem); font-weight: 500; overflow-wrap: anywhere; color: var(--luce); }
+.contatti .altri { display: flex; gap: 0.25rem 1.75rem; flex-wrap: wrap; justify-content: center; }
 
 /* piè di pagina */
 footer { color: var(--argento-2); font-size: 0.8125rem; line-height: 1.55; padding-bottom: 2.5rem; }
-footer .contenuto { border-top: 1px solid var(--filo); padding-top: 1.5rem; display: grid; gap: 1rem; }
-footer ol { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.4rem; max-width: 46rem; }
+footer .contenuto { border-top: 1px solid var(--filo); padding-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content: space-between; }
 footer a { color: var(--argento); }
+footer code { color: var(--argento); }
 </style>
 </head>
 <body>
@@ -334,10 +276,10 @@ footer a { color: var(--argento); }
   <div class="contenuto">
     <a class="nome" href="#">Davide O. Zhu</a>
     <ul>
-      <li><a href="#chip">Chip</a></li>
-      <li><a href="#diagnostica">Diagnostica</a></li>
-      <li><a href="#compatibilita">Compatibilità</a></li>
-      <li><a href="#specifiche">Specifiche</a></li>
+      <li><a href="#competenze">Competenze</a></li>
+      <li><a href="#caso">Un caso reale</a></li>
+      <li><a href="#esperienze">Esperienze</a></li>
+      <li><a href="#contatti">Contatti</a></li>
     </ul>
     <a class="pillola piccola" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
   </div>
@@ -349,105 +291,67 @@ footer a { color: var(--argento); }
   <div class="contenuto">
     <h1 class="display-1" id="nome">Davide O. Zhu</h1>
     <p class="sottotitolo">Backend, dati, IA. Fino alla radice.</p>
-    <p class="presentazione">Sviluppatore backend freelance, in produzione dal 2021. Valuto nuovi progetti e posizioni da remoto.<sup><a href="#nota-1" id="rif-1" aria-label="Nota 1">1</a></sup></p>
+    <p class="presentazione">Sviluppo la parte del software che non si vede: i servizi, i dati e le integrazioni che fanno funzionare un'applicazione. Freelance, su sistemi in produzione dal 2021.</p>
     <div class="azioni">
       <a class="pillola" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
-      <a class="collegamento" href="#specifiche"><span>Guarda le specifiche</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="collegamento" href="#esperienze"><span>Vedi le esperienze</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
-  </div>
-  <div class="palco">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><radialGradient id="g-acceso" cx=".5" cy=".45" r=".7"><stop offset="0" stop-color="#3f8d98"/><stop offset=".55" stop-color="#1d4c55"/><stop offset="1" stop-color="#122a30"/></radialGradient></defs></svg>
-<svg viewBox="0 0 400 400" role="img" aria-labelledby="c1-titolo"><title id="c1-titolo">Il chip Z1, con quattro core: backend, dati, IA e infrastruttura.</title>
-<defs>
-<linearGradient id="c1-pacchetto" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58636e"/><stop offset=".35" stop-color="#2a3239"/><stop offset=".7" stop-color="#1d2329"/><stop offset="1" stop-color="#3b444d"/></linearGradient>
-<linearGradient id="c1-bordo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4dde5"/><stop offset=".45" stop-color="#5a6570"/><stop offset="1" stop-color="#9aa6b1"/></linearGradient>
-<linearGradient id="c1-die" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141b21"/><stop offset="1" stop-color="#0b1014"/></linearGradient>
-<linearGradient id="c1-lama" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-<clipPath id="c1-sagoma"><rect x="14" y="14" width="372" height="372" rx="42"/></clipPath>
-</defs>
-<rect x="14" y="14" width="372" height="372" rx="42" fill="url(#c1-pacchetto)" stroke="url(#c1-bordo)" stroke-width="2"/>
-<g fill="#b8c3cd" opacity=".5"><rect x="66.0" y="29" width="7" height="3" rx="1"/><rect x="66.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="66.0" width="3" height="7" rx="1"/><rect x="368" y="66.0" width="3" height="7" rx="1"/><rect x="81.5" y="29" width="7" height="3" rx="1"/><rect x="81.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="81.5" width="3" height="7" rx="1"/><rect x="368" y="81.5" width="3" height="7" rx="1"/><rect x="97.0" y="29" width="7" height="3" rx="1"/><rect x="97.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="97.0" width="3" height="7" rx="1"/><rect x="368" y="97.0" width="3" height="7" rx="1"/><rect x="112.5" y="29" width="7" height="3" rx="1"/><rect x="112.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="112.5" width="3" height="7" rx="1"/><rect x="368" y="112.5" width="3" height="7" rx="1"/><rect x="128.0" y="29" width="7" height="3" rx="1"/><rect x="128.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="128.0" width="3" height="7" rx="1"/><rect x="368" y="128.0" width="3" height="7" rx="1"/><rect x="143.5" y="29" width="7" height="3" rx="1"/><rect x="143.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="143.5" width="3" height="7" rx="1"/><rect x="368" y="143.5" width="3" height="7" rx="1"/><rect x="159.0" y="29" width="7" height="3" rx="1"/><rect x="159.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="159.0" width="3" height="7" rx="1"/><rect x="368" y="159.0" width="3" height="7" rx="1"/><rect x="174.5" y="29" width="7" height="3" rx="1"/><rect x="174.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="174.5" width="3" height="7" rx="1"/><rect x="368" y="174.5" width="3" height="7" rx="1"/><rect x="190.0" y="29" width="7" height="3" rx="1"/><rect x="190.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="190.0" width="3" height="7" rx="1"/><rect x="368" y="190.0" width="3" height="7" rx="1"/><rect x="205.5" y="29" width="7" height="3" rx="1"/><rect x="205.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="205.5" width="3" height="7" rx="1"/><rect x="368" y="205.5" width="3" height="7" rx="1"/><rect x="221.0" y="29" width="7" height="3" rx="1"/><rect x="221.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="221.0" width="3" height="7" rx="1"/><rect x="368" y="221.0" width="3" height="7" rx="1"/><rect x="236.5" y="29" width="7" height="3" rx="1"/><rect x="236.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="236.5" width="3" height="7" rx="1"/><rect x="368" y="236.5" width="3" height="7" rx="1"/><rect x="252.0" y="29" width="7" height="3" rx="1"/><rect x="252.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="252.0" width="3" height="7" rx="1"/><rect x="368" y="252.0" width="3" height="7" rx="1"/><rect x="267.5" y="29" width="7" height="3" rx="1"/><rect x="267.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="267.5" width="3" height="7" rx="1"/><rect x="368" y="267.5" width="3" height="7" rx="1"/><rect x="283.0" y="29" width="7" height="3" rx="1"/><rect x="283.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="283.0" width="3" height="7" rx="1"/><rect x="368" y="283.0" width="3" height="7" rx="1"/><rect x="298.5" y="29" width="7" height="3" rx="1"/><rect x="298.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="298.5" width="3" height="7" rx="1"/><rect x="368" y="298.5" width="3" height="7" rx="1"/><rect x="314.0" y="29" width="7" height="3" rx="1"/><rect x="314.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="314.0" width="3" height="7" rx="1"/><rect x="368" y="314.0" width="3" height="7" rx="1"/><rect x="329.5" y="29" width="7" height="3" rx="1"/><rect x="329.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="329.5" width="3" height="7" rx="1"/><rect x="368" y="329.5" width="3" height="7" rx="1"/></g>
-<text x="352" y="358" text-anchor="end" fill="#c0cad3" opacity=".7" style="font: 700 15px var(--display); letter-spacing: .04em">Z1</text>
-<rect x="62" y="62" width="276" height="276" rx="16" fill="url(#c1-die)" stroke="#5f6b77" stroke-width="1.5"/>
-<path d="M200 74V326M74 200H326" stroke="#1f272f" stroke-width="3"/>
-<g class="core" data-core="backend"><rect class="base" x="76" y="76" width="120" height="120" rx="8"/><rect class="blocco" x="86" y="86" width="48" height="38" rx="4"/><rect class="blocco" x="138" y="86" width="48" height="38" rx="4"/><rect class="blocco" x="86" y="130" width="48" height="38" rx="4"/><rect class="blocco" x="138" y="130" width="48" height="38" rx="4"/><text class="etichetta" x="86" y="188">Backend</text></g>
-<g class="core" data-core="dati"><rect class="base" x="204" y="76" width="120" height="120" rx="8"/><path class="traccia" d="M214 92H314"/><path class="traccia" d="M214 106H314" stroke-dasharray="10 5"/><path class="traccia" d="M214 120H314"/><path class="traccia" d="M214 134H314" stroke-dasharray="10 5"/><path class="traccia" d="M214 148H314"/><path class="traccia" d="M214 162H314" stroke-dasharray="10 5"/><text class="etichetta" x="214" y="188">Dati</text></g>
-<g class="core" data-core="ia"><rect class="base" x="76" y="204" width="120" height="120" rx="8"/><rect class="cella" x="86" y="214" width="13" height="13" rx="2"/><rect class="cella" x="103" y="214" width="13" height="13" rx="2"/><rect class="cella" x="120" y="214" width="13" height="13" rx="2"/><rect class="cella" x="137" y="214" width="13" height="13" rx="2"/><rect class="cella" x="154" y="214" width="13" height="13" rx="2"/><rect class="cella" x="171" y="214" width="13" height="13" rx="2"/><rect class="cella" x="86" y="231" width="13" height="13" rx="2"/><rect class="cella" x="103" y="231" width="13" height="13" rx="2"/><rect class="cella" x="120" y="231" width="13" height="13" rx="2"/><rect class="cella" x="137" y="231" width="13" height="13" rx="2"/><rect class="cella" x="154" y="231" width="13" height="13" rx="2"/><rect class="cella" x="171" y="231" width="13" height="13" rx="2"/><rect class="cella" x="86" y="248" width="13" height="13" rx="2"/><rect class="cella" x="103" y="248" width="13" height="13" rx="2"/><rect class="cella" x="120" y="248" width="13" height="13" rx="2"/><rect class="cella" x="137" y="248" width="13" height="13" rx="2"/><rect class="cella" x="154" y="248" width="13" height="13" rx="2"/><rect class="cella" x="171" y="248" width="13" height="13" rx="2"/><rect class="cella" x="86" y="265" width="13" height="13" rx="2"/><rect class="cella" x="103" y="265" width="13" height="13" rx="2"/><rect class="cella" x="120" y="265" width="13" height="13" rx="2"/><rect class="cella" x="137" y="265" width="13" height="13" rx="2"/><rect class="cella" x="154" y="265" width="13" height="13" rx="2"/><rect class="cella" x="171" y="265" width="13" height="13" rx="2"/><rect class="cella" x="86" y="282" width="13" height="13" rx="2"/><rect class="cella" x="103" y="282" width="13" height="13" rx="2"/><rect class="cella" x="120" y="282" width="13" height="13" rx="2"/><rect class="cella" x="137" y="282" width="13" height="13" rx="2"/><rect class="cella" x="154" y="282" width="13" height="13" rx="2"/><rect class="cella" x="171" y="282" width="13" height="13" rx="2"/><text class="etichetta" x="86" y="316">IA</text></g>
-<g class="core" data-core="infra"><rect class="base" x="204" y="204" width="120" height="120" rx="8"/><rect class="blocco" x="214" y="216" width="100" height="22" rx="4"/><rect class="cella" x="296" y="224" width="10" height="6" rx="1.5"/><rect class="blocco" x="214" y="244" width="100" height="22" rx="4"/><rect class="cella" x="296" y="252" width="10" height="6" rx="1.5"/><rect class="blocco" x="214" y="272" width="100" height="22" rx="4"/><rect class="cella" x="296" y="280" width="10" height="6" rx="1.5"/><text class="etichetta" x="214" y="316">Infrastruttura</text></g>
-<g clip-path="url(#c1-sagoma)" pointer-events="none"><rect class="lama" x="-60" y="-80" width="110" height="560" fill="url(#c1-lama)" transform="rotate(18 200 200)"/></g>
-</svg>
   </div>
 </header>
 
-<section class="sequenza" aria-label="Quattro core, un solo sviluppatore">
+<section class="sequenza" aria-label="Di cosa mi occupo">
   <div class="palcoscenico">
-    <div class="battuta"><p class="parola">Backend.</p><p class="riga">API e microservizi in Node.js e Java, collegati ai sistemi che ci sono già.</p></div>
-    <div class="battuta"><p class="parola">Dati.</p><p class="riga">Pipeline in Python e SQL, anche in tempo reale tra un database e l'altro.</p></div>
-    <div class="battuta"><p class="parola">IA.</p><p class="riga">Assistenti con modelli linguistici e retrieval su database vettoriali e a grafo.</p></div>
-    <div class="battuta"><p class="parola">Infrastruttura.</p><p class="riga">Container, pipeline di rilascio, server Linux tenuti in piedi.</p></div>
-    <div class="battuta finale"><p class="parola">In un solo sviluppatore.</p><p class="riga">Senza passaggi di mano tra chi scrive il codice, chi muove i dati e chi lo tiene in piedi.</p></div>
+    <div class="battuta"><p class="parola">Backend.</p><p class="riga">I servizi che fanno funzionare un'applicazione, collegati ai sistemi che l'azienda usa già.</p></div>
+    <div class="battuta"><p class="parola">Dati.</p><p class="riga">Raccolti, puliti e spostati in modo affidabile, anche in tempo reale.</p></div>
+    <div class="battuta"><p class="parola">IA.</p><p class="riga">Assistenti che rispondono usando i documenti giusti.</p></div>
+    <div class="battuta"><p class="parola">Infrastruttura.</p><p class="riga">Software in produzione che resta in piedi, e rilasci senza sorprese.</p></div>
+    <div class="battuta finale"><p class="parola">In un solo sviluppatore.</p><p class="riga">Senza passaggi di mano tra chi scrive il codice, chi gestisce i dati e chi tiene in piedi i server.</p></div>
   </div>
 </section>
 
-<section class="chip" id="chip" aria-labelledby="t-chip">
-  <div class="disposizione">
-    <div class="mini-chip"><svg viewBox="0 0 400 400" aria-hidden="true" focusable="false">
-<defs>
-<linearGradient id="c2-pacchetto" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58636e"/><stop offset=".35" stop-color="#2a3239"/><stop offset=".7" stop-color="#1d2329"/><stop offset="1" stop-color="#3b444d"/></linearGradient>
-<linearGradient id="c2-bordo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4dde5"/><stop offset=".45" stop-color="#5a6570"/><stop offset="1" stop-color="#9aa6b1"/></linearGradient>
-<linearGradient id="c2-die" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141b21"/><stop offset="1" stop-color="#0b1014"/></linearGradient>
-</defs>
-<rect x="14" y="14" width="372" height="372" rx="42" fill="url(#c2-pacchetto)" stroke="url(#c2-bordo)" stroke-width="2"/>
-<g fill="#b8c3cd" opacity=".5"><rect x="66.0" y="29" width="7" height="3" rx="1"/><rect x="66.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="66.0" width="3" height="7" rx="1"/><rect x="368" y="66.0" width="3" height="7" rx="1"/><rect x="81.5" y="29" width="7" height="3" rx="1"/><rect x="81.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="81.5" width="3" height="7" rx="1"/><rect x="368" y="81.5" width="3" height="7" rx="1"/><rect x="97.0" y="29" width="7" height="3" rx="1"/><rect x="97.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="97.0" width="3" height="7" rx="1"/><rect x="368" y="97.0" width="3" height="7" rx="1"/><rect x="112.5" y="29" width="7" height="3" rx="1"/><rect x="112.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="112.5" width="3" height="7" rx="1"/><rect x="368" y="112.5" width="3" height="7" rx="1"/><rect x="128.0" y="29" width="7" height="3" rx="1"/><rect x="128.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="128.0" width="3" height="7" rx="1"/><rect x="368" y="128.0" width="3" height="7" rx="1"/><rect x="143.5" y="29" width="7" height="3" rx="1"/><rect x="143.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="143.5" width="3" height="7" rx="1"/><rect x="368" y="143.5" width="3" height="7" rx="1"/><rect x="159.0" y="29" width="7" height="3" rx="1"/><rect x="159.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="159.0" width="3" height="7" rx="1"/><rect x="368" y="159.0" width="3" height="7" rx="1"/><rect x="174.5" y="29" width="7" height="3" rx="1"/><rect x="174.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="174.5" width="3" height="7" rx="1"/><rect x="368" y="174.5" width="3" height="7" rx="1"/><rect x="190.0" y="29" width="7" height="3" rx="1"/><rect x="190.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="190.0" width="3" height="7" rx="1"/><rect x="368" y="190.0" width="3" height="7" rx="1"/><rect x="205.5" y="29" width="7" height="3" rx="1"/><rect x="205.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="205.5" width="3" height="7" rx="1"/><rect x="368" y="205.5" width="3" height="7" rx="1"/><rect x="221.0" y="29" width="7" height="3" rx="1"/><rect x="221.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="221.0" width="3" height="7" rx="1"/><rect x="368" y="221.0" width="3" height="7" rx="1"/><rect x="236.5" y="29" width="7" height="3" rx="1"/><rect x="236.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="236.5" width="3" height="7" rx="1"/><rect x="368" y="236.5" width="3" height="7" rx="1"/><rect x="252.0" y="29" width="7" height="3" rx="1"/><rect x="252.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="252.0" width="3" height="7" rx="1"/><rect x="368" y="252.0" width="3" height="7" rx="1"/><rect x="267.5" y="29" width="7" height="3" rx="1"/><rect x="267.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="267.5" width="3" height="7" rx="1"/><rect x="368" y="267.5" width="3" height="7" rx="1"/><rect x="283.0" y="29" width="7" height="3" rx="1"/><rect x="283.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="283.0" width="3" height="7" rx="1"/><rect x="368" y="283.0" width="3" height="7" rx="1"/><rect x="298.5" y="29" width="7" height="3" rx="1"/><rect x="298.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="298.5" width="3" height="7" rx="1"/><rect x="368" y="298.5" width="3" height="7" rx="1"/><rect x="314.0" y="29" width="7" height="3" rx="1"/><rect x="314.0" y="368" width="7" height="3" rx="1"/><rect x="29" y="314.0" width="3" height="7" rx="1"/><rect x="368" y="314.0" width="3" height="7" rx="1"/><rect x="329.5" y="29" width="7" height="3" rx="1"/><rect x="329.5" y="368" width="7" height="3" rx="1"/><rect x="29" y="329.5" width="3" height="7" rx="1"/><rect x="368" y="329.5" width="3" height="7" rx="1"/></g>
-<text x="352" y="358" text-anchor="end" fill="#c0cad3" opacity=".7" style="font: 700 15px var(--display); letter-spacing: .04em">Z1</text>
-<rect x="62" y="62" width="276" height="276" rx="16" fill="url(#c2-die)" stroke="#5f6b77" stroke-width="1.5"/>
-<path d="M200 74V326M74 200H326" stroke="#1f272f" stroke-width="3"/>
-<g class="core" data-core="backend"><rect class="base" x="76" y="76" width="120" height="120" rx="8"/><rect class="blocco" x="86" y="86" width="48" height="38" rx="4"/><rect class="blocco" x="138" y="86" width="48" height="38" rx="4"/><rect class="blocco" x="86" y="130" width="48" height="38" rx="4"/><rect class="blocco" x="138" y="130" width="48" height="38" rx="4"/><text class="etichetta" x="86" y="188">Backend</text></g>
-<g class="core" data-core="dati"><rect class="base" x="204" y="76" width="120" height="120" rx="8"/><path class="traccia" d="M214 92H314"/><path class="traccia" d="M214 106H314" stroke-dasharray="10 5"/><path class="traccia" d="M214 120H314"/><path class="traccia" d="M214 134H314" stroke-dasharray="10 5"/><path class="traccia" d="M214 148H314"/><path class="traccia" d="M214 162H314" stroke-dasharray="10 5"/><text class="etichetta" x="214" y="188">Dati</text></g>
-<g class="core" data-core="ia"><rect class="base" x="76" y="204" width="120" height="120" rx="8"/><rect class="cella" x="86" y="214" width="13" height="13" rx="2"/><rect class="cella" x="103" y="214" width="13" height="13" rx="2"/><rect class="cella" x="120" y="214" width="13" height="13" rx="2"/><rect class="cella" x="137" y="214" width="13" height="13" rx="2"/><rect class="cella" x="154" y="214" width="13" height="13" rx="2"/><rect class="cella" x="171" y="214" width="13" height="13" rx="2"/><rect class="cella" x="86" y="231" width="13" height="13" rx="2"/><rect class="cella" x="103" y="231" width="13" height="13" rx="2"/><rect class="cella" x="120" y="231" width="13" height="13" rx="2"/><rect class="cella" x="137" y="231" width="13" height="13" rx="2"/><rect class="cella" x="154" y="231" width="13" height="13" rx="2"/><rect class="cella" x="171" y="231" width="13" height="13" rx="2"/><rect class="cella" x="86" y="248" width="13" height="13" rx="2"/><rect class="cella" x="103" y="248" width="13" height="13" rx="2"/><rect class="cella" x="120" y="248" width="13" height="13" rx="2"/><rect class="cella" x="137" y="248" width="13" height="13" rx="2"/><rect class="cella" x="154" y="248" width="13" height="13" rx="2"/><rect class="cella" x="171" y="248" width="13" height="13" rx="2"/><rect class="cella" x="86" y="265" width="13" height="13" rx="2"/><rect class="cella" x="103" y="265" width="13" height="13" rx="2"/><rect class="cella" x="120" y="265" width="13" height="13" rx="2"/><rect class="cella" x="137" y="265" width="13" height="13" rx="2"/><rect class="cella" x="154" y="265" width="13" height="13" rx="2"/><rect class="cella" x="171" y="265" width="13" height="13" rx="2"/><rect class="cella" x="86" y="282" width="13" height="13" rx="2"/><rect class="cella" x="103" y="282" width="13" height="13" rx="2"/><rect class="cella" x="120" y="282" width="13" height="13" rx="2"/><rect class="cella" x="137" y="282" width="13" height="13" rx="2"/><rect class="cella" x="154" y="282" width="13" height="13" rx="2"/><rect class="cella" x="171" y="282" width="13" height="13" rx="2"/><text class="etichetta" x="86" y="316">IA</text></g>
-<g class="core" data-core="infra"><rect class="base" x="204" y="204" width="120" height="120" rx="8"/><rect class="blocco" x="214" y="216" width="100" height="22" rx="4"/><rect class="cella" x="296" y="224" width="10" height="6" rx="1.5"/><rect class="blocco" x="214" y="244" width="100" height="22" rx="4"/><rect class="cella" x="296" y="252" width="10" height="6" rx="1.5"/><rect class="blocco" x="214" y="272" width="100" height="22" rx="4"/><rect class="cella" x="296" y="280" width="10" height="6" rx="1.5"/><text class="etichetta" x="214" y="316">Infrastruttura</text></g>
-</svg></div>
-    <div>
-      <div class="testa">
-        <h2 class="display-2" id="t-chip">Il chip Z1.</h2>
-        <p class="lead">Quattro core che lavorano sullo stesso progetto. Scegline uno.</p>
+<section class="competenze sfumata" id="competenze" aria-labelledby="t-competenze">
+  <div class="contenuto">
+    <div class="testa">
+      <h2 class="display-2" id="t-competenze">Competenze.</h2>
+      <p class="lead">Una frase per capire cosa faccio. I dettagli tecnici, per chi li cerca, sono a un clic.</p>
+    </div>
+    <div class="griglia">
+      <div class="competenza">
+        <h3>Backend e integrazioni</h3>
+        <p>Costruisco i servizi che ricevono le richieste, applicano le regole e salvano i dati, e li collego ai sistemi che l'azienda usa già, senza fermarli.</p>
+        <details class="tecnici"><summary><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Per i tecnici</span></summary>
+          <p>API REST e microservizi in Node.js con Fastify e in Java con Spring Boot. Integrazione a eventi con Apache Kafka, compresa una sincronizzazione in tempo reale da Oracle a MongoDB durante una migrazione.</p>
+        </details>
       </div>
-      <div class="selettore" role="tablist" aria-label="Core del chip" hidden>
-        <button type="button" role="tab" id="t-backend" aria-controls="p-backend" aria-selected="true" data-core="backend">Backend</button>
-        <button type="button" role="tab" id="t-dati" aria-controls="p-dati" aria-selected="false" tabindex="-1" data-core="dati">Dati</button>
-        <button type="button" role="tab" id="t-ia" aria-controls="p-ia" aria-selected="false" tabindex="-1" data-core="ia">IA</button>
-        <button type="button" role="tab" id="t-infra" aria-controls="p-infra" aria-selected="false" tabindex="-1" data-core="infra">Infrastruttura</button>
+      <div class="competenza">
+        <h3>Dati</h3>
+        <p>Raccolgo, pulisco e preparo i dati perché siano affidabili: dai file disordinati ai database di produzione, con procedure che girano da sole.</p>
+        <details class="tecnici"><summary><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Per i tecnici</span></summary>
+          <p>Python con Pandas e NumPy, SQL. Pipeline schedulate con stato su file e notifiche. Oracle, MongoDB, PostgreSQL.</p>
+        </details>
       </div>
-      <div class="pannelli">
-      <div class="pannello" role="tabpanel" id="p-backend" aria-labelledby="t-backend">
-        <h3>Backend e integrazioni.</h3>
-        <p>API REST e microservizi in Node.js con Fastify e in Java con Spring Boot. Collego i sistemi nuovi a quelli che ci sono già, anche a eventi con Kafka, senza fermare chi li usa.</p>
-        <ul><li>Node.js</li><li>TypeScript</li><li>Fastify</li><li>Java</li><li>Spring Boot</li><li>Kafka</li></ul>
+      <div class="competenza">
+        <h3>Intelligenza artificiale</h3>
+        <p>Integro assistenti basati su IA nei prodotti, facendo in modo che rispondano usando i documenti giusti. Quando sbagliano, cerco la causa nei dati prima che nel modello.</p>
+        <details class="tecnici"><summary><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Per i tecnici</span></summary>
+          <p>Retrieval su database vettoriali (Qdrant) e a grafo (Neo4j), qualità del corpus e dei metadati, modelli linguistici via API e in locale con llama.cpp.</p>
+        </details>
       </div>
-      <div class="pannello" role="tabpanel" id="p-dati" aria-labelledby="t-dati">
-        <h3>Pipeline di dati.</h3>
-        <p>Procedure in Python e SQL che raccolgono, ripuliscono e analizzano dati, anche non strutturati. Sincronizzazione in tempo reale tra Oracle e MongoDB durante una migrazione.</p>
-        <ul><li>Python</li><li>Pandas</li><li>SQL</li><li>Oracle</li><li>MongoDB</li><li>PostgreSQL</li></ul>
-      </div>
-      <div class="pannello" role="tabpanel" id="p-ia" aria-labelledby="t-ia">
-        <h3>Sistemi con IA.</h3>
-        <p>Assistenti basati su modelli linguistici, con retrieval su database vettoriali e a grafo. Quando le risposte non tornano, cerco la causa nei dati prima che nel modello.</p>
-        <ul><li>Qdrant</li><li>Neo4j</li><li>API dei modelli</li><li>Modelli in locale</li></ul>
-      </div>
-      <div class="pannello" role="tabpanel" id="p-infra" aria-labelledby="t-infra">
-        <h3>Applicazioni in produzione.</h3>
-        <p>Presa in carico di software esistente: ticket, analisi della causa, fix, refactoring del codice legacy guidato dai test. Container, pipeline di rilascio, server Linux.</p>
-        <ul><li>Docker</li><li>Kubernetes</li><li>Jenkins</li><li>AWS</li><li>Linux</li><li>JUnit</li></ul>
-      </div>
+      <div class="competenza">
+        <h3>Applicazioni in produzione</h3>
+        <p>Prendo in carico software già in uso: risolvo i guasti, sistemo il codice vecchio senza romperlo e rendo i rilasci prevedibili.</p>
+        <details class="tecnici"><summary><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Per i tecnici</span></summary>
+          <p>Ticket su Jira con analisi della causa e hotfix. Refactoring guidato dai test con JUnit e Mockito. Docker, Kubernetes, CI/CD con Jenkins, AWS, server Linux e Proxmox.</p>
+        </details>
       </div>
     </div>
   </div>
 </section>
 
-<section class="diagnostica" id="diagnostica" aria-labelledby="t-diagnostica">
+<section class="caso" id="caso" aria-labelledby="t-caso">
   <div class="contenuto testa">
-    <h2 class="display-2" id="t-diagnostica">Diagnostica avanzata.</h2>
-    <p class="lead">Il primo errore è solo il punto da cui si comincia a scendere. Un guasto vero, sul server di casa, dal sintomo alla soluzione.<sup><a href="#nota-2" id="rif-2" aria-label="Nota 2">2</a></sup></p>
+    <h2 class="display-2" id="t-caso">Un caso reale.</h2>
+    <p class="lead">Come lavoro quando qualcosa si rompe. In breve: dopo un riavvio due servizi non partivano, e la causa era l'ordine in cui il server accende i suoi pezzi. Successo sul mio server di casa, il 10 giugno 2026. Per chi è del mestiere, ecco i passaggi.</p>
   </div>
   <ol class="galleria" id="galleria" aria-label="Il guasto, passo per passo">
     <li>
@@ -487,76 +391,69 @@ footer a { color: var(--argento); }
   </div>
 </section>
 
-<section class="compatibilita" id="compatibilita" aria-labelledby="t-compatibilita">
+<section class="esperienze sfumata" id="esperienze" aria-labelledby="t-esperienze">
   <div class="contenuto">
     <div class="testa">
-      <h2 class="display-2" id="t-compatibilita">Compatibilità.</h2>
-      <p class="lead">In produzione dal 2021, per aziende di settori diversi: grande distribuzione, energia, software, sanità privata.</p>
+      <h2 class="display-2" id="t-esperienze">Esperienze.</h2>
+      <p class="lead">Dal 2021 su sistemi in produzione, in settori diversi: grande distribuzione, energia, software, sanità privata.</p>
     </div>
     <ul class="elenco">
       <li>
-        <div><h3>SaaS B2B per la conformità normativa</h3><p class="periodo">Dal 2026</p></div>
-        <div class="dettagli"><p>Nel team che sviluppa un assistente IA per verificare ingredienti cosmetici e alimentari rispetto alle normative: retrieval su database vettoriali e a grafo, pulizia del corpus documentale, modello dei dati.</p><p class="stack">Python, Qdrant, Neo4j</p></div>
+        <div><h3>Piattaforma per la conformità normativa</h3><p class="periodo">Dal 2026</p></div>
+        <div class="dettagli"><p>Nel team che sviluppa un assistente basato su IA: controlla se gli ingredienti di cosmetici e alimenti rispettano le normative. Mi occupo di come l'assistente trova i documenti giusti e della qualità dei dati su cui risponde.</p><p class="stack">Python, Qdrant e Neo4j (database vettoriali e a grafo)</p></div>
       </li>
       <li>
         <div><h3>Duemme Dental</h3><p class="periodo">Dal 2026, Nerviano</p></div>
-        <div class="dettagli"><p>Il CRM dello studio dentistico, sviluppato con un collega: pazienti, questionario anamnestico e odontogramma ricalcati sui moduli cartacei dello studio, preventivi e agenda.</p><p class="stack">React, Spring Boot, Java 21, PostgreSQL</p></div>
+        <div class="dettagli"><p>Il gestionale dello studio dentistico, sviluppato con un collega: schede dei pazienti, questionario medico e odontogramma ricalcati sui moduli cartacei dello studio, preventivi e agenda.</p><p class="stack">React, Spring Boot, Java 21, PostgreSQL</p></div>
       </li>
       <li>
         <div><h3>Unicoop</h3><p class="periodo">2024–2025, per ATS S.p.A.</p></div>
-        <div class="dettagli"><p>Grande distribuzione. Microservizi in Node.js e Fastify; sincronizzazione in tempo reale da Oracle a MongoDB con Kafka durante la migrazione.</p><p class="stack">Node.js, Fastify, Kafka, Oracle, MongoDB</p></div>
+        <div class="dettagli"><p>Grande distribuzione. Nuovi servizi per l'ecosistema digitale e il collegamento in tempo reale tra il vecchio database e quello nuovo, mentre i sistemi passavano dall'uno all'altro.</p><p class="stack">Node.js, Fastify, Kafka, Oracle, MongoDB</p></div>
       </li>
       <li>
         <div><h3>A2A</h3><p class="periodo">2024–2025, per ATS S.p.A.</p></div>
-        <div class="dettagli"><p>Energia. Gestione autonoma dei ticket di produzione su Jira, analisi della causa e hotfix.</p><p class="stack">TypeScript, Fastify, Jira</p></div>
+        <div class="dettagli"><p>Energia. Gestivo in autonomia le segnalazioni di problemi sulle applicazioni in uso: trovavo la causa e rilasciavo la correzione.</p><p class="stack">TypeScript, Fastify, Jira</p></div>
       </li>
       <li>
         <div><h3>BitQ</h3><p class="periodo">2024–2025, per ATS S.p.A.</p></div>
-        <div class="dettagli"><p>Refactoring di una codebase con molto debito tecnico, guidato dai test; containerizzazione e ambiente di sviluppo standard per tutto il team.</p><p class="stack">Java, Spring Boot, JUnit, Mockito, Docker, Kubernetes</p></div>
+        <div class="dettagli"><p>Ho rimesso in ordine un software vecchio e lento, verificando ogni modifica con test automatici, e preparato un ambiente di sviluppo uguale per tutto il team.</p><p class="stack">Java, Spring Boot, JUnit, Mockito, Docker, Kubernetes</p></div>
       </li>
       <li>
         <div><h3>Expandi Group e Account Insight</h3><p class="periodo">2021–2023</p></div>
-        <div class="dettagli"><p>Full stack e poi lead developer. Una piattaforma proprietaria dai requisiti alla produzione, pipeline di rilascio su AWS, procedure per l'analisi dei dati.</p><p class="stack">Java, Spring Boot, TypeScript, Jenkins, Docker, AWS, Python, SQL</p></div>
+        <div class="dettagli"><p>Full stack developer e poi lead developer, cioè responsabile tecnico. Ho costruito una piattaforma su misura, dai requisiti alla messa in produzione, con rilasci automatici sul cloud e procedure per analizzare i dati.</p><p class="stack">Java, Spring Boot, TypeScript, Jenkins, Docker, AWS, Python, SQL</p></div>
       </li>
     </ul>
   </div>
 </section>
 
-<section class="laboratorio" aria-labelledby="t-laboratorio">
+<section class="casa" aria-labelledby="t-casa">
   <div class="contenuto">
     <div class="testa">
-      <h2 class="display-2" id="t-laboratorio">Collaudato in laboratorio.</h2>
-      <p class="lead">A casa gestisco un piccolo datacenter: Proxmox con una decina tra container e macchine virtuali, una GPU condivisa per i modelli linguistici in locale, monitoraggio con avvisi su Telegram, controllo dei dischi e backup notturni. Lo tratto come produzione, quindi ogni tanto si rompe davvero.</p>
+      <h2 class="display-2" id="t-casa">Il server di casa.</h2>
     </div>
-    <div class="colonne">
-      <div>
-        <h3>UID spostati di 100000.</h3>
-        <p>Load a 30, sembrava RAM esaurita. Era una conversione di container da unprivileged a privileged: nove container Docker in crash continuo. Backup, proprietari riallineati su tutto il filesystem, quattordici container di nuovo su.</p>
-      </div>
-      <div>
-        <h3>Thin pool quasi pieno.</h3>
-        <p>Decine di GB recuperati abilitando discard e <code>fstrim</code>, senza toccare i dati.</p>
-      </div>
-      <div>
-        <h3>Strumenti per conto mio.</h3>
-        <p>Un wrapper Python per API multimodali con gestione di token e rate limit, e una pipeline che trasforma thread di Reddit in video verticali senza intervento manuale.</p>
-      </div>
+    <div class="corpo">
+      <p class="lead">A casa gestisco un piccolo datacenter, cioè un server con una decina di servizi e macchine virtuali, una scheda video condivisa per i modelli di IA in locale, avvisi automatici su Telegram, controllo dei dischi e backup ogni notte. Lo tratto come un ambiente di produzione, quindi ogni tanto si rompe davvero.</p>
+      <ul>
+        <li><h3>Il server che sembrava senza memoria</h3><p>Una conversione dei container aveva lasciato i file con i proprietari sbagliati: nove servizi in crash continuo. Backup, proprietari riallineati, quattordici servizi di nuovo su.</p><details class="tecnici"><summary><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Per i tecnici</span></summary><p>UID e GID spostati di 100000 dopo la conversione di un container LXC da unprivileged a privileged; s6-overlay si rifiutava di partire. Rimappati con chown su tutto il rootfs e sui volumi.</p></details></li>
+        <li><h3>Il disco quasi pieno</h3><p>Decine di GB recuperati senza cancellare nulla.</p><details class="tecnici"><summary><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Per i tecnici</span></summary><p>Thin pool LVM pieno di blocchi già liberati dai guest: discard abilitato sui dischi e <code>fstrim</code>.</p></details></li>
+        <li><h3>Strumenti per conto mio</h3><p>Un collegamento ai modelli di IA che lavorano su testo e immagini, con il controllo dei costi, e un programma che trasforma discussioni di Reddit in video verticali da solo.</p><details class="tecnici"><summary><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Per i tecnici</span></summary><p>Wrapper Python per API multimodali con gestione di token e rate limit; pipeline headless con FFmpeg per il montaggio in 9:16.</p></details></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="specifiche" id="specifiche" aria-labelledby="t-specifiche">
+<section class="sintesi sfumata" id="sintesi" aria-labelledby="t-sintesi">
   <div class="contenuto">
     <div class="testa">
-      <h2 class="display-2" id="t-specifiche">Specifiche tecniche.</h2>
+      <h2 class="display-2" id="t-sintesi">In sintesi.</h2>
     </div>
     <dl class="scheda">
       <div><dt>Linguaggi</dt><dd>Java, TypeScript e JavaScript (Node.js), Python, SQL</dd></div>
-      <div><dt>Backend</dt><dd>Spring Boot, Fastify, API REST, microservizi, architetture a eventi</dd></div>
+      <div><dt>Servizi e integrazioni</dt><dd>Spring Boot, Fastify, API REST, microservizi, architetture a eventi</dd></div>
       <div><dt>Dati e messaggistica</dt><dd>Apache Kafka, Oracle, MongoDB, PostgreSQL, Pandas</dd></div>
-      <div><dt>IA</dt><dd>Retrieval su Qdrant e Neo4j, modelli linguistici via API e in locale</dd></div>
+      <div><dt>IA</dt><dd>Assistenti che cercano nei documenti (Qdrant, Neo4j), modelli linguistici via API e in locale</dd></div>
       <div><dt>Infrastruttura</dt><dd>Docker, Kubernetes, Jenkins, AWS, Linux, Proxmox</dd></div>
-      <div><dt>Qualità</dt><dd>Test con JUnit e Mockito, refactoring di codice legacy guidato dai test</dd></div>
+      <div><dt>Qualità</dt><dd>Test automatici con JUnit e Mockito, messa in ordine di codice vecchio senza romperlo</dd></div>
       <div><dt>Metodo</dt><dd>Analisi della causa, ticket su Jira, note scritte per chi viene dopo</dd></div>
       <div><dt>Lingue</dt><dd>Italiano, inglese</dd></div>
       <div><dt>Modalità</dt><dd>Da remoto. Freelance con partita IVA o posizione da dipendente</dd></div>
@@ -565,18 +462,15 @@ footer a { color: var(--argento); }
   </div>
 </section>
 
-<section class="ultima" aria-labelledby="t-disponibile">
-  <div class="annuncio"><p>Un'ultima cosa.</p></div>
-  <div class="chiusura">
-    <div class="contenuto">
-      <h2 class="display-2" id="t-disponibile">Disponibile ora.<sup><a href="#nota-1" aria-label="Nota 1">1</a></sup></h2>
-      <p class="lead">Raccontami cosa c'è da costruire o cosa non torna.</p>
-      <a class="pillola grande" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
-      <a class="email" href="mailto:davide.ouxiang.zhu@gmail.com">davide.ouxiang.zhu@gmail.com</a>
-      <div class="altri">
-        <a class="collegamento" href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/"><span>LinkedIn</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="collegamento" href="https://github.com/Nazah-ops"><span>GitHub</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
+<section class="contatti" id="contatti" aria-labelledby="t-contatti">
+  <div class="contenuto">
+    <h2 class="display-2" id="t-contatti">Parliamone.</h2>
+    <p class="lead">Raccontami cosa c'è da costruire o cosa non torna. Lavoro da remoto, in italiano e in inglese, da freelance o come dipendente.</p>
+    <a class="pillola grande" href="mailto:davide.ouxiang.zhu@gmail.com">Scrivimi</a>
+    <a class="email" href="mailto:davide.ouxiang.zhu@gmail.com">davide.ouxiang.zhu@gmail.com</a>
+    <div class="altri">
+      <a class="collegamento" href="https://www.linkedin.com/in/davide-o-zhu-bb6a0a215/"><span>LinkedIn</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="collegamento" href="https://github.com/Nazah-ops"><span>GitHub</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </section>
@@ -585,11 +479,8 @@ footer a { color: var(--argento); }
 
 <footer>
   <div class="contenuto">
-    <ol>
-      <li id="nota-1">Per progetti da freelance e posizioni da remoto, in italiano e in inglese. <a href="#rif-1">Torna al testo</a></li>
-      <li id="nota-2">Guasto avvenuto il 10 giugno 2026 sul server di casa, raccontato com'è andato. <a href="#rif-2">Torna al testo</a></li>
-    </ol>
-    <p>Zhu Ouxiang Davide, P.IVA 13433450965. Copyright © 2026. Il codice di questa pagina è su <a href="https://github.com/Nazah-ops/davide-tech.work">GitHub</a>.</p>
+    <p>Zhu Ouxiang Davide, P.IVA 13433450965.</p>
+    <p>Il codice di questa pagina è su <a href="https://github.com/Nazah-ops/davide-tech.work">GitHub</a><span id="rilascio" hidden>, ultimo aggiornamento <code id="commit"></code> del <time id="data"></time></span>.</p>
   </div>
 </footer>
 
@@ -605,36 +496,7 @@ footer a { color: var(--argento); }
     );
   }
 
-  // il chip: un core alla volta, da pulsanti, tastiera o tocco sul disegno
-  const schede = [...document.querySelectorAll('[role="tab"]')];
-  const pannelli = schede.map(s => document.getElementById(s.getAttribute('aria-controls')));
-  const scegli = (i, fuoco) => {
-    schede.forEach((s, k) => {
-      const on = k === i;
-      s.setAttribute('aria-selected', on);
-      s.tabIndex = on ? 0 : -1;
-      pannelli[k].hidden = !on;
-    });
-    document.querySelectorAll('.core').forEach(c => c.classList.toggle('attivo', c.dataset.core === schede[i].dataset.core));
-    if (fuoco) schede[i].focus();
-  };
-  document.querySelector('.selettore').hidden = false;
-  scegli(0, false);
-  schede.forEach((s, i) => {
-    s.addEventListener('click', () => scegli(i, false));
-    s.addEventListener('keydown', e => {
-      const passo = { ArrowRight: 1, ArrowLeft: -1, Home: -i, End: schede.length - 1 - i }[e.key];
-      if (passo === undefined) return;
-      e.preventDefault();
-      scegli((i + passo + schede.length) % schede.length, true);
-    });
-  });
-  document.querySelectorAll('.core').forEach(c => c.addEventListener('click', () => {
-    scegli(schede.findIndex(s => s.dataset.core === c.dataset.core), false);
-    if (c.closest('.palco')) document.getElementById('chip').scrollIntoView();
-  }));
-
-  // la galleria della diagnostica
+  // la galleria del caso reale
   const g = document.getElementById('galleria');
   const indietro = document.getElementById('indietro');
   const avanti = document.getElementById('avanti');
@@ -649,6 +511,25 @@ footer a { color: var(--argento); }
   addEventListener('resize', aggiorna);
   document.querySelector('.frecce').hidden = false;
   aggiorna();
+
+  // per chi apre la console
+  console.log('%cCiao, collega.', 'font: 600 16px system-ui; color: oklch(0.82 0.095 200)');
+  console.log('Niente framework, niente build: un file HTML e due font.\nIl CV per terminale:  curl https://davide-tech.work/cv.txt\nIl codice:            https://github.com/Nazah-ops/davide-tech.work\nSe c\'è da costruire o da sistemare qualcosa: davide.ouxiang.zhu@gmail.com');
+
+  // ultimo aggiornamento, letto da GitHub; se non risponde la riga resta nascosta
+  fetch('https://api.github.com/repos/Nazah-ops/davide-tech.work/commits/main', { headers: { Accept: 'application/vnd.github+json' } })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(c => {
+      const quando = new Date(c.commit.committer.date);
+      const commit = document.getElementById('commit');
+      commit.textContent = c.sha.slice(0, 7);
+      commit.title = c.commit.message.split('\n')[0];
+      const data = document.getElementById('data');
+      data.dateTime = quando.toISOString();
+      data.textContent = quando.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+      document.getElementById('rilascio').hidden = false;
+    })
+    .catch(() => {});
 })();
 </script>
 </body>

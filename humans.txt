@@ -1,0 +1,16 @@
+/* TEAM */
+Author: Davide O. Zhu
+Email: davide.ouxiang.zhu@gmail.com
+GitHub: https://github.com/Nazah-ops
+
+/* THANKS */
+Grazie a chi usa, legge e condivide il sito.
+
+/* SITE */
+Last update: 2026/11/10
+Language: Italiano
+Standards: HTML5, CSS
+Components: nessun framework, nessuna build, un solo file HTML
+Software: font Funnel Display e Funnel Sans (licenza SIL OFL, serviti dal sito)
+Hosting: GitHub Pages
+DNS: Cloudflare

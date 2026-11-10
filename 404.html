@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="oklch(0.11 0.012 252)">
+  <title>404 - Pagina non trovata | Davide O. Zhu</title>
+  <style>
+    @font-face {
+      font-family: "Funnel Display";
+      src: url("/fonts/funnel-display.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Funnel Sans";
+      src: url("/fonts/funnel-sans.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    :root {
+      color-scheme: dark;
+      --background: oklch(0.11 0.012 252);
+      --foreground: oklch(0.97 0.004 240);
+      --secondary: oklch(0.78 0.012 240);
+      --accent: oklch(0.82 0.095 200);
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; min-height: 100%; }
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      color: var(--foreground);
+      background:
+        radial-gradient(55% 60% at 50% 0%,
+          oklch(0.34 0.06 220 / 0.55), transparent 72%),
+        var(--background);
+      font-family: "Funnel Sans", sans-serif;
+      text-align: center;
+    }
+    main { width: min(100%, 680px); }
+    h1 {
+      margin: 0;
+      font-family: "Funnel Display", "Funnel Sans", sans-serif;
+      font-size: clamp(3.25rem, 10vw, 6rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+    .message {
+      max-width: 38rem;
+      margin: 24px auto 30px;
+      color: var(--secondary);
+      font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+      line-height: 1.6;
+    }
+    .home {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 22px;
+      border: 2px solid var(--foreground);
+      border-radius: 999px;
+      background: var(--foreground);
+      color: var(--background);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+    .home:hover { transform: translateY(-2px); }
+    .home:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+    .request-path {
+      min-height: 1.5em;
+      margin: 32px 0 0;
+      color: var(--accent);
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+    @media (max-width: 400px) {
+      body { padding-inline: 16px; }
+      .message { margin-block: 20px 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>404.</h1>
+    <p class="message">Questa pagina non esiste. Ho controllato: il problema non è nel tuo browser.</p>
+    <a class="home" href="/">Torna alla pagina principale</a>
+    <p class="request-path" id="request-path">404 Not Found</p>
+  </main>
+  <script>
+    document.getElementById("request-path").textContent =
+      "GET " + location.pathname + " → 404 Not Found";
+  </script>
+</body>
+</html>
